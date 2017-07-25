@@ -1,0 +1,3 @@
+[submodule "content/bib"]
+	path = content/bib
+	url = git@github.com:krafczyk/NCSA-bib
