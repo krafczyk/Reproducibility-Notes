@@ -2,7 +2,10 @@
 
 RP : content/main.tex clean
 	TEXINPUTS=./classes:./styles:./content:$$TEXINPUTS BIBINPUTS=./content:$$BIBINPUTS BSTINPUTS=./styles:$$BSTINPUTS pdflatex --output-directory=./out main.tex
-	cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS bibtex main
+	#cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS bibtex main
+	cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS biber main
+	cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS makeindex main
+	#TEXINPUTS=./classes:./styles:./content:$$TEXINPUTS BIBINPUTS=./content:$$BIBINPUTS BSTINPUTS=./styles:$$BSTINPUTS pdflatex --output-directory=./out main.tex
 	TEXINPUTS=./classes:./styles:./content:$$TEXINPUTS BIBINPUTS=./content:$$BIBINPUTS BSTINPUTS=./styles:$$BSTINPUTS pdflatex --output-directory=./out main.tex
 	TEXINPUTS=./classes:./styles:./content:$$TEXINPUTS BIBINPUTS=./content:$$BIBINPUTS BSTINPUTS=./styles:$$BSTINPUTS pdflatex --output-directory=./out main.tex
 	#cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS htlatex main.tex "" "" "" "-interaction=batchmode"

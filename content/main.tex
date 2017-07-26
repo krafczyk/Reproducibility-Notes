@@ -1,6 +1,94 @@
 \documentclass{article}
 
+\usepackage[utf8]{inputenc}
+%\usepackage[T1]{fontenc}
 \usepackage[margin=1in]{geometry}
+\usepackage{etoolbox}
+\usepackage{xifthen}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+	colorlinks,
+	linkcolor={red!50!black},
+	citecolor={blue!50!black},
+	urlcolor={blue!80!black}
+}
+%\usepackage{imakeidx}
+\usepackage{makeidx}
+\makeindex
+\usepackage[nottoc]{tocbibind}
+\usepackage[style=ieee,indexing,backref]{biblatex}
+\addbibresource{main.bib}
+\usepackage{aas_macros}
+
+\newcommand{\ifempty}[3]{%
+	\ifthenelse{\isempty{#1}}{#2}{#3}%
+}
+
+%\DeclareCiteCommand{\cite}
+%  {\bibopenbracket\usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%   \printtext[bibhyperref]{\usebibmacro{cite}}}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}\bibclosebracket}
+%
+%\DeclareCiteCommand*{\cite}
+%  {\bibopenbracket\usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%   \printtext[bibhyperref]{\usebibmacro{citeyear}}}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}\bibclosebracket}
+%
+%\DeclareCiteCommand{\parencite}[\mkbibparens]
+%  {\usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%    \printtext[bibhyperref]{\usebibmacro{cite}}}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}}
+%
+%\DeclareCiteCommand*{\parencite}[\mkbibparens]
+%  {\usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%    \printtext[bibhyperref]{\usebibmacro{citeyear}}}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}}
+%
+%\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+%  {\usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%  \printtext[bibhyperref]{ \usebibmacro{cite}}}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}}
+%
+%\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
+%  {\usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%   \printtext[bibhyperref]{\usebibmacro{cite}}}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}}
+%
+%\DeclareCiteCommand{\textcite}
+%  {\boolfalse{cbx:parens}}
+%  {\usebibmacro{citeindex}%
+%   \printtext[bibhyperref]{\usebibmacro{textcite}}}
+%  {\ifbool{cbx:parens}
+%     {\bibcloseparen\global\boolfalse{cbx:parens}}
+%     {}%
+%   \multicitedelim}
+%  {\usebibmacro{textcite:postnote}}
+
+\DeclareCiteCommand{\citejournalorbooktitle}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+    \iffieldundef{journaltitle}{\usebibmacro{booktitle}}{\usebibmacro{journal}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\newenvironment{refdef}[2] {
+	\noindent \textbf{\citetitle{#1}} \cite{#1}\\ \citejournalorbooktitle{#1} \textit{(\citeyear{#1})}\\ \texttt{#2} \vspace{0.2in} \par 
+} {
+\vspace{0.2in}
+}
 
 \title{Research Notes}
 \author{Matthew Krafczyk}
@@ -10,9 +98,241 @@
 
 \maketitle
 
-These are my research notes while working at NCSA.
+\tableofcontents
 
-\bibliography{main}
-\bibliographystyle{ieeetranthesis}
+\section{Introduction}
+
+These are my research notes while working at NCSA. \index{Test}
+
+\section{Reference Descriptions}
+
+Here I collect together the references I've encountered and read at least some of. I also include a small explanation for each reference. If available, I also break it down by subject.
+
+\subsection{Reproducibility}
+
+\begin{refdef}{repro-fast-sum}{ARITH21\_Fast\_Sum.pdf}
+An algorithm for reproducible parallel summation of floating point numbers with varying accuracy and efficiency.
+\end{refdef}
+
+
+\begin{refdef}{collberg2014measuring}{tr.pdf}
+A fun article discussing attempts to get source code and build the code. No attempts to run and reproduce the result were made.
+\end{refdef}
+
+\begin{refdef}{stodden-reproducibility-crisis}{Stodden\_Reproducibility\_Crisis.pdf}
+One of Victoria's articles where she and her collaborators describe the problem of computational reproducibility. They are also plugging their own Matlab reproducibility environments.
+\end{refdef}
+
+\begin{refdef}{problem-of-reproducibility}{The\_Problem\_of\_Reproducibility.pdf}
+Ince describes some of the issues with reproducibility
+\end{refdef}
+
+\begin{refdef}{classification-of-methodologies-large-scale}{RR-6859.pdf}
+The authors describe some different methodologies in running computational 'experiments'. This includes the classification of hardware and software environments.
+\end{refdef}
+
+\begin{refdef}{quantifying-reproducibility-computational-biology}{journal.pone.0080278.pdf}
+Establishes the idea of the reproducibility score which quantifies the cost of reproducing the result in the event that details are left out of publications. Gives a nice in depth review of making a computational biology paper reproducible. Much like what I plan with the Vertical study
+\end{refdef}
+
+\begin{refdef}{collaborative-reproducibility}{1-s2.0-S0306437916300813-main.pdf}
+A nice short paper describing a system where people create 'reproducibility papers' and report the existence of tools for making environments and libraries and what not available for researchers to use.
+\end{refdef}
+
+\begin{refdef}{tools-and-techniques-computational-reproducibility}{ToolsAndTechniquesComputationalReproducibilityPicollo2016.pdf}
+This paper details several techniques that can be helpful to automate the reproduction of results including things like scripts and using docker containers to create virtualized environments.
+\end{refdef}
+
+\begin{refdef}{repeatability-microarray-gene-expression}{ng.295.pdf}
+The researchers attempt to reproduce a bunch of microarray gene expression papers. These reproductions were limited by the availability of data and in some cases code.
+\end{refdef}
+
+\begin{refdef}{fmri-false-positives}{PNAS-2016-Eklund-7900-5.pdf}
+The authors discuss how fMRI systems have huge false positive rates which is related to the existence of the dead salmon poster: Bennett-Salmon-2009.pdf
+\end{refdef}
+
+\begin{refdef}{reproducibility-computational-biology}{WhereNextForComputationalBiology.pdf}
+This paper puts up a set of recommendataions for computational biology to facilitate reproducibility. Nothing that new.
+\end{refdef}
+
+\begin{refdef}{Thain-CMS-Repro}{repro-tr-2016.pdf}
+An interesting paper which discusses efforts to make a CMS ROOT workflow reproducible.
+\end{refdef}
+
+\begin{refdef}{ContainersNature}{546173a.pdf}
+A paper discussing Containers and how they are taking over the world
+\end{refdef}
+
+\begin{refdef}{10.1371/journal.pone.0038234}{journal.pone.0038234.pdf}
+A great paper talking about scientific output differences between operating systems
+\end{refdef}
+
+\subsection{Benchmarking}
+
+\begin{refdef}{scientific-benchmarking-parallel-computing-1}{a73-hoefler.pdf}
+This paper discusses a number of problems with current benchmarking practices in the HPC community. They present their own library for HPC benchmarking as a solution to this problem.
+\end{refdef}
+
+\begin{refdef}{gropp-mpi2}{1-s2.0-0167819196000245-main.pdf}
+One of the founding papers of MPI, showing how MPI has been able to create a message passing system which can achieve high performance even compared to vendor specific implementations on a variety of systems.
+\end{refdef}
+
+\begin{refdef}{gropp-parallel-io}{International Journal of High Performance Computing Applications-1998-Thakur....}
+Goes into the problem of data throughput in HPC.
+\end{refdef}
+
+\begin{refdef}{gropp-test-suite}{1-s2.0-S0167819109000143-main.pdf}
+This is a more detailed article about MPI benchmarking. Specifically, this paper deals with threading performance, and the challenges therein.
+\end{refdef}
+
+\begin{refdef}{gropp-mpi-repro-perf}{mpptest.pdf}
+Describes a number of problems associated with testing parallel message passing implementations. Describes their test suite and how they get around these problems.
+\end{refdef}
+
+\subsection{Reproducibility Benchmarking}
+
+\begin{refdef}{reproducibility-benchmark-dft}{aad3000.full.pdf}
+%Science (2016)
+A very detailed study in which a set of DFT codes had their reproducibility benchmarked. The developers and researchers for these codes got together and decided on a figure of merit to quantify their reproducibility.
+\end{refdef}
+
+
+\subsection{Uncertainty Quantification}
+
+\begin{refdef}{Wilke2013}{chp\%3A10.1007\%2F978-3-642-40047-6\_7.pdf}
+\end{refdef}
+
+\subsection{Sources of Variation}
+
+\begin{refdef}{doi:10.1093/molbev/mss136}{mss136.pdf}
+A discusion of analysis methods in biology used to create a narrative for specific genes and whatnot. That non-reproducibility can so easily affect the result of analysis is the main point of this paper. Not about the reproducibility crisis in biology...
+\end{refdef}
+
+\begin{refdef}{FokkensPostmaPedersen}{P13-1166.pdf}
+This paper dicusses attempts to replicate results from word similarity programs. They discuss several sources which can be sources of error
+\end{refdef}
+
+\begin{refdef}{sacks1989}{euclid.ss.1177012413.pdf}
+An old paper describing a system for studying variation of computational simulations given different initial conditions and assuming deterministic simulations. This is a good starting point for my vertical research!
+\end{refdef}
+
+\begin{refdef}{DEPEND-Resiliance}{07266835.pdf}
+This paper describes the DEPEND team's tool LogDiver and their work studying errors which programs encounter on large supercomputers.
+\end{refdef}
+
+\subsection{Software Quality}
+
+\begin{refdef}{Flouri031500}{031500.full.pdf}
+This paper discusses the existence of bugs in implementations of global alignment algorithms
+\end{refdef}
+
+\begin{refdef}{Darriba031930}{031930.full.pdf}
+This paper discusses the code quality of several bioinformatics tools which are used in academia They find some problems and propose some practices for the scientific community.
+\end{refdef}
+
+\begin{refdef}{hattoicalepcs2011}{Hatton\_ICALEPCS2011.pdf}
+This article deals with several issues which can undermine a scientific result from software. It takes fault rates specifically which result in subtly incorrect results from scientific programs.
+\end{refdef}
+
+\begin{refdef}{Monniaux:2008:PVF:1353445.1353446}{a12-monniaux.pdf}
+A deep case based analysis of floating point reproducibility problems which can arrise in the analysis of computational code. (a lengthy read)
+\end{refdef}
+
+\subsection{Code Base References}
+
+\begin{refdef}{MPI-Standard}{}
+The article defining 1.0 of the MPI standard.
+\end{refdef}
+
+\begin{refdef}{OpenMP-Standard}{}
+This paper describes the OpenMP Standard
+\end{refdef}
+
+\begin{refdef}{Enzo}{}
+This paper describes Enzo and is the official Enzo citation.
+\end{refdef}
+
+\begin{refdef}{rockstar}{Behroozi\_2013\_ApJ\_762\_109.pdf}
+The rockstar halo finding algorithm.
+\end{refdef}
+
+\begin{refdef}{Spack}{a40-gamblin.pdf}
+The official citation and introduction to Spack
+\end{refdef}
+
+\begin{refdef}{hdf5}{}
+The official citation of HDF5
+\end{refdef}
+
+\begin{refdef}{yt}{}
+The official method paper and citation of YT
+\end{refdef}
+
+\subsection{Unassigned}
+
+\begin{refdef}{Czech035360}{035360.full.pdf}
+This paper discusses some of the problems with philogenetic tree programs. they had a hard time reproducing published trees.
+\end{refdef}
+
+\begin{refdef}{leshatton-full-repro}{1608.06897.pdf}
+An interesting paper by Les Hatton talking about full reproducibilty in biology.
+\end{refdef}
+
+\begin{refdef}{AGORA-II}{1610.03066.pdf}
+An extensive test of reproducibility of astrophysical codes across code types.
+\end{refdef}
+
+\begin{refdef}{Stodden1240}{1240.full.pdf}
+\end{refdef}
+
+\begin{refdef}{stodden-legal}{Stodden\_chapter.pdf}
+What computational scientists need to know about intellectual property law: A primer
+\end{refdef}
+
+\begin{refdef}{clusterjob}{osbg-MDS2016.pdf}
+THE CLUSTERJOB PAPER
+\end{refdef}
+
+\begin{refdef}{doi:10.1001/jama.294.2.218}{JOC50060.pdf}
+A great paper describing replication outcomes for clinical trials
+\end{refdef}
+
+\begin{refdef}{Collberg:2016:RCS:2897191.2812803}{p62-collberg.pdf}
+A nice paper about Repeatability in Computer systems research
+\end{refdef}
+
+\begin{refdef}{10.1371/journal.pmed.0020124}{journal.pmed.0020124.PDF}
+A great article explaining why most published research findings are false.
+\end{refdef}
+
+\begin{refdef}{aac4716}{aac4716.full.pdf}
+An article talking about estimating the reproducibility of psychological science
+\end{refdef}
+
+\begin{refdef}{Begley2012}{483531a.pdf}
+An article talking about the need to increase the quality of pre-clinical research to increase the effectiveness of cancer studies and getting working treatments from them.
+\end{refdef}
+
+\begin{refdef}{Baker2016}{533452a.pdf}
+An article discussing survey responses from scientists asking about reproducibility in their fields.
+\end{refdef}
+
+\begin{refdef}{Begley116}{116.full.pdf}
+An article discussing the root causes of the reproducibility problem.
+\end{refdef}
+
+\begin{refdef}{stodden-computational-science-talk}{Science20July2009VictoriaStodden.pdf}
+A talk by V.S. about how computation is affecting the scientific method.
+\end{refdef}
+
+\begin{refdef}{acm-badging}{}
+A website describing the ACM badging policy. Provides the definitions for Reproducibility terms
+\end{refdef}
+
+%\bibliography{main}
+%\bibliographystyle{ieeetranthesis}
+\printbibliography[heading=bibintoc]
+
+\printindex
 
 \end{document}
