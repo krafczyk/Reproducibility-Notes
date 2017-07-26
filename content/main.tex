@@ -104,6 +104,171 @@
 
 These are my research notes while working at NCSA. \index{Test}
 
+\section{Reproducibility Terms}
+
+I will be using the ACM terms for reproducibility \cite{acm-badging}. In order of increasing strength or rigor they are:
+
+\begin{itemize}
+\item \textbf{Repeatability}: When a research team can get the same conclusions using the same experimental methods as previous
+\item \textbf{Replicability}: When a separate research team can get the same conclusions using the same experimental methods as previous
+\item \textbf{Reproducibility}: When a separate research team can get the same conclusions using a different experimental method as previous
+\end{itemize}
+
+There is some contention about these terms, I believe the biology people use different terms. I need to find a reference for this.
+
+\section{Reproducibility Issues}
+
+Here I'm trying to collect all the different issues which exist with reproducibility. I'm using it as a space to make sense of these issues as well as collect the references which make the case.
+
+\subsection{Sociological Issues}
+
+\begin{itemize}
+\item Scrutinization
+\item Competitive Advantage
+\item Licensing
+\item Monolithic codebases
+\item Dirty code
+\item \textbf{Some seem \textit{strange} given the published article}
+\end{itemize}
+
+\subsection{Software Issues}
+
+\begin{itemize}
+\item Numerical error
+\item Transparent machine software/hardware failures
+\item Hard-coded machine topologies
+\item \textbf{Some of these are \textit{unavoidable}}
+\end{itemize}
+
+\subsection{Hardware Issues}
+
+\begin{itemize}
+\item Special hardware requirements
+\item \textbf{Some of these are \textit{unavoidable}}
+\end{itemize}
+
+\subsection{Compatibility Issues}
+
+DOES THIS SUBSECTION DESERVE ITS OWN SECTION??
+
+Study compatibility is a serious problem which prevents the comparison of scientific studies when researchers do not agree on input formatting, output formatting, and general scientific workflow. Without this compatibility, major work must be done to allow apples to apples comparisons between scientific works.
+
+To make matters worse, allowing scientists to steal a method from another scientist and use it in their IDE is currently impossible due to incompatibilities inherent in each application's assuredly divergent development lines. Thus solving the compatibility will be a great step forward towards allowing the three currently difficult workflows.
+
+\section{Goals for reproducibility}
+
+I want to make the following methods more easily executable. Replicability and Compatibility will be huge steps towards making this happen.
+
+\subsection{Method Appropriation}
+
+\begin{enumerate}
+\item \textbf{A} is working on airfoil using method \boldmath$\alpha$, but sim has a problem
+\item \textbf{B} publishes method $\beta$ which claims to fix said problem
+\item \textbf{A} reads \textbf{B}'s paper
+\item \textbf{A} downloads \textbf{B}'s materials, verifies the result
+\item \textbf{A} then uses method $\beta$ to solve their problem
+\item \textbf{A} publishes their airfoil citing \textbf{B} as simulation method
+\end{enumerate}
+
+\subsection{Method Tweaking}
+
+\begin{enumerate}
+\item \textbf{A} needs to simulate a large protein to find binding sites
+\item \textbf{A} finds method \boldmath$\beta$ by \textbf{B} for simulating large proteins efficiently, but doesn't find binding sites.
+\item \textbf{A} download's \textbf{B}'s materials, verifies the result
+\item \textbf{A} adds code to find binding sites to $\beta$ producing method $\alpha$
+\item \textbf{A} publishes method $\alpha$ citing \textbf{B}'s method $\beta$.
+\end{enumerate}
+
+\subsection{Method Improvement}
+
+\begin{enumerate}
+\item Performing lattice QCD, \textbf{A} finds method \boldmath$\beta$ by \textbf{B}.
+\item \textbf{A} spots mistake in method $\beta$ from article
+\item \textbf{A} downloads \textbf{B}'s materials, verifies the result
+\item \textbf{A} changes $\beta$ creating method $\alpha$ solving mistake
+\item \textbf{A} runs method $\alpha$ verifying better agreement with experimentally measured values
+\item \textbf{A} publishes $\alpha$ citing \textbf{B} about this change
+\end{enumerate}
+
+\section{Empiricle Reproducibility Studies}
+
+Here I'm collecting a list of all empirical studies about reproducibility in the scientific community. These are good places to grab statistics to show people how bad the whole situation really is. I'm collecting their timeframe, and what field they cover.
+
+\begin{tabular}{|l|l|l|}
+\hline
+Title and Citation & Timeframe & Field \\
+\hline
+\end{tabular}
+
+\section{Reproducibility Software}
+
+Here I'm collecting a list of all reproducibility software I have encountered. I'll discuss each in turn hitting what they offer and what they lack. Any specific system which doesn't have it's own section means I haven't tried it or don't know enough about it to say anything.
+
+\subsection{Containers}
+
+These techniques utilize a namespacing system to allow native execution of code and virtualization of OS without the need for a hypervisor.
+
+\begin{itemize}
+\item Docker
+\item Vagrant
+\item Signularity
+\end{itemize}
+
+\subsection{Virtual Machines}
+
+These techniques use a hypervisor to run a logically separate virtual machine on a host machine. These tend to be slower, but as hardware vendors add support for virtualization technology to their chipsets they are getting closer to native performance.
+
+\begin{itemize}
+\item VMWare
+\item Virtual Box
+\item KVM
+\end{itemize}
+
+\subsection{Workflow Managers}
+
+These softwares purport to handle all of our scientific workflow needs. They handle your source code, build your application, run it and compile the paper from the results produced. Some workflows may not fit, but they are working hard to make sure that it doesn't stay that way.
+
+\begin{itemize}
+\item Popper
+\item WholeTale
+\item CodeOcean
+\end{itemize}
+
+\subsection{Watchers}
+
+These programs use a system like \texttt{strace} to track what the researcher is doing and store it in a container. This container an then in-principle be used on any other machine.
+
+\begin{itemize}
+\item ReproZip \cite{reprozip}
+\end{itemize}
+
+\subsubsection{In-Practice}
+
+The only one of these schemes which I've tried so far is ReproZip \cite{reprozip}. I ran a simple \texttt{htop} command on my laptop and tried to run it on the campus cluster where \texttt{htop} doesn't exist. This failed, but I didn't record the error that occured.
+
+
+\subsection{Advanced Package and Environment Management}
+
+These programs take control of the execution environment while also staying out of the way by using existing mechanisms to do their magic. For example, using \texttt{LD\_LIBRARY\_PATH} or \texttt{RUNPATH} instead of more complex stuff like userspace namespacing like what containers do.
+
+\begin{itemize}
+\item Spack \cite{Spack}
+\item Nix
+\item Hashdist
+\end{itemize}
+
+\subsubsection{Spack}
+
+Spack \cite{Spack} is the only one I've tried so far. It's the best by far.
+
+\subsection{Generalized systems}
+
+\begin{itemize}
+\item Reproducible-builds.org \cite{reproducible-builds}
+\item Sciunits \cite{sciunits}
+\end{itemize}
+
 \section{Reference Descriptions}
 
 Here I collect together the references I've encountered and read at least some of. I also include a small explanation for each reference. If available, I also break it down by subject.
@@ -238,7 +403,7 @@ This article deals with several issues which can undermine a scientific result f
 A deep case based analysis of floating point reproducibility problems which can arrise in the analysis of computational code. (a lengthy read)
 \end{refdef}
 
-\subsection{Code Base References}
+\subsection{White Paper References}
 
 \begin{refdef}{MPI-Standard}{}
 The article defining 1.0 of the MPI standard.
@@ -266,6 +431,18 @@ The official citation of HDF5
 
 \begin{refdef}{yt}{}
 The official method paper and citation of YT
+\end{refdef}
+
+\begin{refdef}{reprozip}{p2085-chirigati.pdf}
+This is the official paper describing the ReproZip tool
+\end{refdef}
+
+\begin{refdef}{reproducible-builds}{}
+This is the reproducible-builds.org website. They give information about how to make your software reproducible.
+\end{refdef}
+
+\begin{refdef}{sciunits}{1707.05731.pdf}
+I need to read this paper.
 \end{refdef}
 
 \subsection{Unassigned}
