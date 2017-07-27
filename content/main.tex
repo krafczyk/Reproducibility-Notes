@@ -1,10 +1,12 @@
 \documentclass{article}
 
 \usepackage[utf8]{inputenc}
+\usepackage{placeins}
 %\usepackage[T1]{fontenc}
 \usepackage[margin=1in]{geometry}
 \usepackage{etoolbox}
 \usepackage{xifthen}
+\usepackage{ltablex, multirow, makecell, booktabs, caption}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
 \hypersetup{
@@ -195,11 +197,33 @@ I want to make the following methods more easily executable. Replicability and C
 
 Here I'm collecting a list of all empirical studies about reproducibility in the scientific community. These are good places to grab statistics to show people how bad the whole situation really is. I'm collecting their timeframe, and what field they cover.
 
-\begin{tabular}{|l|l|l|}
-\hline
-Title and Citation & Timeframe & Field \\
-\hline
-\end{tabular}
+\FloatBarrier
+
+\begin{table}[t]
+\centering
+\begin{tabularx}{\textwidth}{lXllX}
+\caption{A list of replicability and reproducibility studies and what they say} \label{tab:replicability-studies} \\
+\toprule
+Citation & Title & Timeframe & Field & Results \\
+\midrule
+\endfirsthead
+\multicolumn{5}{c}{Table \thetable\enspace (continued)} \\
+\toprule
+Citation & Title & Timeframe & Field & Results \\
+\midrule
+\endhead
+\bottomrule
+\multicolumn{5}{l}{Table \thetable To be continued}
+\endfoot
+\bottomrule
+\endlastfoot
+\cite{doi:10.1093/aje/kwj093} & \citetitle{doi:10.1093/aje/kwj093} & 2005 & Epidemiology & \multicolumn{1}{l}{\multirowcell{2}{93\% of articles do not detail data processing. \\ 84\% of articles did not release data.}} \\
+\cite{economics-replicability-fed} & \citetitle{economics-replicability-fed} & 2015 & Economics & \multicolumn{1}{l}{\multirowcell{2}{22/67 (33\%) replicated without author contact \\ \noindent 29/59 (49\%) replicated with author contact}} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\FloatBarrier
 
 \section{Reproducibility Software}
 
@@ -269,9 +293,30 @@ Spack \cite{Spack} is the only one I've tried so far. It's the best by far.
 \item Sciunits \cite{sciunits}
 \end{itemize}
 
+\section{Software/Data Repositories}
+
+This is a list of the various code and data repositories which currently exist and are trying to solve some part of the replicability problem.
+
+\begin{itemize}
+\item Computer Physics Communications \cite{computer-physics-communications}
+\item DARPA Open Catalog \cite{darpa-open-catalog}
+\item DOE Code \cite{doe-code}
+\item Mendeley \cite{elsevier-mendeley-computer-physics-communication}
+\end{itemize}
+
 \section{Reference Descriptions}
 
 Here I collect together the references I've encountered and read at least some of. I also include a small explanation for each reference. If available, I also break it down by subject.
+
+\subsection{Replicability and Reproducibility Studies}
+
+\begin{refdef}{doi:10.1093/aje/kwj093}{kwj093.pdf}
+This paper describes the types of papers published in 2005 in the `American Journal of Epidemiology' and the `Journal of the American Medical Association'. I.e. what kind of study they were, did they use code, and whether that code was available. They find that 93\% of articles which required data processing did not discuss this processing. 84\% of articles which produced original studies did not report that the data produced was available.
+\end{refdef}
+
+\begin{refdef}{economics-replicability-fed}{2015083pap.pdf}
+This paper describes the state of replicability in Economics literature as of 2015. 22/67 (33\%) of papers are replicated without contacting the authors, 29/59 (49\%) are replicated by contacting the authors.
+\end{refdef}
 
 \subsection{Reproducibility}
 
@@ -403,6 +448,14 @@ This article deals with several issues which can undermine a scientific result f
 A deep case based analysis of floating point reproducibility problems which can arrise in the analysis of computational code. (a lengthy read)
 \end{refdef}
 
+\begin{refdef}{code-complete}{code-complete-2nd-edition-v413hav.pdf}
+A large book talking about good coding practices. Recommended by Victoria's Friend
+\end{refdef}
+
+\begin{refdef}{ISO-9126}
+An ISO standard describing aspects of software quality so that the quality of disparate types of software can be compared on equal footing.
+\end{refdef}
+
 \subsection{White Paper References}
 
 \begin{refdef}{MPI-Standard}{}
@@ -445,7 +498,24 @@ This is the reproducible-builds.org website. They give information about how to 
 I need to read this paper.
 \end{refdef}
 
+\begin{refdef}{computer-physics-communications}{}
+A reference with a link to the Computer Physics Communications Journal
+\end{refdef}
+
+\begin{refdef}{darpa-open-catalog}{}
+A reference with a link to the DARPA Open Catalog
+\end{refdef}
+
+\begin{refdef}{doe-code}{}
+A reference with a link to the DOE code Catalog
+\end{refdef}
+
+\begin{refdef}{elsevier-mendeley-computer-physics-communications}{}
+A reference with a link to the mendeley Computer Physics Communications repository
+\end{refdef}
+
 \subsection{Unassigned}
+
 
 \begin{refdef}{Czech035360}{035360.full.pdf}
 This paper discusses some of the problems with philogenetic tree programs. they had a hard time reproducing published trees.
