@@ -146,8 +146,24 @@ Here I'm trying to collect all the different issues which exist with reproducibi
 
 \begin{itemize}
 \item Special hardware requirements
+\item Silent Failures
 \item \textbf{Some of these are \textit{unavoidable}}
 \end{itemize}
+
+\subsubsection{Specialized Hardware}
+
+Here I'm detailing various specialized hardware I hear about which might hamper reproducibility efforts.
+
+\begin{itemize}
+\item Large Supercomputer (for large computing runs)
+\item GPUs (Usually not hard to get, but still an obstacle)
+\item FPGA
+\item Neuromorphic Chips \cite{neuromorphic-chips-webarticle}
+\end{itemize}
+
+\subsubsection{Handling specialized hardware}
+
+Results run on specialized hardware should still be replicable as long as an appropriate virtual machine or emulator is available for that architecture.
 
 \subsection{Compatibility Issues}
 
@@ -254,9 +270,20 @@ These techniques use a hypervisor to run a logically separate virtual machine on
 These softwares purport to handle all of our scientific workflow needs. They handle your source code, build your application, run it and compile the paper from the results produced. Some workflows may not fit, but they are working hard to make sure that it doesn't stay that way.
 
 \begin{itemize}
-\item Popper
-\item WholeTale
-\item CodeOcean
+\item Popper READ MORE/DO MORE
+\item WholeTale READ MORE/DO MORE
+\item CodeOcean READ MORE/DO MORE
+\end{itemize}
+
+\subsection{Workflow Analyzers}
+
+These software tools glean information about the provenance of computations by analyzing either software meta data or software running on a system.
+
+\begin{itemize}
+\item FRAPpuccino \cite{FRAPpuccino} READ MORE/DO MORE
+\item Why-Diff \cite{computational-meta-data} READ MORE/DO MORE
+\item YesWorkflow \cite{computational-meta-data} READ MORE/DO MORE
+\item NoWorkflow \cite{computational-meta-data} READ MORE/DO MORE
 \end{itemize}
 
 \subsection{Watchers}
@@ -304,6 +331,13 @@ This is a list of the various code and data repositories which currently exist a
 \item Mendeley \cite{elsevier-mendeley-computer-physics-communication}
 \end{itemize}
 
+\section{Policy Efforts}
+
+\begin{itemize}
+\item \textit{Science} efforts to get researchers to publish code and data. (NEEDS REFERENCE)
+\item \textit{SC'XY} Conference has programs like the student cluster competition. (NEEDS REFERENCE)
+\end{itemize}
+
 \section{Reference Descriptions}
 
 Here I collect together the references I've encountered and read at least some of. I also include a small explanation for each reference. If available, I also break it down by subject.
@@ -330,7 +364,7 @@ A fun article discussing attempts to get source code and build the code. No atte
 \end{refdef}
 
 \begin{refdef}{stodden-reproducibility-crisis}{Stodden\_Reproducibility\_Crisis.pdf}
-One of Victoria's articles where she and her collaborators describe the problem of computational reproducibility. They are also plugging their own Matlab reproducibility environments.
+One of Victoria's articles where she and her collaborators describe the problem of computational reproducibility. They are also plugging their own Matlab reproducibility environments. This is also another mention of Jon Claerbout and really reproducible research.
 \end{refdef}
 
 \begin{refdef}{problem-of-reproducibility}{The\_Problem\_of\_Reproducibility.pdf}
@@ -549,7 +583,7 @@ A nice paper about Repeatability in Computer systems research
 \end{refdef}
 
 \begin{refdef}{10.1371/journal.pmed.0020124}{journal.pmed.0020124.PDF}
-A great article explaining why most published research findings are false.
+A great article explaining why most published research findings are false. This article discusses some of the career pressures affecting scientist's decisions.
 \end{refdef}
 
 \begin{refdef}{aac4716}{aac4716.full.pdf}
@@ -574,6 +608,50 @@ A talk by V.S. about how computation is affecting the scientific method.
 
 \begin{refdef}{acm-badging}{}
 A website describing the ACM badging policy. Provides the definitions for Reproducibility terms
+\end{refdef}
+
+\begin{refdef}{Buckheit1995}{10.1007\%2F978-1-4612-2544-7.pdf}
+A paper which originates the term `really reproducible research'. It's also about the wavelab matlab software collection.
+\end{refdef}
+
+\begin{refdef}{claerbout-reproducibility-website}{}
+A website by Claerbout himself discussion his history with reproducible research.
+\end{refdef}
+
+\begin{refdef}{neuromorphic-chips-webarticle}{}
+A website describing neuromorphic chips and how they have applications for deep learning.
+\end{refdef}
+
+\begin{refdef}{King95}{replication.pdf}
+A nice article V.S. Recommended which details various issues faced by researchers in empirical political sciences to replicate works by other authors.
+\end{refdef}
+
+\begin{refdef}{elec-doc-res-new-meaning}{}
+The original wavelab article about reproducible research. Lays the groundwork for Claerbout's wavelab plan.
+\end{refdef}
+
+\begin{refdef}{doi:10.1109/MCSE.2009.14}{}
+Another clarbout article about reproducibility.
+\end{refdef}
+
+\begin{refdef}{ThreeDreams}{ThreeDreams.pdf}
+An Article by Donoho describing three dream applications of verifiable computational results. Similar to my Three Methods.
+\end{refdef}
+
+\begin{refdef}{TranslationOpenMPOpenACC}{TranslationOpenMPOpenACC.pdf}
+An article describing how to translate between OpenMP and OpenACC. What is missing, and lessons learned. Not exactly portability.. More like Translation.
+\end{refdef}
+
+\begin{refdef}{ProgressIn10Years}{ProgressIn10Years.pdf}
+This article contains predictions for where technology and the community will be in 10 years time. Interestingly, it seems like fusion. We're still 10 years away from their predictions.
+\end{refdef}
+
+\begin{refdef}{computational-meta-data}{computational-meta-data.pdf}
+This describes several workflow and metadata analysis tools for work provenance. Why-Diff, YesWorkflow, NoWorkflow
+\end{refdef}
+
+\begin{refdef}{FRAPpuccino}{hotcloud17-paper-han.pdf}
+A paper describing the meta-workflow analysis software FRAPpuccino.
 \end{refdef}
 
 %\bibliography{main}
