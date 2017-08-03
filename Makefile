@@ -5,9 +5,14 @@ RP : content/main.tex clean
 	#cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS bibtex main
 	cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS biber main
 	cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS makeindex main
+	cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS makeglossaries main
 	#TEXINPUTS=./classes:./styles:./content:$$TEXINPUTS BIBINPUTS=./content:$$BIBINPUTS BSTINPUTS=./styles:$$BSTINPUTS pdflatex --output-directory=./out main.tex
 	TEXINPUTS=./classes:./styles:./content:$$TEXINPUTS BIBINPUTS=./content:$$BIBINPUTS BSTINPUTS=./styles:$$BSTINPUTS pdflatex --output-directory=./out main.tex
 	TEXINPUTS=./classes:./styles:./content:$$TEXINPUTS BIBINPUTS=./content:$$BIBINPUTS BSTINPUTS=./styles:$$BSTINPUTS pdflatex --output-directory=./out main.tex
+	cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS makeindex main
+	cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS makeglossaries main
+	TEXINPUTS=./classes:./styles:./content:$$TEXINPUTS BIBINPUTS=./content:$$BIBINPUTS BSTINPUTS=./styles:$$BSTINPUTS pdflatex --output-directory=./out main.tex
+
 	#cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS htlatex main.tex "" "" "" "-interaction=batchmode"
 	#ln -s ../plots out/plots
 
