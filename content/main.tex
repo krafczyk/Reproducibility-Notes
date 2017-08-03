@@ -22,6 +22,53 @@
 \usepackage[style=ieee,indexing,backref]{biblatex}
 \addbibresource{main.bib}
 \usepackage{aas_macros}
+\usepackage[toc]{glossaries}
+\makeglossaries
+
+\newglossaryentry{read}{
+	name=Read,
+	description={Indicates a source I need to read}
+}
+
+\newglossaryentry{categorize}{
+	name=Categorize,
+	description={Indicates a source I need to categorize}
+}
+
+\newglossaryentry{complete}{
+	name=Complete,
+	description={Indicates a section I need to complete}
+}
+
+\newglossaryentry{needcite}{
+	name={Needs Citation},
+	description={Indicates a claim or which I need to find a citation}
+}
+
+\newglossaryentry{expand}{
+	name={Expand},
+	description={Indicates a bit of information or part of a section which needs expansion to its own section}
+}
+
+\newcommand{\Read}{
+	\gls{read}
+}
+
+\newcommand{\categorize}{
+	\gls{categorize}
+}
+
+\newcommand{\complete}{
+	\gls{complete}
+}
+
+\newcommand{\needcite}{
+	\gls{needcite}
+}
+
+\newcommand{\expand}{
+	\gls{expand}
+}
 
 \newcommand{\ifempty}[3]{%
 	\ifthenelse{\isempty{#1}}{#2}{#3}%
@@ -106,6 +153,8 @@
 
 These are my research notes while working at NCSA. \index{Test}
 
+\complete
+
 \section{Reproducibility Terms}
 
 I will be using the ACM terms for reproducibility \cite{acm-badging}. In order of increasing strength or rigor they are:
@@ -116,11 +165,13 @@ I will be using the ACM terms for reproducibility \cite{acm-badging}. In order o
 \item \textbf{Reproducibility}: When a separate research team can get the same conclusions using a different experimental method as previous
 \end{itemize}
 
-There is some contention about these terms, I believe the biology people use different terms. I need to find a reference for this.
+There is some contention about these terms, I believe the biology people use different terms. \needcite
 
 \section{Reproducibility Issues}
 
 Here I'm trying to collect all the different issues which exist with reproducibility. I'm using it as a space to make sense of these issues as well as collect the references which make the case.
+
+\complete
 
 \subsection{Sociological Issues}
 
@@ -133,6 +184,8 @@ Here I'm trying to collect all the different issues which exist with reproducibi
 \item \textbf{Some seem \textit{strange} given the published article}
 \end{itemize}
 
+\complete
+
 \subsection{Software Issues}
 
 \begin{itemize}
@@ -142,6 +195,8 @@ Here I'm trying to collect all the different issues which exist with reproducibi
 \item \textbf{Some of these are \textit{unavoidable}}
 \end{itemize}
 
+\complete
+
 \subsection{Hardware Issues}
 
 \begin{itemize}
@@ -149,6 +204,8 @@ Here I'm trying to collect all the different issues which exist with reproducibi
 \item Silent Failures
 \item \textbf{Some of these are \textit{unavoidable}}
 \end{itemize}
+
+\complete
 
 \subsubsection{Specialized Hardware}
 
@@ -161,9 +218,13 @@ Here I'm detailing various specialized hardware I hear about which might hamper 
 \item Neuromorphic Chips \cite{neuromorphic-chips-webarticle}
 \end{itemize}
 
+\complete
+
 \subsubsection{Handling specialized hardware}
 
 Results run on specialized hardware should still be replicable as long as an appropriate virtual machine or emulator is available for that architecture.
+
+\complete
 
 \subsection{Compatibility Issues}
 
@@ -173,9 +234,18 @@ Study compatibility is a serious problem which prevents the comparison of scient
 
 To make matters worse, allowing scientists to steal a method from another scientist and use it in their IDE is currently impossible due to incompatibilities inherent in each application's assuredly divergent development lines. Thus solving the compatibility will be a great step forward towards allowing the three currently difficult workflows.
 
+\complete
+
+\section{Causation of Reproducibility problems}
+
+This section summarizes why reproducibility is a problem in various fields and not other.
+\complete
+
 \section{Goals for reproducibility}
 
 I want to make the following methods more easily executable. Replicability and Compatibility will be huge steps towards making this happen.
+
+\complete
 
 \subsection{Method Appropriation}
 
@@ -213,6 +283,8 @@ I want to make the following methods more easily executable. Replicability and C
 
 Here I'm collecting a list of all empirical studies about reproducibility in the scientific community. These are good places to grab statistics to show people how bad the whole situation really is. I'm collecting their timeframe, and what field they cover.
 
+\complete
+
 \FloatBarrier
 
 \begin{table}[t]
@@ -245,59 +317,72 @@ Citation & Title & Timeframe & Field & Results \\
 
 Here I'm collecting a list of all reproducibility software I have encountered. I'll discuss each in turn hitting what they offer and what they lack. Any specific system which doesn't have it's own section means I haven't tried it or don't know enough about it to say anything.
 
+\complete
+
 \subsection{Containers}
 
 These techniques utilize a namespacing system to allow native execution of code and virtualization of OS without the need for a hypervisor.
 
 \begin{itemize}
-\item Docker
-\item Vagrant
-\item Signularity
+\item Docker \needcite
+\item Vagrant \needcite
+\item Signularity \needcite
 \end{itemize}
+
+\complete
 
 \subsection{Virtual Machines}
 
 These techniques use a hypervisor to run a logically separate virtual machine on a host machine. These tend to be slower, but as hardware vendors add support for virtualization technology to their chipsets they are getting closer to native performance.
 
 \begin{itemize}
-\item VMWare
-\item Virtual Box
-\item KVM
+\item VMWare \needcite
+\item Virtual Box \needcite
+\item KVM \needcite
 \end{itemize}
+
+\complete
 
 \subsection{Workflow Managers}
 
 These softwares purport to handle all of our scientific workflow needs. They handle your source code, build your application, run it and compile the paper from the results produced. Some workflows may not fit, but they are working hard to make sure that it doesn't stay that way.
 
 \begin{itemize}
-\item Popper READ MORE/DO MORE
-\item WholeTale READ MORE/DO MORE
-\item CodeOcean READ MORE/DO MORE
+\item Popper \Read \categorize \needcite
+\item WholeTale \Read \categorize \needcite
+\item CodeOcean \Read \categorize \needcite
 \end{itemize}
+
+\complete
 
 \subsection{Workflow Analyzers}
 
 These software tools glean information about the provenance of computations by analyzing either software meta data or software running on a system.
 
 \begin{itemize}
-\item FRAPpuccino \cite{FRAPpuccino} READ MORE/DO MORE
-\item Why-Diff \cite{computational-meta-data} READ MORE/DO MORE
-\item YesWorkflow \cite{computational-meta-data} READ MORE/DO MORE
-\item NoWorkflow \cite{computational-meta-data} READ MORE/DO MORE
+\item FRAPpuccino \cite{FRAPpuccino} \Read \categorize
+\item Why-Diff \cite{computational-meta-data} \Read \categorize
+\item YesWorkflow \cite{computational-meta-data} \Read \categorize
+\item NoWorkflow \cite{computational-meta-data} \Read \categorize
 \end{itemize}
+
+\complete
 
 \subsection{Watchers}
 
 These programs use a system like \texttt{strace} to track what the researcher is doing and store it in a container. This container an then in-principle be used on any other machine.
 
 \begin{itemize}
-\item ReproZip \cite{reprozip}
+\item ReproZip \cite{reprozip} \Read \categorize
 \end{itemize}
+
+\complete
 
 \subsubsection{In-Practice}
 
 The only one of these schemes which I've tried so far is ReproZip \cite{reprozip}. I ran a simple \texttt{htop} command on my laptop and tried to run it on the campus cluster where \texttt{htop} doesn't exist. This failed, but I didn't record the error that occured.
 
+\complete
 
 \subsection{Advanced Package and Environment Management}
 
@@ -305,51 +390,89 @@ These programs take control of the execution environment while also staying out 
 
 \begin{itemize}
 \item Spack \cite{Spack}
-\item Nix
-\item Hashdist
+\item Nix \needcite \expand
+\item Hashdist \needcite \expand
 \end{itemize}
 
 \subsubsection{Spack}
 
 Spack \cite{Spack} is the only one I've tried so far. It's the best by far.
 
+\complete
+
 \subsection{Generalized systems}
 
 \begin{itemize}
-\item Reproducible-builds.org \cite{reproducible-builds}
-\item Sciunits \cite{sciunits}
+\item Reproducible-builds.org \cite{reproducible-builds} \Read \expand
+\item Sciunits \cite{sciunits} \Read \expand
 \end{itemize}
+
+\complete
 
 \section{Software/Data Repositories}
 
 This is a list of the various code and data repositories which currently exist and are trying to solve some part of the replicability problem.
 
 \begin{itemize}
-\item Computer Physics Communications \cite{computer-physics-communications}
-\item DARPA Open Catalog \cite{darpa-open-catalog}
-\item DOE Code \cite{doe-code}
-\item Mendeley \cite{elsevier-mendeley-computer-physics-communication}
+\item Computer Physics Communications \cite{computer-physics-communications} \Read \expand
+\item DARPA Open Catalog \cite{darpa-open-catalog} \Read \expand
+\item DOE Code \cite{doe-code} \Read \expand
+\item Mendeley \cite{elsevier-mendeley-computer-physics-communication} \Read \expand
 \end{itemize}
+
+\complete
 
 \section{Policy Efforts}
 
 \begin{itemize}
-\item \textit{Science} efforts to get researchers to publish code and data. (NEEDS REFERENCE)
-\item \textit{SC'XY} Conference has programs like the student cluster competition. (NEEDS REFERENCE)
+\item \textit{Science} efforts to get researchers to publish code and data. \needcite
+\item \textit{SC'XY} Conference has programs like the student cluster competition. \needcite
 \end{itemize}
+
+\complete
+
+\section{Community Direction}
+
+This section describes people's opinion of the community and where it is going.
+
+\complete
+
+\section{Notable Authors}
+
+Here I collect together sources from notable authors in the field. I also try to summarize their contributions. Their ideas should be commonly cited in the field, or they should have multiple publications which have done some good work making clear the state of the field.
+
+\complete
+
+\subsection{Ioannidis}
+
+\complete
+
+\subsection{Victoria Stodden}
+
+\complete
+
+\subsection{Claerbout}
+
+\complete
+
+\subsection{Donoho}
+
+\complete
 
 \section{Reference Descriptions}
 
 Here I collect together the references I've encountered and read at least some of. I also include a small explanation for each reference. If available, I also break it down by subject.
 
+\complete
+
 \subsection{Replicability and Reproducibility Studies}
 
 \begin{refdef}{doi:10.1093/aje/kwj093}{kwj093.pdf}
-This paper describes the types of papers published in 2005 in the `American Journal of Epidemiology' and the `Journal of the American Medical Association'. I.e. what kind of study they were, did they use code, and whether that code was available. They find that 93\% of articles which required data processing did not discuss this processing. 84\% of articles which produced original studies did not report that the data produced was available.
+This paper describes the types of papers published in 2005 in the `American Journal of Epidemiology' and the `Journal of the American Medical Association'. I.e. what kind of study they were, did they use code, and whether that code was available. They find that 93\% of articles which required data processing did not discuss this processing. 84\% of articles which produced original studies did not report that the data produced was available. \Read
 \end{refdef}
 
 \begin{refdef}{economics-replicability-fed}{2015083pap.pdf}
-This paper describes the state of replicability in Economics literature as of 2015. 22/67 (33\%) of papers are replicated without contacting the authors, 29/59 (49\%) are replicated by contacting the authors.
+This paper describes the state of replicability in Economics literature as of 2015. 22/67 (33\%) of papers are replicated without contacting the authors, 29/59 (49\%) are replicated by contacting the authors. \Read
 \end{refdef}
 
 \subsection{Reproducibility}
@@ -552,106 +675,107 @@ A reference with a link to the mendeley Computer Physics Communications reposito
 
 
 \begin{refdef}{Czech035360}{035360.full.pdf}
-This paper discusses some of the problems with philogenetic tree programs. they had a hard time reproducing published trees.
+This paper discusses some of the problems with philogenetic tree programs. they had a hard time reproducing published trees. \categorize
 \end{refdef}
 
 \begin{refdef}{leshatton-full-repro}{1608.06897.pdf}
-An interesting paper by Les Hatton talking about full reproducibilty in biology.
+An interesting paper by Les Hatton talking about full reproducibilty in biology. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{AGORA-II}{1610.03066.pdf}
-An extensive test of reproducibility of astrophysical codes across code types.
+An extensive test of reproducibility of astrophysical codes across code types. \categorize
 \end{refdef}
 
 \begin{refdef}{Stodden1240}{1240.full.pdf}
+\Read \categorize \complete
 \end{refdef}
 
 \begin{refdef}{stodden-legal}{Stodden\_chapter.pdf}
-What computational scientists need to know about intellectual property law: A primer
+What computational scientists need to know about intellectual property law: A primer \Read \categorize
 \end{refdef}
 
 \begin{refdef}{clusterjob}{osbg-MDS2016.pdf}
-THE CLUSTERJOB PAPER
+THE CLUSTERJOB PAPER \categorize \complete
 \end{refdef}
 
 \begin{refdef}{doi:10.1001/jama.294.2.218}{JOC50060.pdf}
-A great paper describing replication outcomes for clinical trials
+A great paper describing replication outcomes for clinical trials \categorize
 \end{refdef}
 
 \begin{refdef}{Collberg:2016:RCS:2897191.2812803}{p62-collberg.pdf}
-A nice paper about Repeatability in Computer systems research
+A nice paper about Repeatability in Computer systems research \Read \categorize
 \end{refdef}
 
 \begin{refdef}{10.1371/journal.pmed.0020124}{journal.pmed.0020124.PDF}
-A great article explaining why most published research findings are false. This article discusses some of the career pressures affecting scientist's decisions.
+A great article explaining why most published research findings are false. This article discusses some of the career pressures affecting scientist's decisions. \categorize
 \end{refdef}
 
 \begin{refdef}{aac4716}{aac4716.full.pdf}
-An article talking about estimating the reproducibility of psychological science
+An article talking about estimating the reproducibility of psychological science \Read \categorize
 \end{refdef}
 
 \begin{refdef}{Begley2012}{483531a.pdf}
-An article talking about the need to increase the quality of pre-clinical research to increase the effectiveness of cancer studies and getting working treatments from them.
+An article talking about the need to increase the quality of pre-clinical research to increase the effectiveness of cancer studies and getting working treatments from them. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{Baker2016}{533452a.pdf}
-An article discussing survey responses from scientists asking about reproducibility in their fields.
+An article discussing survey responses from scientists asking about reproducibility in their fields. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{Begley116}{116.full.pdf}
-An article discussing the root causes of the reproducibility problem.
+An article discussing the root causes of the reproducibility problem. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{stodden-computational-science-talk}{Science20July2009VictoriaStodden.pdf}
-A talk by V.S. about how computation is affecting the scientific method.
+A talk by V.S. about how computation is affecting the scientific method. \categorize
 \end{refdef}
 
 \begin{refdef}{acm-badging}{}
-A website describing the ACM badging policy. Provides the definitions for Reproducibility terms
+A website describing the ACM badging policy. Provides the definitions for Reproducibility terms \categorize
 \end{refdef}
 
 \begin{refdef}{Buckheit1995}{10.1007\%2F978-1-4612-2544-7.pdf}
-A paper which originates the term `really reproducible research'. It's also about the wavelab matlab software collection.
+A paper which originates the term `really reproducible research'. It's also about the wavelab matlab software collection. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{claerbout-reproducibility-website}{}
-A website by Claerbout himself discussion his history with reproducible research.
+A website by Claerbout himself discussion his history with reproducible research. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{neuromorphic-chips-webarticle}{}
-A website describing neuromorphic chips and how they have applications for deep learning.
+A website describing neuromorphic chips and how they have applications for deep learning. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{King95}{replication.pdf}
-A nice article V.S. Recommended which details various issues faced by researchers in empirical political sciences to replicate works by other authors.
+A nice article V.S. Recommended which details various issues faced by researchers in empirical political sciences to replicate works by other authors. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{elec-doc-res-new-meaning}{}
-The original wavelab article about reproducible research. Lays the groundwork for Claerbout's wavelab plan.
+The original wavelab article about reproducible research. Lays the groundwork for Claerbout's wavelab plan. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{doi:10.1109/MCSE.2009.14}{}
-Another clarbout article about reproducibility.
+Another clarbout article about reproducibility. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{ThreeDreams}{ThreeDreams.pdf}
-An Article by Donoho describing three dream applications of verifiable computational results. Similar to my Three Methods.
+An Article by Donoho describing three dream applications of verifiable computational results. Similar to my Three Methods. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{TranslationOpenMPOpenACC}{TranslationOpenMPOpenACC.pdf}
-An article describing how to translate between OpenMP and OpenACC. What is missing, and lessons learned. Not exactly portability.. More like Translation.
+An article describing how to translate between OpenMP and OpenACC. What is missing, and lessons learned. Not exactly portability.. More like Translation. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{ProgressIn10Years}{ProgressIn10Years.pdf}
-This article contains predictions for where technology and the community will be in 10 years time. Interestingly, it seems like fusion. We're still 10 years away from their predictions.
+This article contains predictions for where technology and the community will be in 10 years time. Interestingly, it seems like fusion. We're still 10 years away from their predictions. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{computational-meta-data}{computational-meta-data.pdf}
-This describes several workflow and metadata analysis tools for work provenance. Why-Diff, YesWorkflow, NoWorkflow
+This describes several workflow and metadata analysis tools for work provenance. Why-Diff, YesWorkflow, NoWorkflow \Read \categorize
 \end{refdef}
 
 \begin{refdef}{FRAPpuccino}{hotcloud17-paper-han.pdf}
-A paper describing the meta-workflow analysis software FRAPpuccino.
+A paper describing the meta-workflow analysis software FRAPpuccino. \Read \categorize
 \end{refdef}
 
 %\bibliography{main}
@@ -659,5 +783,7 @@ A paper describing the meta-workflow analysis software FRAPpuccino.
 \printbibliography[heading=bibintoc]
 
 \printindex
+
+\printglossaries
 
 \end{document}
