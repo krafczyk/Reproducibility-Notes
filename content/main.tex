@@ -50,6 +50,11 @@
 	description={Indicates a bit of information or part of a section which needs expansion to its own section}
 }
 
+\newglossaryentry{readmore}{
+	name={Read More},
+	description={Indicates a citation which I read parts of but which I may need to read more.}
+}
+
 \newcommand{\Read}{
 	\gls{read}
 }
@@ -68,6 +73,10 @@
 
 \newcommand{\expand}{
 	\gls{expand}
+}
+
+\newcommand{\readmore}{
+	\gls{readmore}
 }
 
 \newcommand{\ifempty}[3]{%
@@ -151,7 +160,7 @@
 
 \section{Introduction}
 
-These are my research notes while working at NCSA. \index{Test}
+These are my research notes while working at NCSA.
 
 \complete
 
@@ -240,6 +249,52 @@ To make matters worse, allowing scientists to steal a method from another scient
 
 This section summarizes why reproducibility is a problem in various fields and not other.
 \complete
+
+\section{Numerical Precision Issues}
+
+This section summarizes issues related to numerical precisions. Whether it's an algorithm touted to be more precise, or a tool to optimize a program it will be found here.
+
+\complete
+
+\subsection{Scientific Problems needing special precision}
+
+A number of problems need special scientific precision. David Bailey did a great job laying this out\cite{high-precision-arith-in-science,dhb-zurich-hp}. I reproduce his table from \cite{dhb-zurich-hp} as Table \ref{tab:precision} to give an idea of the gamut.
+
+\FloatBarrier
+\begin{table}[t]
+\caption{Typical bit precision necessary for various scientific fields}\label{tab:precision}
+\begin{tabular}{lr}
+Problem Type & Number of bits(?) necessary \\
+Planetary orbit calculations & 32 \\
+Climate modeling & 32 \\
+Optimization problems in biology and other fields & 32\\
+Schrodinger solutions for lithium and helium atoms & 32\\
+Scattering amplitudes of fundamental particles & 32\\
+Discrete dynamical systems & 32\\
+Supernova simulations & 32-64 \\
+Coulomb n-body atomic system simulations & 32-120\\
+Electromagnetic scattering theory & 32-100\\
+The Taylor algorithm for ODEs & 100-600\\
+Ising integrals from mathematical physics & 100-1,000\\
+Problems in experimental mathematics & 100-50,000\\
+\end{tabular}
+\end{table}
+\FloatBarrier
+
+\subsection{Program Precision Optimizers}
+
+These tools analyze a program's operation in some way and produce recommendations about data types or run conditions which will preserve or increase a programs precision while also improving a programs performance.
+
+\begin{itemize}
+\item BLAME Analysis \cite{blame-analysis}
+\item PRECIMONIOUS \needcite
+\end{itemize}
+
+\subsubsection{BLAME Analysis}
+
+This tool is created from LLVM and analyzes code passed through it for operations which can be run at reduced precision. \cite{blame-analysis}
+
+\complete?
 
 \section{Goals for reproducibility}
 
@@ -459,6 +514,14 @@ Here I collect together sources from notable authors in the field. I also try to
 
 \complete
 
+\subsection{David H. Bailey}
+
+David Bailey concerns himself with numerical precision issues. He has produced a nice summary of scientific problems which require greater than normal precision \cite{high-precision-arith-in-science,dhb-zurich-hp}. He has also been involved in the creation of tools to help find parts of a program which can be run at lower precision ostensibly to limit program execution time\cite{blame-analysis}. He has also created the mpfun library for thread-safe arbitrary precision arithmetic\cite{mpfun}.
+
+He hosts his website\cite{david-bailey-site} which contains all of his papers, talks, and links to code and projects that he works on.
+
+\complete
+
 \section{Reference Descriptions}
 
 Here I collect together the references I've encountered and read at least some of. I also include a small explanation for each reference. If available, I also break it down by subject.
@@ -473,6 +536,16 @@ This paper describes the types of papers published in 2005 in the `American Jour
 
 \begin{refdef}{economics-replicability-fed}{2015083pap.pdf}
 This paper describes the state of replicability in Economics literature as of 2015. 22/67 (33\%) of papers are replicated without contacting the authors, 29/59 (49\%) are replicated by contacting the authors. \Read
+\end{refdef}
+
+\subsection{Numerical Issues}
+
+\begin{refdef}{high-precision-arith-in-science}{high-prec-arith.pdf}
+This paper describes different scientific tasks that require greater than 64-bits of precision. Some fields require hundreds or thousands of digits of precision for their results to be meaningful. \readmore
+\end{refdef}
+
+\begin{refdef}{dhb-zurich-hp}{dhb-zurich-hp.pdf}
+This is an invited talk summarizing most of David Bailey's work. This centers around numerical precision and applications which need lots of precision. \readmore
 \end{refdef}
 
 \subsection{Reproducibility}
@@ -669,6 +742,14 @@ A reference with a link to the DOE code Catalog
 
 \begin{refdef}{elsevier-mendeley-computer-physics-communications}{}
 A reference with a link to the mendeley Computer Physics Communications repository
+\end{refdef}
+
+\begin{refdef}{blame-analysis}{blame-analysis.pdf}
+This paper describes the BLAME Analysis tool which examines a program's instructions and determines which operations can be floating point and which can be double. It runs once and is faster than other tools such as 'Precimonious' which was mentioned. \readmore
+\end{refdef}
+
+\begin{refdef}{mpfun}{mpfun2015.pdf}
+A paper describing the mpfun tool which is used to provide thread-safe arbitrary precision arithmetic.
 \end{refdef}
 
 \subsection{Unassigned}
