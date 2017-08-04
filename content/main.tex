@@ -281,6 +281,10 @@ Problems in experimental mathematics & 100-50,000\\
 \end{table}
 \FloatBarrier
 
+\subsection{Solutions to reduction error issues}
+
+Two techniques which can be used to solve reduction error are to either enforce an ordering to the summation. This can be done by creating a unique id for each element of the sum, and guarenteeing that these ids are identical each run and making sure that the summation sums the id'd elements the same way each time. Another is to use the technique outlined here: \cite{repro-fast-sum}.
+
 \subsection{Program Precision Optimizers}
 
 These tools analyze a program's operation in some way and produce recommendations about data types or run conditions which will preserve or increase a programs precision while also improving a programs performance.
@@ -481,7 +485,8 @@ This is a list of the various code and data repositories which currently exist a
 
 \begin{itemize}
 \item \textit{Science} efforts to get researchers to publish code and data. \needcite
-\item \textit{SC'XY} Conference has programs like the student cluster competition. \needcite
+\item \textit{SC'XY} Conference has programs like the student cluster competition. \cite{sighpc-connect-repro-1,sighpc-connect-repro-2}
+\item The ACM has started offering badges for articles which are replicated or reproduced \cite{acm-badging-announcement}.
 \end{itemize}
 
 \complete
@@ -627,6 +632,20 @@ This is a more detailed article about MPI benchmarking. Specifically, this paper
 
 \begin{refdef}{gropp-mpi-repro-perf}{mpptest.pdf}
 Describes a number of problems associated with testing parallel message passing implementations. Describes their test suite and how they get around these problems.
+\end{refdef}
+
+\subsection{Policy Efforts}
+
+\begin{refdef}{acm-badging-announcement}{p5-boisvert.pdf}
+Defines the 'Results Replicated' and the 'Results Reproduced' badges for the ACM. \readmore
+\end{refdef}
+
+\begin{refdef}{sighpc-connect-repro-1}{CONNECT\_14\_Oct2016.pdf}
+Newsletter describing the student cluster competition at SC16. \readmore
+\end{refdef}
+
+\begin{refdef}{sighpc-connect-repro-2}{CONNECT\_15\_Feb2017.pdf}
+Newsletter describing the winner of the reproducibility initiative at SC16 and the paper for the student cluster competition for SC17. \readmore
 \end{refdef}
 
 \subsection{Reproducibility Benchmarking}
@@ -858,6 +877,7 @@ This describes several workflow and metadata analysis tools for work provenance.
 \begin{refdef}{FRAPpuccino}{hotcloud17-paper-han.pdf}
 A paper describing the meta-workflow analysis software FRAPpuccino. \Read \categorize
 \end{refdef}
+
 
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
