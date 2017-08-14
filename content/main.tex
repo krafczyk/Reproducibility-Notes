@@ -245,6 +245,31 @@ To make matters worse, allowing scientists to steal a method from another scient
 
 \complete
 
+\section{Reproducibility Scandals}
+
+Here, I'm going to collect together known scandals arrising from the lack of reproducibility.
+
+\subsection{Medicine}
+
+Medicine specific scandals
+
+\begin{itemize}
+\item 2004 GlaxoSmithKline Paxil uneffective \cite{dhb-zurich-hp}. \needcite
+\item 2011 Bayer could only reproduce 17 of 67 published studies \cite{dhb-zurich-hp}. \needcite
+\item 2012 Amgen could only reproduce 6 of 53 published cancer studies \cite{dhb-zurich-hp}. \needcite
+\item 2014 Tamiflu review showed only small decrease in some smptoms \cite{dhb-zurich-hp}. \needcite
+\end{itemize}
+
+\subsection{Physics}
+
+Physics specific scandals.
+
+\begin{itemize}
+\item BICEP2 Gravitational Wave `discovery' \cite{dhb-zurich-hp}. \needcite
+\end{itemize}
+
+\complete
+
 \section{Causation of Reproducibility problems}
 
 This section summarizes why reproducibility is a problem in various fields and not other.
@@ -254,7 +279,38 @@ This section summarizes why reproducibility is a problem in various fields and n
 
 This section summarizes issues related to numerical precisions. Whether it's an algorithm touted to be more precise, or a tool to optimize a program it will be found here.
 
+In calculations which are sensitive to numerical precision, small errors may lead to large numerical problems such as taking the wrong branch in a conditional statement \cite{high-precision-arith-in-science}.
+
 \complete
+
+\subsection{IEEE floating point arithmetic}
+
+Here, I review some properties of the IEEE floating point standard. I may later add some information about some fixed-point or alternative floating point implementations.
+
+The IEEE 754 floating point standard \cite{ieee-754-2008,ieee-754-2008-redline} defines operation and exception details for the floating point number.
+
+Each floating point number consists of a `mantissa' and an `exponent'. The mantissa ($m$) is a signed integer of precision $p$ and the exponent ($e$) is a signed integer with precision $e$. Each floating point number is also defined by a radix($b$) which can either be 2(binary) or 10(decimal). Each floating point number then has a value $m\cdot b^e$. Table \ref{tab:float-par} defines these parameters for each defined binary type.
+
+\FloatBarrier
+\begin{table}[t]
+	\caption{Floating point variable parameters for each binary (radix 2) defined type. All taken from \cite{ieee-754-2008}.} \label{tab:float-par}
+\begin{tabular}{llll}
+\hline
+bit-width & 32 & 64 & 128 \\
+\hline
+specification name & binary32 & binary64 & binary128 \\
+\hline
+colloquial name & \texttt{float} & \texttt{double} & \texttt{quad} \\
+\hline
+precision & 24 & 53 & 113 \\
+\hline
+exponent precision & 8 & 11 & 15 \\
+\hline
+equivalent decimal precision & ~7 digits & ~16 digits & ~34 digits \\
+\hline
+\end{tabular}
+\end{table}
+\FloatBarrier
 
 \subsection{Scientific Problems needing special precision}
 
@@ -285,14 +341,34 @@ Problems in experimental mathematics & 100-50,000\\
 
 Two techniques which can be used to solve reduction error are to either enforce an ordering to the summation. This can be done by creating a unique id for each element of the sum, and guarenteeing that these ids are identical each run and making sure that the summation sums the id'd elements the same way each time. Another is to use the technique outlined here: \cite{repro-fast-sum}.
 
+\subsection{Software implementing arbitrary precision floating point}
+
+Here I collect packages which implement arbitrary precision floating point arithmetic in various ways. These packages were discovered in \cite{high-precision-arith-in-science}.
+
+\begin{itemize}
+\item ARPREC (Arbitrary, pre-set precision level) \needcite
+\item DDFUN (double double precision) \needcite
+\item FMLIB/FMZM90 (low-level multiple-precision libarary) \needcite
+\item GMP (multiple-precision library) \needcite
+\item Predicates (Specialized package for computational geometry) \needcite
+\item QD (double double and quad double arithmetic. Faster than arbitrary precision libraries when only double double or quad double precision is sufficient) \needcite
+\item MPFR/MPFR++ (multi-precision library with exact rounding \needcite
+\item MPFUN90 (ARPREC equivalent entirely in fortran90) \cite{mpfun}
+\item VPA (arbitrary precision library for fortran) \needcite
+\end{itemize}
+
+Using high-precision software increases runtimes. double-double Takes 5 times longer than 64-bit arithmetic, 25 times longer with quad-double, and 50 times for 100-digit arithmetic. Computational cost scales as $p^2$ up to about 1000 digits then costs $p\log p$ if you're using FFT-based multiplication. \cite{high-precision-arith-in-science} (\needcite for FFFT-based multiplication)
+
 \subsection{Program Precision Optimizers}
 
-These tools analyze a program's operation in some way and produce recommendations about data types or run conditions which will preserve or increase a programs precision while also improving a programs performance.
+These tools analyze a program's operation in some way and produce recommendations about data types or run conditions which will preserve or increase a program's numerical precision while also improving or largely preserving a programs performance.
 
 \begin{itemize}
 \item BLAME Analysis \cite{blame-analysis}
 \item PRECIMONIOUS \needcite
 \end{itemize}
+
+A few examples of applications which have benefitted from these techniques or detailed studies include climate modelling, supernova simulations, coulomb n-body simulations, studies of the fine-structure constant, E-M scattering theory, vortex sheet roll-up (fluid dynamics) simulations, computational geometry, compuational number theory, experimental math (including the discovery of the BBP $\pi$ formula, quantum field theory (Using PSLQ computations) (All of the previous fields are from \cite{high-precision-arith-in-science}).
 
 \subsubsection{BLAME Analysis}
 
@@ -558,11 +634,11 @@ This paper describes the state of replicability in Economics literature as of 20
 \subsection{Numerical Issues}
 
 \begin{refdef}{high-precision-arith-in-science}{high-prec-arith.pdf}
-This paper describes different scientific tasks that require greater than 64-bits of precision. Some fields require hundreds or thousands of digits of precision for their results to be meaningful. \readmore
+This paper describes different scientific tasks that require greater than 64-bits of precision. Some fields require hundreds or thousands of digits of precision for their results to be meaningful.
 \end{refdef}
 
 \begin{refdef}{dhb-zurich-hp}{dhb-zurich-hp.pdf}
-This is an invited talk summarizing most of David Bailey's work. This centers around numerical precision and applications which need lots of precision. \readmore
+This is an invited talk summarizing most of David Bailey's work. This centers around numerical precision and applications which need lots of precision. This presentation also presents a number of instances of reproducibility in physics biomedicine and other fields.\readmore
 \end{refdef}
 
 \subsection{Reproducibility}
@@ -921,6 +997,32 @@ A Chapter in a book VCS wrote with Bailey. \Read \categorize
 \begin{refdef}{mps-report-2016}{MPS\_Workshop\_Report\_FinalVersion.pdf}
 A Report from a group of people who studied the effectiveness of public science policies. \Read \categorize
 \end{refdef}
+
+\begin{refdef}{ieee-754-2008-redline}{ieee-754-2008-redline.pdf}
+The IEEE 754 2008 standard with changes from the 1984 standard shown. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{ieee-754-2008}{ieee-754-2008.pdf}
+The IEEE 754 2008 standard. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{top-500-perfdev}{}
+The top500 website with interesting statistics about supercomputers
+\end{refdef}
+
+\begin{refdef}{bicep2-no-grav-waves}{bicep2-no-grav-waves}
+A review article in Nature about the beleagered BICEP2 gravitational wave measurement. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{bicep2-grav-wave-scrutiny-1}{}
+An article describing the lack of strong evidence for BICEP2 gravitational wave measurement. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{bicep2-grav-wave-scrutiny-2}{}
+An article describing the lack of strong evidence for BICEP2 gravitational wave measurement. \Read \categorize
+\end{refdef}
+
+
 
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
