@@ -312,6 +312,33 @@ equivalent decimal precision & ~7 digits & ~16 digits & ~34 digits \\
 \end{table}
 \FloatBarrier
 
+\subsubsection{Normalization}
+
+A common way of expressing a floating point number is like this: $\pm\beta^e\times. d_1 d_2 \ldots d_t$ with $d_1 \neq 0$ for \textit{normalized} numbers. when $y$ is less than $\beta^{emin}$, $d_1$ cannot be non-zero and so we have sub-normal numbers \cite{higham-numerical-accuracy-and-stability}.
+
+\subsubsection{Rounding modes}
+
+From libc and ieee \cite{gnu-libc-rounding,ieee-754-2008}, we have four rounding modes. \cite{gnu-libc-rounding} says that fpu calculations occur at higher precision, and then the value is stored in the specified data width where rounding occurs. I haven't found the statement in \cite{ieee-754-2008} which says this.
+
+\begin{itemize}
+\item Round to nearest (default)
+\item Round to $+\infty$
+\item Round to $-\infty$
+\item Round to 0
+\end{itemize}
+
+\subsubsection{Machine Epsilon}
+
+From lemma 2.1 on page 37 of \cite{higham-numerical-accuracy-and-stability}, The spacing between a normalized floating point number $x$ and an adjacent normalized floating point number is at least $\beta^{-1}\epsilon|x|$ and at most $\epsilon|x|$ \cite{higham-numerical-accuracy-and-stability}. This also means that the largest error between an infinitely precise number, and it's nearest neighbor is $\epsilon/2 = \beta^{-(p-1)}/2$. This value is known as the machine epsilon.
+
+Another definition: Machine epsilon is defined as the smallest number that, when added to one, yields a result different from one. This is $b^{-(p-1)}$ and $\epsilon/2$ for the round-to-nearest procedure.
+
+\subsubsection{Reproducibility Attributes}
+
+This section discusses the reproducibility attributes present in the IEEE 754 standard. \cite{ieee-754-2008}
+
+\complete
+
 \subsection{Scientific Problems needing special precision}
 
 A number of problems need special scientific precision. David Bailey did a great job laying this out\cite{high-precision-arith-in-science,dhb-zurich-hp}. I reproduce his table from \cite{dhb-zurich-hp} as Table \ref{tab:precision} to give an idea of the gamut.
@@ -337,6 +364,8 @@ Problems in experimental mathematics & 100-50,000\\
 \end{table}
 \FloatBarrier
 
+MINOS \needcite software for biochemistry contains precision problems \cite{dhb-zurich-hp}.
+
 \subsection{Solutions to reduction error issues}
 
 Two techniques which can be used to solve reduction error are to either enforce an ordering to the summation. This can be done by creating a unique id for each element of the sum, and guarenteeing that these ids are identical each run and making sure that the summation sums the id'd elements the same way each time. Another is to use the technique outlined here: \cite{repro-fast-sum}.
@@ -357,6 +386,12 @@ Here I collect packages which implement arbitrary precision floating point arith
 \item VPA (arbitrary precision library for fortran) \needcite
 \end{itemize}
 
+From \cite{dhb-zurich-hp}, we have:
+
+\begin{itemize}
+\item CORVETTE \needcite
+\end{itemize}
+
 Using high-precision software increases runtimes. double-double Takes 5 times longer than 64-bit arithmetic, 25 times longer with quad-double, and 50 times for 100-digit arithmetic. Computational cost scales as $p^2$ up to about 1000 digits then costs $p\log p$ if you're using FFT-based multiplication. \cite{high-precision-arith-in-science} (\needcite for FFFT-based multiplication)
 
 \subsection{Program Precision Optimizers}
@@ -369,6 +404,8 @@ These tools analyze a program's operation in some way and produce recommendation
 \end{itemize}
 
 A few examples of applications which have benefitted from these techniques or detailed studies include climate modelling, supernova simulations, coulomb n-body simulations, studies of the fine-structure constant, E-M scattering theory, vortex sheet roll-up (fluid dynamics) simulations, computational geometry, compuational number theory, experimental math (including the discovery of the BBP $\pi$ formula, quantum field theory (Using PSLQ computations) (All of the previous fields are from \cite{high-precision-arith-in-science}).
+
+Ising integrals, tanh-sinh integration algorithm, box-integrals, minimal polynomials, algebraic numbers in poisson potential functions \needcite \cite{dhb-zurich-hp}.
 
 \subsubsection{BLAME Analysis}
 
@@ -638,7 +675,15 @@ This paper describes different scientific tasks that require greater than 64-bit
 \end{refdef}
 
 \begin{refdef}{dhb-zurich-hp}{dhb-zurich-hp.pdf}
-This is an invited talk summarizing most of David Bailey's work. This centers around numerical precision and applications which need lots of precision. This presentation also presents a number of instances of reproducibility in physics biomedicine and other fields.\readmore
+This is an invited talk summarizing most of David Bailey's work. This centers around numerical precision and applications which need lots of precision. This presentation also presents a number of instances of reproducibility in physics biomedicine and other fields.
+\end{refdef}
+
+\begin{refdef}{gnu-libc-rounding}{}
+A website describing GNU libc's floating point rounding capabilities.
+\end{refdef}
+
+\begin{refdef}{higham-numerical-accuracy-and-stability}{Higham\_2002\_Accuracy and Stability of Numerical Algorithms.pdf}
+This book is a theoretical book discussing the accuracy and stability of numerical algorithms as it's title states. For starters it discusses the idea of machine epsilon. \Read
 \end{refdef}
 
 \subsection{Reproducibility}
@@ -1022,7 +1067,25 @@ An article describing the lack of strong evidence for BICEP2 gravitational wave 
 An article describing the lack of strong evidence for BICEP2 gravitational wave measurement. \Read \categorize
 \end{refdef}
 
+\begin{refdef}{dhb-numerical-bugs}{dhb-numerical-bugs.pdf}
+\Read \categorize
+\end{refdef}
 
+\begin{refdef}{dhb-hp-comp}{dhb-hp-comp.pdf}
+\Read \categorize
+\end{refdef}
+
+\begin{refdef}{dhb-hp-math-physics}{dhb-hp-math-physics.pdf}
+\Read \categorize
+\end{refdef}
+
+\begin{refdef}{precimonious}{precimonious.pdf}
+\Read \categorize
+\end{refdef}
+
+\begin{refdef}{default-reproducible}{default-reproducible.pdf}
+\Read \categorize
+\end{refdef}
 
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
