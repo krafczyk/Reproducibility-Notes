@@ -333,6 +333,27 @@ From lemma 2.1 on page 37 of \cite{higham-numerical-accuracy-and-stability}, The
 
 Another definition: Machine epsilon is defined as the smallest number that, when added to one, yields a result different from one. This is $b^{-(p-1)}$ and $\epsilon/2$ for the round-to-nearest procedure.
 
+\subsubsection{Known numerical anomalies}
+
+Bailey goes through a great discussion of known numerical anomalies here \cite{dhb-numerical-bugs}. I'm going to talk about a couple of them.
+
+\begin{itemize}
+\item Language-based difficulties
+\begin{itemize}
+\item code constant translation to lower precision types than those on the rhs of equations.
+\item Expression evaluation to the precision of only the operand types and not the type on the rhs of the equation.
+\end{itemize}
+\item Avoidable Numerical Anomalies
+\begin{itemize}
+\item Conditional branches with floating-point comparison which may fail to hold
+\item error accumulation from summation of small numbers
+\end{itemize}
+\item Unavoidable Numerical Anomalies
+\begin{itemize}
+\item Large equations or systems of equations are demanding numerically.
+\end{itemize}
+\end{itemize}
+
 \subsubsection{Reproducibility Attributes}
 
 This section discusses the reproducibility attributes present in the IEEE 754 standard. \cite{ieee-754-2008}
@@ -370,6 +391,8 @@ MINOS \needcite software for biochemistry contains precision problems \cite{dhb-
 
 Two techniques which can be used to solve reduction error are to either enforce an ordering to the summation. This can be done by creating a unique id for each element of the sum, and guarenteeing that these ids are identical each run and making sure that the summation sums the id'd elements the same way each time. Another is to use the technique outlined here: \cite{repro-fast-sum}.
 
+There are some techniques to test whether your program has numerical precision difficulties. You can for instance, change the rounding mode. If the program's result varies wildly, you know there is a precision problem, but it does nothing to clear this up \cite{dhb-numerical-bugs}. You can add an adjustable 'fuzz' to a computation to see whether this affects the results offered. This can prove numerical instability \cite{dhb-numerical-bugs}.
+
 \subsection{Software implementing arbitrary precision floating point}
 
 Here I collect packages which implement arbitrary precision floating point arithmetic in various ways. These packages were discovered in \cite{high-precision-arith-in-science}.
@@ -403,7 +426,7 @@ These tools analyze a program's operation in some way and produce recommendation
 \item PRECIMONIOUS \needcite
 \end{itemize}
 
-A few examples of applications which have benefitted from these techniques or detailed studies include climate modelling, supernova simulations, coulomb n-body simulations, studies of the fine-structure constant, E-M scattering theory, vortex sheet roll-up (fluid dynamics) simulations, computational geometry, compuational number theory, experimental math (including the discovery of the BBP $\pi$ formula, quantum field theory (Using PSLQ computations) (All of the previous fields are from \cite{high-precision-arith-in-science}).
+A few examples of applications which have benefitted from these techniques or detailed studies include climate modelling, supernova simulations, coulomb n-body simulations, studies of the fine-structure constant, E-M scattering theory, vortex sheet roll-up (fluid dynamics) simulations, computational geometry, compuational number theory, experimental math (including the discovery of the BBP $\pi$ formula, quantum field theory (Using PSLQ computations (More info on PSLQ here \cite{dhb-numerical-bugs}) (All of the previous fields are from \cite{high-precision-arith-in-science}).
 
 Ising integrals, tanh-sinh integration algorithm, box-integrals, minimal polynomials, algebraic numbers in poisson potential functions \needcite \cite{dhb-zurich-hp}.
 
@@ -412,6 +435,24 @@ Ising integrals, tanh-sinh integration algorithm, box-integrals, minimal polynom
 This tool is created from LLVM and analyzes code passed through it for operations which can be run at reduced precision. \cite{blame-analysis}
 
 \complete?
+
+\subsection{Algorithmic concepts dealing with numerical precision}
+
+Condition number, the condition number of a function with respect to an argument measures how much the output value of the function can change for a small change in the input argument. \needcite
+
+\subsection{Theoretical Tools to approach the problem of numerical precision}
+
+Here I go over some theoretical tools to confront numerical precision issues. The idea is that some or all of the ideas in this section can be turned on computational code to produce uncertainty estimates of their results.
+
+\complete
+
+\subsubsection{Interval arithmetic}
+
+This technique focuses on calculating everything with an interval rather than a single number. This way the uncertainty interval is propogated all the way to the end of the calculation. (There is a wiki article but I need to find a real source.) \needcite
+
+Unfortunately, it's runtime cost is enormous \cite{dhb-numerical-bugs}.
+
+\complete
 
 \section{Goals for reproducibility}
 
@@ -496,9 +537,9 @@ Here I'm collecting a list of all reproducibility software I have encountered. I
 These techniques utilize a namespacing system to allow native execution of code and virtualization of OS without the need for a hypervisor.
 
 \begin{itemize}
-\item Docker \needcite
+\item Docker \cite{Docker}
 \item Vagrant \needcite
-\item Signularity \needcite
+\item Singularity \cite{Singularity}
 \end{itemize}
 
 \complete
@@ -590,6 +631,8 @@ This is a list of the various code and data repositories which currently exist a
 \item DARPA Open Catalog \cite{darpa-open-catalog} \Read \expand
 \item DOE Code \cite{doe-code} \Read \expand
 \item Mendeley \cite{elsevier-mendeley-computer-physics-communications} \Read \expand
+\item IPOL \cite{ipol-website} \expand
+\item CodeOcean \cite{codeocean-live} \Read \expand
 \end{itemize}
 
 \complete
@@ -607,6 +650,20 @@ This is a list of the various code and data repositories which currently exist a
 \section{Community Direction}
 
 This section describes people's opinion of the community and where it is going.
+
+\complete
+
+\section{Closed Vs Open Source}
+
+This section describes my perceived benefits and negatives of closed versus open source development. It is also a spot to discuss any subject relating to Closed or Open Source.
+
+\complete
+
+\subsection{Company interest and Lives}
+
+The great article \cite{killed-by-code} discusses the danger of having propietary code running on medical implants. These implants control people's bodily functions or may be relied on to restore normal function in the event of failure. This code can often have bugs inside which can lead to death for the user if serious enough.
+
+Not all users are capable of reading and understanding code in these devices, but those who do have a large interest in making sure the code is as bug-free as possible. Allowing knoweldgeable users to view the code and make bug-fixes would make these devices much safer.
 
 \complete
 
@@ -812,6 +869,10 @@ An old paper describing a system for studying variation of computational simulat
 This paper describes the DEPEND team's tool LogDiver and their work studying errors which programs encounter on large supercomputers.
 \end{refdef}
 
+\begin{refdef}{dhb-numerical-bugs}{dhb-numerical-bugs.pdf}
+A nice article describing different numberical precision issues which programs may encounter.
+\end{refdef}
+
 \subsection{Software Quality}
 
 \begin{refdef}{Flouri031500}{031500.full.pdf}
@@ -902,6 +963,14 @@ This paper describes the BLAME Analysis tool which examines a program's instruct
 
 \begin{refdef}{mpfun}{mpfun2015.pdf}
 A paper describing the mpfun tool which is used to provide thread-safe arbitrary precision arithmetic.
+\end{refdef}
+
+\begin{refdef}{Docker}{}
+A web article describing Docker and its use for consistent development and deployment. Should use as a white paper \Read
+\end{refdef}
+
+\begin{refdef}{Singularity}{Singularity.pdf}
+A White paper describing singularity and it's functionality. \Read
 \end{refdef}
 
 \subsection{Unassigned}
@@ -1067,10 +1136,6 @@ An article describing the lack of strong evidence for BICEP2 gravitational wave 
 An article describing the lack of strong evidence for BICEP2 gravitational wave measurement. \Read \categorize
 \end{refdef}
 
-\begin{refdef}{dhb-numerical-bugs}{dhb-numerical-bugs.pdf}
-\Read \categorize
-\end{refdef}
-
 \begin{refdef}{dhb-hp-comp}{dhb-hp-comp.pdf}
 \Read \categorize
 \end{refdef}
@@ -1086,6 +1151,23 @@ An article describing the lack of strong evidence for BICEP2 gravitational wave 
 \begin{refdef}{default-reproducible}{default-reproducible.pdf}
 \Read \categorize
 \end{refdef}
+
+\begin{refdef}{codeocean-live}{code\_ocean\_feb\_2017.pdf}
+A document announcing the start of codeocean. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{ipol-website}{}
+This is the website of the IPOL journal. \categorize
+\end{refdef}
+
+\begin{refdef}{killed-by-code}{killed-by-code.pdf}
+This is a great article discussing proprietary code running on implantable medical devices. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{schon-scandal}{}
+A website describing the Schon scandal and some of its fallout. \categorize
+\end{refdef}
+
 
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
