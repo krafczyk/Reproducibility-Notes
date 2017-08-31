@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := RP
 
-RP : content/main.tex clean
+RP : content/main.tex clean out
 	TEXINPUTS=./classes:./styles:./content:$$TEXINPUTS BIBINPUTS=./content:$$BIBINPUTS BSTINPUTS=./styles:$$BSTINPUTS pdflatex --output-directory=./out main.tex
 	#cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS bibtex main
 	cd out && TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS biber main
@@ -22,6 +22,9 @@ RP : content/main.tex clean
 #	TEXINPUTS=./classes:./styles:./content:$$TEXINPUTS BIBINPUTS=./content:$$BIBINPUTS BSTINPUTS=./styles:$$BSTINPUTS htlatex main.tex
 #	cd html
 #	TEXINPUTS=../classes:../styles:../content:$$TEXINPUTS BIBINPUTS=../content:$$BIBINPUTS BSTINPUTS=../styles:$$BSTINPUTS htlatex main.tex 
+
+out:
+	@if [ ! -d out ]; then mkdir out; fi;
 
 clean :
 	@rm -rf out/*
