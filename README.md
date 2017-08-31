@@ -87,6 +87,24 @@ This command indicates a section which needs to be expanded as it seems a bit sp
 
 This command indicates a reference which has been partially read and may have some small description written about it, but which may need to be read read more. If you finish reading the reference and update the section and feel that it is adequate, you can remove this command.
 
+### Citation Definitions
+
+For every citation which is added to krafczyk/Reproducibility-bib, I want to have a citation definition here. I've defined the `refdef` environment for this purpose. Essentially you invoke it like this:
+
+``` latex
+\begin{refdef}{<citation-name>}{<citation-pdf-name>}
+<citation-description>
+\end{refdef}
+```
+
+`<citation-name>` is the name of the citation in the bibliography
+
+`<citation-pdf-name>` is the name of the pdf for that citation in our reference storage area (I'll update this with the actual location when its set up.)
+
+`<citation-description>` is the description you write for that citation.
+
+This renders a nice little section in the document describing the title, journal (if it exists) and year it was published, along with its description. You can then navigate to a references description from the references section by looking at the end of the refernce as mentioned earlier.
+
 ## How to contribute
 
 Submit a PR, and it will be reviewed and pulled if accepted.
