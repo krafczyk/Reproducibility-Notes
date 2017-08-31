@@ -105,6 +105,28 @@ For every citation which is added to krafczyk/Reproducibility-bib, I want to hav
 
 This renders a nice little section in the document describing the title, journal (if it exists) and year it was published, along with its description. You can then navigate to a references description from the references section by looking at the end of the refernce as mentioned earlier.
 
+## How to build
+
+There are a couple steps to properly set up and build this document.
+
+### Checkout source code.
+
+``` bash
+git clone git@github.com:krafczyk/Reproducibility-Notes
+git submodule init
+git submodule update
+```
+
+### Build code
+
+``` bash
+make
+```
+
+### View output
+
+Look at `out/main.pdf` for the output pdf which is produced.
+
 ## How to contribute
 
 Submit a PR, and it will be reviewed and pulled if accepted.
