@@ -127,6 +127,14 @@ make
 
 Look at `out/main.pdf` for the output pdf which is produced.
 
+`evince out/main.pdf` for example.
+
+### Updating submodules
+
+``` bash
+git submodule update --recursive --remote
+```
+
 ## How to contribute
 
 Submit a PR, and it will be reviewed and pulled if accepted.
