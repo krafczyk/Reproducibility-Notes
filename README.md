@@ -99,7 +99,7 @@ For every citation which is added to krafczyk/Reproducibility-bib, I want to hav
 
 `<citation-name>` is the name of the citation in the bibliography
 
-`<citation-pdf-name>` is the name of the pdf for that citation in our reference storage area (I'll update this with the actual location when its set up.)
+`<citation-pdf-name>` is the name of the pdf for that citation in our reference storage folder [here](https://drive.google.com/drive/folders/0B3BA_GGofHK4M0xyNzRVVUI2NlE?usp=sharing). If you do have a pdf of the reference, Please make sure its the most recent published version if possible.
 
 `<citation-description>` is the description you write for that citation.
 
