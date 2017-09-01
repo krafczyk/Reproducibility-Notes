@@ -4,7 +4,9 @@ This LaTeX document is meant to serve as an amalgamation of sources we have coll
 
 ## Needed Software
 
-To build this document you need the following packages
+To build this document you need to install a texlive distribution along with biber.
+
+For specific linux distributions install the following packages:
 
 Arch:
 * texlive
@@ -13,6 +15,12 @@ Arch:
 Ubuntu:
 * texlive
 * biber
+
+For Windows, Install Cygwin, and make sure the texlive, make, and biber packages are installed.
+
+For Mac:
+
+Make sure texlive and biber is installed
 
 ## Overview
 
