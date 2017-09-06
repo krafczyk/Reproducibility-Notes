@@ -556,6 +556,29 @@ These techniques use a hypervisor to run a logically separate virtual machine on
 
 \complete
 
+\subsection{Research Environments}
+
+From \cite{stodden-sharing-reproducibility-talk-2017}.
+
+\begin{itemize}
+\item Verifiable Computational Research \needcite
+\item knitR \needcite
+\item Collage Authoring Environment \needcite
+\item Sumatra \needcite
+\item Galaxy \needcite
+\item SHARE \needcite
+\item Sweave \needcite
+\item SOLE \needcite
+\item GenePattern \needcite
+\item torch.ch \needcite
+\item Cyverse \needcite
+\item Open Science Framework \needcite
+\item IPOL \needcite
+\item Jupyter \needcite
+\item NanoHUB \needcite
+\item Vistrails \needcite
+\end{itemize}
+
 \subsection{Workflow Managers}
 
 These softwares purport to handle all of our scientific workflow needs. They handle your source code, build your application, run it and compile the paper from the results produced. Some workflows may not fit, but they are working hard to make sure that it doesn't stay that way.
@@ -732,6 +755,12 @@ Here I collect together sources from notable authors in the field. I also try to
 David Bailey concerns himself with numerical precision issues. He has produced a nice summary of scientific problems which require greater than normal precision \cite{high-precision-arith-in-science,dhb-zurich-hp}. He has also been involved in the creation of tools to help find parts of a program which can be run at lower precision ostensibly to limit program execution time\cite{blame-analysis}. He has also created the mpfun library for thread-safe arbitrary precision arithmetic\cite{mpfun}.
 
 He hosts his website\cite{david-bailey-site} which contains all of his papers, talks, and links to code and projects that he works on.
+
+\complete
+
+\subsection{Les Hatton}
+
+Les deals primarily with software quality and has had a number of studies over the years.
 
 \complete
 
@@ -1123,8 +1152,16 @@ An old paper describing Pearson's Chi-squared test for count data. The paper is 
 Implementation of the wilcoxon test in R. \categorize
 \end{refdef}
 
+\begin{refdef}{wilcoxon-test}{}
+Theoretical description of Wilcoxon test. \Read \categorize
+\end{refdef}
+
 \begin{refdef}{R-pearson-chisquare}{}
 Implementation of the pearson chisquared test in R. \categorize
+\end{refdef}
+
+\begin{refdef}{pearson-chisquare}{}
+Contains the theoretical description of the pearson chisquare test. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{stodden-reproducibility-scientific-method}{SSRN-id1550193.pdf}
@@ -1317,6 +1354,46 @@ Article talking about designing computational experiments, relevant for vertical
 
 \begin{refdef}{cyclomatic-complexity}{}
 A wiki article describing cyclomatic complexity. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{hatton-scientific-software-accurate-1994}{hatton-scientific-software-accurate-1994.pdf}
+Interesting ongoing N-version scientific software accuracy study. (Find reference to completed study?) \Read \categorize
+\end{refdef}
+
+\begin{refdef}{hatton-software-quality-2007}{hatton-software-quality-2007.pdf}
+A general report about software quality from Hatton. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{hatton-software-size-power-law-2009}{hatton-software-size-power-law-2009.pdf}
+An interesting report about software component size and its power law distribution. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{hatton-fault-component-size-1997}{hatton-fault-component-size-1997.pdf}
+An interesting report about how software fault rate depends on software component size. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{ince-hatton-open-programs-2012}{nature10836.pdf}
+A case for open computing from hatton and ince. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{everware}{everware.pdf}
+White paper for Everware. An open science platform? \Read \categorize
+\end{refdef}
+
+\begin{refdef}{mpi-benchmarking-revisited-2016}{mpi-benchmarking-revisited-2016.pdf}
+Paper on benchmarking MPI software. Focusing on practices for MPI software experiments. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{nsf-sbe-robust-reliable-science-2015}{SBE\_Robust\_and\_Reliable\_Research\_Report.pdf}
+NSF report on Robust and reliable research. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{Beaulieu-Jones2017}{}
+Article about using continuous analysis to make workflows reproducible. Need to get a copy of this article. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{stodden-sharing-reproducibility-talk-2017}{NASSackler2017-2-STODDEN.pdf}
+A Talk with a list of a bunch of tools. \Read \cateorize
 \end{refdef}
 
 %\bibliography{main}
