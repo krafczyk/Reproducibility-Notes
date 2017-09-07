@@ -225,6 +225,7 @@ Here I'm detailing various specialized hardware I hear about which might hamper 
 \item GPUs (Usually not hard to get, but still an obstacle)
 \item FPGA
 \item Neuromorphic Chips \cite{neuromorphic-chips-webarticle}
+\item TPUs \cite{jouppi-tpu-performance-2017}
 \end{itemize}
 
 \complete
@@ -677,6 +678,12 @@ This is a list of the various code and data repositories which currently exist a
 \item TheDataHub.org \needcite
 \item ChameleonCloud \needcite
 \item Madagascar \needcite
+\item hivebench \needcite
+\item DataSearch \needcite
+\item Data Lighthouse \needcite
+\item RDA (Research Data Alliance) \needcite
+\item Scholix \needcite
+\item Force11 \needcite
 \end{itemize}
 
 \complete
@@ -1074,14 +1081,14 @@ What computational scientists need to know about intellectual property law: A pr
 \end{refdef}
 
 \begin{refdef}{clusterjob}{osbg-MDS2016.pdf}
-THE CLUSTERJOB PAPER \categorize \complete
+Clusterjob provides an interface to break work down into jobs which can be farmed out to a multitude of interfaces. \Read \categorize \complete
 \end{refdef}
 
 \begin{refdef}{Ioannidis2005JAMA}{JOC50060.pdf}
 A great paper describing replication outcomes for clinical trials \categorize
 \end{refdef}
 
-\begin{refdef}{Collberg:2016:RCS:2897191.2812803}{p62-collberg.pdf}
+\begin{refdef}{collberg-repeatability-2016}{p62-collberg.pdf}
 A nice paper about Repeatability in Computer systems research \Read \categorize
 \end{refdef}
 
@@ -1419,6 +1426,78 @@ A paper describing shifter which is essentially containers for HPC \Read \catego
 
 \begin{refdef}{rokem-repro-human-mri}{the-practice-of-reproducibility.pdf}
 A book giving examples of reproducible workflows in practice. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{hunold-repro-mpi-benchmarking-2014}{p69-hunold.pdf}
+An article detailing MPI benchmarking problems. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{carpen-amarie-mpi-performance-2016}{p108-carpen-amarie.pdf}
+An article describing expected peformance variations with MPI. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{pgmpi}{}
+A whitepaper about the pgmpi tool for verification of MPI performance. Need to get a pdf of this source. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{reprompi}{}
+The github repo for ReproMPI. \needcite \Read \categorize
+\end{refdef}
+
+\begin{refdef}{Carpen-Amarie-repro-research-2014}{europar-2014-part1.pdf}
+An article about current practices in reproducible parallel research. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{nissen-false-facts-2016}{nissen-false-facts-2016.pdf}
+Interesting article about how false facts can be canonized by reviewer bias. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{chang-retraction-2006}{chang-retraction-2006.pdf}
+A retraction by a prominent biophysicist because of an error in an in-house data processing program. Evidence that professional 'eyeball' inspection is not enough and the code must be made available. \categorize
+\end{refdef}
+
+\begin{refdef}{miller-scientists-nightmare-2006}{miller-scientists-nightmare-2006.pdf}
+A discussion of the Chang retraction. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{jouppi-tpu-performance-2017}{p1-Jouppi.pdf}
+An interesting paper about a new type of silicon, the TPU or tensor processign unit. This is designed for machine learning tasks and is optimized to work with TensorFlow. It is a Google internal device. \Read \cateogorize
+\end{refdef}
+
+\begin{refdef}{stodden-provisioning-repro-science-2014}{xsede14\_stodden.pdf}
+\Read \categorize
+\end{refdef}
+
+\begin{refdef}{Eglen2017}{nn.4550.pdf}
+A Nature commentary on requiring code to be shared in neuroscience. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{nature-transparency-2017}{nn.4579.pdf}
+A Nature editorial describing their new policy for code transparency in neuroscience. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{hothorn-reproducibility-case-studies-2011}{hothorn-reproducibility-case-studies-2011.pdf}
+Another article arguing the benefits of looking at data and software for published studies. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{tricheck}{tricheck.pdf}
+A whitepaper describing the tricheck tool. A kind of memory checking program (It does more than that though..) \Read \categorize
+\end{refdef}
+
+\begin{refdef}{lamport-multiprocess-checking-1979}{lamport-multiprocess-checking-1979.pdf}
+A foundational paper describing how to check that a multiprocess program is being executed correctly. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{chameleon-cloud}{chameleon-cloud.pdf}
+A whitepaper describing the chameleon cloud service. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{deOliveira2017}{cloud-computing-2017.pdf}
+An article describing the role that cloud computing has to play in reproducible computation. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{gil-data-narratives-2017}{p565-gil.pdf}
+An article about data narratives. \Read \categorize
 \end{refdef}
 
 %\bibliography{main}
