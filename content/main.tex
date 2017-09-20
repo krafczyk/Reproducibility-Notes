@@ -626,9 +626,31 @@ These programs use a system like \texttt{strace} to track what the researcher is
 \item Prune \cite{Thain-Prune-2016} \Read \categorize
 \item Umbrella \cite{Thain-Umbrella-2016} \Read \categorize
 \item Makeflow \cite{makeflow-2017} \Read \categorize
+\item CDE \needcite
+\item PTU \needcite
+\item CARE \needcite
 \end{itemize}
 
 \complete
+
+\subsubsection ReproZip \label{sec:reprozip}
+
+ReproZip is a kind of 'without-forthought' reproducibility engine which is currently endorsed by the \href{http://db-reproducibility.seas.harvard.edu/}{SIGMOD Reproducibility Review}. The authors claim that systems in the style of ReproZip but particularly ReproZip promise the following benefits above other types of reproducibility software\cite{reprozip}:
+
+\begin{itemize}
+\item \textit{portability}: ReproZip claims to eliminate possible portability problems including kernel incompatibility by providing so-called 'unpackers' which can create a VM or container using for example Docker. These packages can then be run on machines with incompatible kernels.\cite{reprozip}
+\item \textit{extensibility}: ReproZip claims that all which is needed to add support for new platforms is the creation of a new 'unpacker'.\cite{reprozip}
+\item \textit{modifiability}: ReproZip claims to clearly identify input files so researchers can target the right files to modify input parameters.\cite{reprozip}
+\item \textit{Usability}: ReproZip allows researchers to customize the created package. This will allow you to remove extra files which you know aren't relevant.\cite{reprozip}
+\end{itemize}
+
+How does ReproZip work? There are two steps. A `packing' step where necessary files are detected using system call tracing. As this tracing requires \texttt{ptrace} currently only linux based OSs are supported\cite{reprozip}. (Is this really that portable then??) \cite{reprozip} contains a bit more information about what commands specifically are sniffed. ReproZip then takes this file information and interfacing with the system package manager figures out which dependencies are required.
+
+With the package created using the process above, ReproZip then invokes an `unpacker' to create a package which can run on another system. Two supported unpackers use Vagrant and docker. These create vagrant and docker images necessary to run the packaged code from the previous step. These can then be run (ideally) on any machine. They also include a `directory' and `chroot' unpacker which work directly out of the filesystem on a machine. The `directory' unpacker only works when relative filepaths are used, and the `chroot' version works even when absolute paths are given. (I'm not sure if these other two methods require kernel compatibility or not. It sounds like it does.) \cite{reprozip}
+
+They show an example which creates a docker package of 500MB and a vagrant package of 1.4GB. I actually don't really think these are that small...
+
+The paper also mentions that they are working on distributed code support such as code which uses Hadoop or MPI. \cite{reprozip}.
 
 \subsubsection{In-Practice}
 
@@ -855,7 +877,7 @@ A fun article discussing attempts to get source code and build the code. No atte
 \end{refdef}
 
 \begin{refdef}{stodden-reproducibility-crisis}{Stodden\_Reproducibility\_Crisis.pdf}
-One of Victoria's articles where she and her collaborators describe the problem of computational reproducibility. They are also plugging their own Matlab reproducibility environments. This is also another mention of Jon Claerbout and really reproducible research.
+One of Victoria's articles where she and her collaborators describe the problem of computational reproducibility. They are also plugging their own Matlab reproducibility environments. This is also another mention of Jon Claerbout and really reproducible research. (From \cite{reprozip}: In spite of its importance, achieving reproducibility has proved elusive for computational experiments, and this has led to a credibility crisis.)
 \end{refdef}
 
 \begin{refdef}{problem-of-reproducibility}{The\_Problem\_of\_Reproducibility.pdf}
@@ -1030,7 +1052,7 @@ The official method paper and citation of YT
 \end{refdef}
 
 \begin{refdef}{reprozip}{p2085-chirigati.pdf}
-This is the official paper describing the ReproZip tool
+This is the official paper describing the ReproZip tool. This paper by all means has a GREAT introdution to the various types of software to enforce reproducibility. Please see \ref{sec:reprozip} for an in-depth discussion of this tool and paper.
 \end{refdef}
 
 \begin{refdef}{reproducible-builds}{}
@@ -1122,7 +1144,7 @@ An article talking about estimating the reproducibility of psychological science
 \end{refdef}
 
 \begin{refdef}{Begley2012}{483531a.pdf}
-An article talking about the need to increase the quality of pre-clinical research to increase the effectiveness of cancer studies and getting working treatments from them. \Read \categorize
+An article talking about the need to increase the quality of pre-clinical research to increase the effectiveness of cancer studies and getting working treatments from them. (From \cite{reprozip}: Last but not least, recent studies indicate that reproducibility increases impact, visibility, and research quality.) \Read \categorize
 \end{refdef}
 
 \begin{refdef}{Baker2016}{533452a.pdf}
@@ -1565,6 +1587,14 @@ An article about how to do software citation. (For Force11 citation working grou
 A collection of algorithms from the ACM. This is a long standing code repository.
 \end{refdef}
 
+\begin{refdef}{vandewalle-reproducible-signal-processing-2009}{}
+Another possibly foundational reproducibility citation? (From \cite{reprozip}: Last but not least, recent studies indicate that reproducibility increases impact, visibility, and research quality.)\Read \categorize
+\end{refdef}
+
+\begin{refdef}{nuzzo-fool-themselves-2015}{}
+Another good article about how reproducibility helps against scientists fooling themselves. (From \cite{reprozip}: and helps defeat self-deception) \Read \categorize
+\end{refdef}
+
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
 \printbibliography[heading=bibintoc]
@@ -1574,3 +1604,4 @@ A collection of algorithms from the ACM. This is a long standing code repository
 \printglossaries
 
 \end{document}
+
