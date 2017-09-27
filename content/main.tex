@@ -622,8 +622,8 @@ These software tools glean information about the provenance of computations by a
 These programs use a system like \texttt{strace} to track what the researcher is doing and store it in a container. This container an then in-principle be used on any other machine.
 
 \begin{itemize}
-\item ReproZip \cite{reprozip} \Read \categorize
-\item Prune \cite{Thain-Prune-2016} \Read \categorize
+\item ReproZip \cite{reprozip}
+\item Prune \cite{Thain-Prune-2016}
 \item Umbrella \cite{Thain-Umbrella-2016} \Read \categorize
 \item Makeflow \cite{makeflow-2017} \Read \categorize
 \item CDE \needcite
@@ -633,7 +633,7 @@ These programs use a system like \texttt{strace} to track what the researcher is
 
 \complete
 
-\subsubsection ReproZip \label{sec:reprozip}
+\subsubsection{ReproZip} \label{sec:reprozip}
 
 ReproZip is a kind of 'without-forthought' reproducibility engine which is currently endorsed by the \href{http://db-reproducibility.seas.harvard.edu/}{SIGMOD Reproducibility Review}. The authors claim that systems in the style of ReproZip but particularly ReproZip promise the following benefits above other types of reproducibility software\cite{reprozip}:
 
@@ -651,6 +651,27 @@ With the package created using the process above, ReproZip then invokes an `unpa
 They show an example which creates a docker package of 500MB and a vagrant package of 1.4GB. I actually don't really think these are that small...
 
 The paper also mentions that they are working on distributed code support such as code which uses Hadoop or MPI. \cite{reprozip}.
+
+\subsubsection{Umbrella}
+
+
+\subsubsection{PRUNE}
+
+From Doug Thain, this is a different approach which does not monitor system calls to produce reproducible results.
+
+They claim only a 1\% overhead.
+
+This method is very similar to a git repository. The user explicitly adds input data or programs and describes their workflow at each `commit'. Each `commit' contains `file's, `task's, `result's, and `environment's.
+
+Here is the paper's description of an Environment: `An Environment is an explicit statement of the hardware and software needed to execute a Task. An Environment can take many forms, depending on the technology used and the priority placed on reproducibility compared to convenience.' Even a tarball on top of an assumed operating system can be considered an Environment. It appears that this tool uses the 'Umbrella' tool as well.
+
+Environments are created infrequently much like OSs are changed infrequently.
+
+I like the idea of this method, however it seems to require lots of user intervention like git. It would profit from being coupled with an Environment system which I expect to be Umbrella as cited in the paper.
+
+Non-determinism is supported in this scheme by the so-called DBID and CBID ids. Each CBID is created as a hash of the file content while each DBID is available for output files of the process. Thus several files with different CBIDs can be represented by a single DBID.
+
+Apparently PRUNE is managed from a python file which imports the PRUNE library. I'm not sure how I feel about this.
 
 \subsubsection{In-Practice}
 
@@ -1099,6 +1120,9 @@ A White paper describing singularity and it's functionality. \Read
 A white paper describing Jupyter notebooks and its capabilities as a reproducible research platform. \Read
 \end{refdef}
 
+\begin{refdef}{Thain-Prune-2016}{Thain-Prune-2016.pdf}
+A Thain article about PRUNE a tool for preserving run environments for reproducible scientific computing. This is a white paper describing their tool. It is a kind of workflow management system which tries to combine aspects of workflow managers such as NextFlow with version control systems such as git.
+\end{refdef}
 
 \subsection{Unassigned}
 
@@ -1383,10 +1407,6 @@ A Dear Colleagues Letter about reproducibility in Computer and Information Scien
 A talk by Thain about his CMS ROOT work \Read \categorize
 \end{refdef}
 
-\begin{refdef}{Thain-Prune-2016}{Thain-Prune-2016.pdf}
-A Thain article about PRUNE a tool for preserving run environments for reproducible scientific computing (PACKAGING) \Read \categorize
-\end{refdef}
-
 \begin{refdef}{Thain-Umbrella-2016}{Thain-Umbrella-2016.pdf}
 A Thain article about Umbrella tool for creating and preserving execution environments. (PACKAGING) \Read \categorize
 \end{refdef}
@@ -1593,6 +1613,10 @@ Another possibly foundational reproducibility citation? (From \cite{reprozip}: L
 
 \begin{refdef}{nuzzo-fool-themselves-2015}{}
 Another good article about how reproducibility helps against scientists fooling themselves. (From \cite{reprozip}: and helps defeat self-deception) \Read \categorize
+\end{refdef}
+
+\begin{refdef}{gentleman-stat-analy-repro-2007}{}
+\Read \categorize
 \end{refdef}
 
 %\bibliography{main}
