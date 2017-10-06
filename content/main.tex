@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[american]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage{placeins}
@@ -19,6 +19,8 @@
 \usepackage{makeidx}
 \makeindex
 \usepackage[nottoc]{tocbibind}
+\usepackage{babel}
+\usepackage{csquotes}
 \usepackage[style=ieee,indexing,backref]{biblatex}
 \addbibresource{main.bib}
 \usepackage{aas_macros}
@@ -141,6 +143,13 @@
     \iffieldundef{journaltitle}{\usebibmacro{booktitle}}{\usebibmacro{journal}}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
+
+\DeclareFieldFormat[legislation]{title}{#1}
+\renewcommand*{\postnotedelim}{
+  \ifentrytype{legislation}
+    {\addspace}
+    {\addcomma\space}
+}
 
 \newenvironment{refdef}[2] {
 	\noindent \textbf{\citetitle{#1}} \cite{#1}\\ \citejournalorbooktitle{#1} \textit{(\citeyear{#1})}\\ \texttt{#2} \vspace{0.2in} \par 
@@ -762,6 +771,24 @@ This section is meant to point out some good blog posts
 
 \complete
 
+\section{Legal and Licensing}
+
+This section is meant to contain anything related to the legality of reproducing another scientists work.
+
+\complete
+
+\subsection{Copyright}
+
+Copyright is first defined by the U.S. Constitution by \cite[art.~I, \S~8, cl.~8]{USConst} ``To promote the progress of science and useful arts, by securing for limited times to authors and inventors the exclusive right to their respective writings and discoveries.". This actually creates not only copyright, but patents.
+
+Conventionally, copyright is defined as `following the pen across the page' and means that you cannot just take words you read on a page and use them yourself.
+
+\subsection{Licensing}
+
+\subsubsection{Copy-Left licenses}
+
+\subsection{Recommendations}
+
 \section{Policy Efforts}
 
 \begin{itemize}
@@ -828,6 +855,12 @@ Here I collect together sources from notable authors in the field. I also try to
 \complete
 
 \subsection{Victoria Stodden}
+
+Victoria has been active in the reproducibility community for at least a decade and has contributed a number of interesting pieces of research as well as general recommendations to the community to increase the reproducibility of published articles.
+
+One of her main focuses is in the licensing aspect of reproducibility. She advocates for non-copy-left licenses so that others may freely read and use your published work without worrying about having to change their own code license \cite{stodden-legal-framework-reproducible-2009}.
+
+She has also been instrumental in sounding the alarm about current scientific practices and how they affect reproducibility of work \cite{stodden-reproducibility-crisis}.
 
 \complete
 
@@ -966,6 +999,14 @@ This is a more detailed article about MPI benchmarking. Specifically, this paper
 
 \begin{refdef}{gropp-mpi-repro-perf}{mpptest.pdf}
 Describes a number of problems associated with testing parallel message passing implementations. Describes their test suite and how they get around these problems.
+\end{refdef}
+
+\subsection{Legal and Licensing}
+
+\begin{refdef}{stodden-legal-framework-reproducible-2009}{stodden-legal-framework-reproducible-2009.pdf}
+A nice article by Victoria discussing copyright and the various licenses which deal with releasing copyright and how it applies to reproducible science. The article makes the case that copy-left licenses prevent the sharing of code since people often have worries or concerns about licensing, or want to produce products from what they learn from published works. If code includes copy-left provisions it will have to be passed up.
+
+She concludes with the recommendation that non-share-alike licenses are necessary for all types of work from code to data releases.
 \end{refdef}
 
 \subsection{Policy Efforts}
