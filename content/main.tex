@@ -280,6 +280,20 @@ Physics specific scandals.
 
 \complete
 
+\subsection{Chemistry}
+
+Chemistry specific scandals.
+
+\begin{itemize}
+\item Gaussian software banning competitors from using their software
+\end{itemize}
+
+\subsubsection{Gaussian}
+
+Gaussian Inc. actively bans competing researchers from using their code. This means if you are working on a tool which performs the same tasks as Gaussian and probably especially if you claim to do a better job than Gaussian, you are banned from using Gaussian forever. This means that said researchers cannot validate research published by other scientists who do use the Gaussian software. The website \cite{banned-by-gaussian} goes into great detail about this ongoing crisis. They furthur reference journal standards produced by the Pure and Applied Chemistry journal \cite{pac-guidelines-publication-1998,pac-guidelines-presentation-1998} which make mention of the requirement that sufficient technical details be published to permit the replication of any published article's results. Gaussian banning scientists directly contradicts this stance by the journal.
+
+\complete
+
 \section{Causation of Reproducibility problems}
 
 This section summarizes why reproducibility is a problem in various fields and not other.
@@ -801,6 +815,8 @@ Conventionally, copyright is defined as `following the pen across the page' and 
 
 \section{Policy Efforts}
 
+There are numerous policy efforts on a number of fronts from Journals and Conferences, to Funding agencies. This section is meant to coallate such related issues together.
+
 \begin{itemize}
 \item \textit{Science} efforts to get researchers to publish code and data. \needcite
 \item \textit{SC'XY} Conference has programs like the student cluster competition. \cite{sighpc-connect-repro-1,sighpc-connect-repro-2}
@@ -819,6 +835,14 @@ Here I'm gathering a list of Meetings and panels at which reproducibility is spe
 \item NSF Workshop on Robustness, Reliability, and Reproducibility in Scientific Research (last meeting 2017)
 \item 
 \end{itemize}
+
+\complete
+
+\subsection{Journal Policies}
+
+Here I'm putting instances of journal policies which exemplify a commitment to reproducibility, or are good examples of poor policies which will not yield reproducible articles.
+
+In the journal of Pure and Applied Chemistry, guidelines for publication and presentation of results are described circa 1998 in \cite{pac-guidelines-publication-1998,pac-guidelines-presentation-1998}.
 
 \complete
 
@@ -848,11 +872,11 @@ This section outlines a few statistical tests which we have used in our analysis
 
 \subsection{Wilcoxon Ranked Sum Test}
 
-This test was used in our first JCP paper to test whether the informed and uninformed groups were behaving in a statistically different way. \cite{doi:10.1080/01621459.1972.10481279,R-wilcoxon-test}
+This test was used in our first JCP paper to test whether the informed and uninformed groups were behaving in a statistically different way. \cite{wilcoxon-test,R-wilcoxon-test}
 
 \subsection{Pearson's Chi-squared test for count data}
 
-This test was used in our first JCP paper to test the difference between the informed and uninformed groups. \cite{10.2307/2984263,R-pearson-chisquare}.
+This test was used in our first JCP paper to test the difference between the informed and uninformed groups. \cite{pearson-chisquare,R-pearson-chisquare}.
 
 \section{Notable Authors}
 
@@ -1681,6 +1705,17 @@ Another good article about how reproducibility helps against scientists fooling 
 \Read \categorize
 \end{refdef}
 
+\begin{refdef}{banned-by-gaussian}{}
+A website dedicated to the ongoing scandal which Gaussian is perpetrating on the chemistry community. They decide to ban scientists who work on competing software thus blocking these scientists from being able to verify work published by other scientists using the Gaussian software. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{pac-guidelines-presentation-1998}{pac-guidelines-presentation-1998.pdf}
+A set of guidelines from the Pure and Applied Chemistry Journal about the presentation of results in their journals. Circa 1998. \Read \categorize
+\end{refdef}
+t
+\begin{refdef}{pac-guidelines-publication-1998}{pac-guidelines-publication-1998.pdf}
+	A set of guidelines from the Pure and Applied Chemistry Journal about the publication of source code in their journals. Circa 1998. Referenced directly by \cite{banned-by-gaussian}, the relevant conclusions are: ``2. Reproducibility of computations should be a defining goal in reporting computational results. Sufficient technical details should be provided to allow a reader to reproduce the results of any calculations. Note that strict reproducibility of computations may be precluded by differences among computers (e.g., differences in operating systems, host-based algorithms, machine precision, etc.), software (e.g., installation procedures and programming modifications), and applications (e.g., for probabilistic methods such as Monte Carlo calculations)." and ``5. An adequate specification of the computer program used to carry out the calculations is essential. If the calculations were carried out with commercially available software, the investigator must list the source, version number, and force field employed. Any program modifications and any differences from the published version (including changes in parameters) must be fully described or available to other investigators upon request. Changes in parameters, program options (e.g., dielectric constant, nonbonded cutoffs, etc.) affecting reproducibility of the calculation, and program constraints must be fully described in the article. If the program is not available, commercially or otherwise, the authors must specify sufficient detail that the calculation could be reproduced." \Read \categorize
+\end{refdef}
 
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
