@@ -167,13 +167,13 @@
 
 \tableofcontents
 
-\section{Introduction}
+\section{Introduction} \label{sec:introduction}
 
 These are my research notes while working at NCSA.
 
 \complete
 
-\section{Reproducibility Terms}
+\section{Reproducibility Terms} \label{sec:reproducibility-terms}
 
 I will be using the ACM terms for reproducibility \cite{acm-badging}. In order of increasing strength or rigor they are:
 
@@ -185,13 +185,13 @@ I will be using the ACM terms for reproducibility \cite{acm-badging}. In order o
 
 There is some contention about these terms, I believe the biology people use different terms. \needcite
 
-\section{Reproducibility Issues}
+\section{Reproducibility Issues} \label{sec:reproducibility-issues}
 
 Here I'm trying to collect all the different issues which exist with reproducibility. I'm using it as a space to make sense of these issues as well as collect the references which make the case.
 
 \complete
 
-\subsection{Sociological Issues}
+\subsection{Sociological Issues} \label{sec:repro-sociological-issues}
 
 \begin{itemize}
 \item Scrutinization
@@ -204,7 +204,7 @@ Here I'm trying to collect all the different issues which exist with reproducibi
 
 \complete
 
-\subsection{Software Issues}
+\subsection{Software Issues} \label{sec:repro-software-issues}
 
 \begin{itemize}
 \item Numerical error
@@ -215,7 +215,7 @@ Here I'm trying to collect all the different issues which exist with reproducibi
 
 \complete
 
-\subsection{Hardware Issues}
+\subsection{Hardware Issues} \label{sec:repro-hardware-issues}
 
 \begin{itemize}
 \item Special hardware requirements
@@ -225,7 +225,7 @@ Here I'm trying to collect all the different issues which exist with reproducibi
 
 \complete
 
-\subsubsection{Specialized Hardware}
+\subsubsection{Specialized Hardware} \label{sec:repro-spec-hardware}
 
 Here I'm detailing various specialized hardware I hear about which might hamper reproducibility efforts.
 
@@ -239,13 +239,13 @@ Here I'm detailing various specialized hardware I hear about which might hamper 
 
 \complete
 
-\subsubsection{Handling specialized hardware}
+\subsubsection{Handling specialized hardware} \label{sec:repro-spec-hardware-handling}
 
 Results run on specialized hardware should still be replicable as long as an appropriate virtual machine or emulator is available for that architecture.
 
 \complete
 
-\subsection{Compatibility Issues}
+\subsection{Compatibility Issues} \label{sec:repro-compatibility-issues}
 
 DOES THIS SUBSECTION DESERVE ITS OWN SECTION??
 
@@ -255,11 +255,11 @@ To make matters worse, allowing scientists to steal a method from another scient
 
 \complete
 
-\section{Reproducibility Scandals}
+\section{Reproducibility Scandals} \label{sec:reproducibility-scandals}
 
 Here, I'm going to collect together known scandals arrising from the lack of reproducibility.
 
-\subsection{Medicine}
+\subsection{Medicine} \label{sec:scandals-medicine}
 
 Medicine specific scandals
 
@@ -270,7 +270,7 @@ Medicine specific scandals
 \item 2014 Tamiflu review showed only small decrease in some smptoms \cite{dhb-zurich-hp}. \needcite
 \end{itemize}
 
-\subsection{Physics}
+\subsection{Physics} \label{sec:scandals-physics}
 
 Physics specific scandals.
 
@@ -280,7 +280,7 @@ Physics specific scandals.
 
 \complete
 
-\subsection{Chemistry}
+\subsection{Chemistry} \label{sec:scandals-chemistry}
 
 Chemistry specific scandals.
 
@@ -288,18 +288,18 @@ Chemistry specific scandals.
 \item Gaussian software banning competitors from using their software
 \end{itemize}
 
-\subsubsection{Gaussian}
+\subsubsection{Gaussian} \label{sec:scanals-chemistry-gaussian}
 
 Gaussian Inc. actively bans competing researchers from using their code. This means if you are working on a tool which performs the same tasks as Gaussian and probably especially if you claim to do a better job than Gaussian, you are banned from using Gaussian forever. This means that said researchers cannot validate research published by other scientists who do use the Gaussian software. The website \cite{banned-by-gaussian} goes into great detail about this ongoing crisis. They furthur reference journal standards produced by the Pure and Applied Chemistry journal \cite{pac-guidelines-publication-1998,pac-guidelines-presentation-1998} which make mention of the requirement that sufficient technical details be published to permit the replication of any published article's results. Gaussian banning scientists directly contradicts this stance by the journal.
 
 \complete
 
-\section{Causation of Reproducibility problems}
+\section{Causation of Reproducibility problems} \label{sec:causation}
 
 This section summarizes why reproducibility is a problem in various fields and not other.
 \complete
 
-\section{Numerical Precision Issues}
+\section{Numerical Precision Issues} \label{sec:precision}
 
 This section summarizes issues related to numerical precisions. Whether it's an algorithm touted to be more precise, or a tool to optimize a program it will be found here.
 
@@ -307,7 +307,7 @@ In calculations which are sensitive to numerical precision, small errors may lea
 
 \complete
 
-\subsection{IEEE floating point arithmetic}
+\subsection{IEEE floating point arithmetic} \label{sec:precision-ieee-float}
 
 Here, I review some properties of the IEEE floating point standard. I may later add some information about some fixed-point or alternative floating point implementations.
 
@@ -336,11 +336,11 @@ equivalent decimal precision & ~7 digits & ~16 digits & ~34 digits \\
 \end{table}
 \FloatBarrier
 
-\subsubsection{Normalization}
+\subsubsection{Normalization} \label{sec:precision-ieee-norm}
 
 A common way of expressing a floating point number is like this: $\pm\beta^e\times. d_1 d_2 \ldots d_t$ with $d_1 \neq 0$ for \textit{normalized} numbers. when $y$ is less than $\beta^{emin}$, $d_1$ cannot be non-zero and so we have sub-normal numbers \cite{higham-numerical-accuracy-and-stability}.
 
-\subsubsection{Rounding modes}
+\subsubsection{Rounding modes} \label{sec:precision-ieee-round}
 
 From libc and ieee \cite{gnu-libc-rounding,ieee-754-2008}, we have four rounding modes. \cite{gnu-libc-rounding} says that fpu calculations occur at higher precision, and then the value is stored in the specified data width where rounding occurs. I haven't found the statement in \cite{ieee-754-2008} which says this.
 
@@ -351,13 +351,13 @@ From libc and ieee \cite{gnu-libc-rounding,ieee-754-2008}, we have four rounding
 \item Round to 0
 \end{itemize}
 
-\subsubsection{Machine Epsilon}
+\subsubsection{Machine Epsilon} \label{sec:precision-ieee-epsilon}
 
 From lemma 2.1 on page 37 of \cite{higham-numerical-accuracy-and-stability}, The spacing between a normalized floating point number $x$ and an adjacent normalized floating point number is at least $\beta^{-1}\epsilon|x|$ and at most $\epsilon|x|$ \cite{higham-numerical-accuracy-and-stability}. This also means that the largest error between an infinitely precise number, and it's nearest neighbor is $\epsilon/2 = \beta^{-(p-1)}/2$. This value is known as the machine epsilon.
 
 Another definition: Machine epsilon is defined as the smallest number that, when added to one, yields a result different from one. This is $b^{-(p-1)}$ and $\epsilon/2$ for the round-to-nearest procedure.
 
-\subsubsection{Known numerical anomalies}
+\subsubsection{Known numerical anomalies} \label{sec:precision-ieee-anomalies}
 
 Bailey goes through a great discussion of known numerical anomalies here \cite{dhb-numerical-bugs}. I'm going to talk about a couple of them.
 
@@ -378,13 +378,13 @@ Bailey goes through a great discussion of known numerical anomalies here \cite{d
 \end{itemize}
 \end{itemize}
 
-\subsubsection{Reproducibility Attributes}
+\subsubsection{Reproducibility Attributes} \label{sec:precision-ieee-attributes}
 
 This section discusses the reproducibility attributes present in the IEEE 754 standard. \cite{ieee-754-2008}
 
 \complete
 
-\subsection{Scientific Problems needing special precision}
+\subsection{Scientific Problems needing special precision} \label{sec:precision-special}
 
 A number of problems need special scientific precision. David Bailey did a great job laying this out\cite{high-precision-arith-in-science,dhb-zurich-hp}. I reproduce his table from \cite{dhb-zurich-hp} as Table \ref{tab:precision} to give an idea of the gamut.
 
@@ -411,13 +411,13 @@ Problems in experimental mathematics & 100-50,000\\
 
 MINOS \needcite software for biochemistry contains precision problems \cite{dhb-zurich-hp}.
 
-\subsection{Solutions to reduction error issues}
+\subsection{Solutions to reduction error issues} \label{sec:precision-solutions}
 
 Two techniques which can be used to solve reduction error are to either enforce an ordering to the summation. This can be done by creating a unique id for each element of the sum, and guarenteeing that these ids are identical each run and making sure that the summation sums the id'd elements the same way each time. Another is to use the technique outlined here: \cite{repro-fast-sum}.
 
 There are some techniques to test whether your program has numerical precision difficulties. You can for instance, change the rounding mode. If the program's result varies wildly, you know there is a precision problem, but it does nothing to clear this up \cite{dhb-numerical-bugs}. You can add an adjustable 'fuzz' to a computation to see whether this affects the results offered. This can prove numerical instability \cite{dhb-numerical-bugs}.
 
-\subsection{Software implementing arbitrary precision floating point}
+\subsection{Software implementing arbitrary precision floating point} \label{sec:precision-arbitrary}
 
 Here I collect packages which implement arbitrary precision floating point arithmetic in various ways. These packages were discovered in \cite{high-precision-arith-in-science}.
 
@@ -441,7 +441,7 @@ From \cite{dhb-zurich-hp}, we have:
 
 Using high-precision software increases runtimes. double-double Takes 5 times longer than 64-bit arithmetic, 25 times longer with quad-double, and 50 times for 100-digit arithmetic. Computational cost scales as $p^2$ up to about 1000 digits then costs $p\log p$ if you're using FFT-based multiplication. \cite{high-precision-arith-in-science} (\needcite for FFFT-based multiplication)
 
-\subsection{Program Precision Optimizers}
+\subsection{Program Precision Optimizers} \label{sec:precision-optimizers}
 
 These tools analyze a program's operation in some way and produce recommendations about data types or run conditions which will preserve or increase a program's numerical precision while also improving or largely preserving a programs performance.
 
@@ -454,23 +454,23 @@ A few examples of applications which have benefitted from these techniques or de
 
 Ising integrals, tanh-sinh integration algorithm, box-integrals, minimal polynomials, algebraic numbers in poisson potential functions \needcite \cite{dhb-zurich-hp}.
 
-\subsubsection{BLAME Analysis}
+\subsubsection{BLAME Analysis} \label{sec:precision-optimizers-blame}
 
 This tool is created from LLVM and analyzes code passed through it for operations which can be run at reduced precision. \cite{blame-analysis}
 
 \complete?
 
-\subsection{Algorithmic concepts dealing with numerical precision}
+\subsection{Algorithmic concepts dealing with numerical precision} \label{sec:precision-algorithms}
 
 Condition number, the condition number of a function with respect to an argument measures how much the output value of the function can change for a small change in the input argument. \needcite
 
-\subsection{Theoretical Tools to approach the problem of numerical precision}
+\subsection{Theoretical Tools to approach the problem of numerical precision} \label{sec:precision-theory}
 
 Here I go over some theoretical tools to confront numerical precision issues. The idea is that some or all of the ideas in this section can be turned on computational code to produce uncertainty estimates of their results.
 
 \complete
 
-\subsubsection{Interval arithmetic}
+\subsubsection{Interval arithmetic} \label{sec:precision-theory-interval}
 
 This technique focuses on calculating everything with an interval rather than a single number. This way the uncertainty interval is propogated all the way to the end of the calculation. (There is a wiki article but I need to find a real source.) \needcite
 
@@ -478,13 +478,13 @@ Unfortunately, it's runtime cost is enormous \cite{dhb-numerical-bugs}.
 
 \complete
 
-\section{Goals for reproducibility}
+\section{Goals for reproducibility} \label{sec:goals}
 
 I want to make the following methods more easily executable. Replicability and Compatibility will be huge steps towards making this happen.
 
 \complete
 
-\subsection{Method Appropriation}
+\subsection{Method Appropriation} \label{sec:goals-appropriation}
 
 \begin{enumerate}
 \item \textbf{A} is working on airfoil using method \boldmath$\alpha$, but sim has a problem
@@ -495,7 +495,7 @@ I want to make the following methods more easily executable. Replicability and C
 \item \textbf{A} publishes their airfoil citing \textbf{B} as simulation method
 \end{enumerate}
 
-\subsection{Method Tweaking}
+\subsection{Method Tweaking} \label{sec:goals-tweaking}
 
 \begin{enumerate}
 \item \textbf{A} needs to simulate a large protein to find binding sites
@@ -505,7 +505,7 @@ I want to make the following methods more easily executable. Replicability and C
 \item \textbf{A} publishes method $\alpha$ citing \textbf{B}'s method $\beta$.
 \end{enumerate}
 
-\subsection{Method Improvement}
+\subsection{Method Improvement} \label{sec:goals-improvement}
 
 \begin{enumerate}
 \item Performing lattice QCD, \textbf{A} finds method \boldmath$\beta$ by \textbf{B}.
@@ -516,7 +516,7 @@ I want to make the following methods more easily executable. Replicability and C
 \item \textbf{A} publishes $\alpha$ citing \textbf{B} about this change
 \end{enumerate}
 
-\section{Empiricle Reproducibility Studies}
+\section{Empirical Reproducibility Studies} \label{sec:empirical}
 
 Here I'm collecting a list of all empirical studies about reproducibility in the scientific community. These are good places to grab statistics to show people how bad the whole situation really is. I'm collecting their timeframe, and what field they cover.
 
@@ -551,13 +551,13 @@ Citation & Title & Timeframe & Field & Results \\
 
 \FloatBarrier
 
-\section{Reproducibility Software}
+\section{Reproducibility Software} \label{sec:software}
 
 Here I'm collecting a list of all reproducibility software I have encountered. I'll discuss each in turn hitting what they offer and what they lack. Any specific system which doesn't have it's own section means I haven't tried it or don't know enough about it to say anything.
 
 \complete
 
-\subsection{Containers}
+\subsection{Containers} \label{sec:software-containers}
 
 These techniques utilize a namespacing system to allow native execution of code and virtualization of OS without the need for a hypervisor.
 
@@ -571,7 +571,7 @@ These techniques utilize a namespacing system to allow native execution of code 
 
 \complete
 
-\subsection{Virtual Machines}
+\subsection{Virtual Machines} \label{sec:software-virtual}
 
 These techniques use a hypervisor to run a logically separate virtual machine on a host machine. These tend to be slower, but as hardware vendors add support for virtualization technology to their chipsets they are getting closer to native performance.
 
@@ -583,7 +583,7 @@ These techniques use a hypervisor to run a logically separate virtual machine on
 
 \complete
 
-\subsection{Research Environments}
+\subsection{Research Environments} \label{sec:software-environments}
 
 From \cite{stodden-sharing-reproducibility-talk-2017}.
 
@@ -606,7 +606,7 @@ From \cite{stodden-sharing-reproducibility-talk-2017}.
 \item Vistrails \needcite
 \end{itemize}
 
-\subsection{Workflow Managers}
+\subsection{Workflow Managers} \label{sec:software-managers}
 
 These softwares purport to handle all of our scientific workflow needs. They handle your source code, build your application, run it and compile the paper from the results produced. Some workflows may not fit, but they are working hard to make sure that it doesn't stay that way.
 
@@ -626,7 +626,7 @@ These softwares purport to handle all of our scientific workflow needs. They han
 \item Common Workflow Language \needcite
 \end{itemize}
 
-\subsubsection{Popper}
+\subsubsection{Popper} \label{sec:software-managers-popper}
 
 Popper \cite{popper} is an interesting technology standard which was produced by Ivo Jimenez and his team. It proposes a set of `requirements' which a piece of research must satisfy in order to be truely reproducible.
 
@@ -638,7 +638,7 @@ Their reference implementation of Popper also includes a number of experiment te
 
 \complete
 
-\subsection{Workflow Analyzers}
+\subsection{Workflow Analyzers} \label{sec:software-analyzers}
 
 These software tools glean information about the provenance of computations by analyzing either software meta data or software running on a system.
 
@@ -651,7 +651,7 @@ These software tools glean information about the provenance of computations by a
 
 \complete
 
-\subsection{Watchers}
+\subsection{Watchers} \label{sec:software-watchers}
 
 These programs use a system like \texttt{strace} to track what the researcher is doing and store it in a container. This container an then in-principle be used on any other machine.
 
@@ -686,10 +686,10 @@ They show an example which creates a docker package of 500MB and a vagrant packa
 
 The paper also mentions that they are working on distributed code support such as code which uses Hadoop or MPI. \cite{reprozip}.
 
-\subsubsection{Umbrella}
+\subsubsection{Umbrella} \label{sec:umbrella}
 
 
-\subsubsection{PRUNE}
+\subsubsection{PRUNE} \label{sec:prune}
 
 From Doug Thain, this is a different approach which does not monitor system calls to produce reproducible results.
 
@@ -707,13 +707,13 @@ Non-determinism is supported in this scheme by the so-called DBID and CBID ids. 
 
 Apparently PRUNE is managed from a python file which imports the PRUNE library. I'm not sure how I feel about this.
 
-\subsubsection{In-Practice}
+\subsubsection{In-Practice} \label{sec:software-watchers-practice}
 
 The only one of these schemes which I've tried so far is ReproZip \cite{reprozip}. I ran a simple \texttt{htop} command on my laptop and tried to run it on the campus cluster where \texttt{htop} doesn't exist. This failed, but I didn't record the error that occured.
 
 \complete
 
-\subsection{Advanced Package and Environment Management}
+\subsection{Advanced Package and Environment Management} \label{sec:software-advanced}
 
 These programs take control of the execution environment while also staying out of the way by using existing mechanisms to do their magic. For example, using \texttt{LD\_LIBRARY\_PATH} or \texttt{RUNPATH} instead of more complex stuff like userspace namespacing like what containers do.
 
@@ -724,13 +724,13 @@ These programs take control of the execution environment while also staying out 
 \item EasyBuild \cite{EasyBuild}
 \end{itemize}
 
-\subsubsection{Spack}
+\subsubsection{Spack} \label{sec:spack}
 
 Spack \cite{Spack} is the only one I've tried so far. It's the best by far.
 
 \complete
 
-\subsection{Generalized systems}
+\subsection{Generalized systems} \label{sec:software-generalized}
 
 \begin{itemize}
 \item Reproducible-builds.org \cite{reproducible-builds} \Read \expand
@@ -739,7 +739,7 @@ Spack \cite{Spack} is the only one I've tried so far. It's the best by far.
 
 \complete
 
-\section{Software/Data Repositories}
+\section{Software/Data Repositories} \label{sec:repositories}
 
 This is a list of the various code and data repositories which currently exist and are trying to solve some part of the replicability problem.
 
@@ -773,7 +773,7 @@ This is a list of the various code and data repositories which currently exist a
 
 \complete
 
-\section{Good examples of reproducible papers}
+\section{Good examples of reproducible papers} \label{sec:examples}
 
 This section is to contain good examples of reproducible papers or good sources of reproducible papers we have encountered.
 
@@ -785,7 +785,7 @@ This section is to contain good examples of reproducible papers or good sources 
 \item https://trilinos.org ?
 \end{itemize}
 
-\section{Interesting Blog Posts}
+\section{Interesting Blog Posts} \label{sec:blogposts}
 
 This section is meant to point out some good blog posts
 
@@ -795,25 +795,25 @@ This section is meant to point out some good blog posts
 
 \complete
 
-\section{Legal and Licensing}
+\section{Legal and Licensing} \label{sec:legal}
 
 This section is meant to contain anything related to the legality of reproducing another scientists work.
 
 \complete
 
-\subsection{Copyright}
+\subsection{Copyright} \label{sec:legal-copyright}
 
 Copyright is first defined by the U.S. Constitution by \cite[art.~I, \S~8, cl.~8]{USConst} ``To promote the progress of science and useful arts, by securing for limited times to authors and inventors the exclusive right to their respective writings and discoveries.". This actually creates not only copyright, but patents.
 
 Conventionally, copyright is defined as `following the pen across the page' and means that you cannot just take words you read on a page and use them yourself.
 
-\subsection{Licensing}
+\subsection{Licensing} \label{sec:legal-licensing}
 
-\subsubsection{Copy-Left licenses}
+\subsubsection{Copy-Left licenses} \label{sec:legal-licensing-left}
 
-\subsection{Recommendations}
+\subsection{Recommendations} \label{sec:legal-recommendations}
 
-\section{Policy Efforts}
+\section{Policy Efforts} \label{sec:policy}
 
 There are numerous policy efforts on a number of fronts from Journals and Conferences, to Funding agencies. This section is meant to coallate such related issues together.
 
@@ -825,7 +825,7 @@ There are numerous policy efforts on a number of fronts from Journals and Confer
 
 \complete
 
-\subsection{Reproducibility specific panels or meetings}
+\subsection{Reproducibility specific panels or meetings} \label{sec:policy-panels}
 
 Here I'm gathering a list of Meetings and panels at which reproducibility is specifically talked about.
 
@@ -838,7 +838,7 @@ Here I'm gathering a list of Meetings and panels at which reproducibility is spe
 
 \complete
 
-\subsection{Journal Policies}
+\subsection{Journal Policies} \label{sec:policy-journals}
 
 Here I'm putting instances of journal policies which exemplify a commitment to reproducibility, or are good examples of poor policies which will not yield reproducible articles.
 
@@ -846,19 +846,19 @@ In the journal of Pure and Applied Chemistry, guidelines for publication and pre
 
 \complete
 
-\section{Community Direction}
+\section{Community Direction} \label{sec:community}
 
 This section describes people's opinion of the community and where it is going.
 
 \complete
 
-\section{Closed Vs Open Source}
+\section{Closed Vs Open Source} \label{sec:closed-v-open}
 
 This section describes my perceived benefits and negatives of closed versus open source development. It is also a spot to discuss any subject relating to Closed or Open Source.
 
 \complete
 
-\subsection{Company interest and Lives}
+\subsection{Company interest and Lives} \label{sec:closed-v-open-company}
 
 The great article \cite{killed-by-code} discusses the danger of having propietary code running on medical implants. These implants control people's bodily functions or may be relied on to restore normal function in the event of failure. This code can often have bugs inside which can lead to death for the user if serious enough.
 
@@ -866,29 +866,29 @@ Not all users are capable of reading and understanding code in these devices, bu
 
 \complete
 
-\section{Statistical Tests}
+\section{Statistical Tests} \label{sec:statistical}
 
 This section outlines a few statistical tests which we have used in our analysis.
 
-\subsection{Wilcoxon Ranked Sum Test}
+\subsection{Wilcoxon Ranked Sum Test} \label{sec:statistical-wilcoxon}
 
 This test was used in our first JCP paper to test whether the informed and uninformed groups were behaving in a statistically different way. \cite{wilcoxon-test,R-wilcoxon-test}
 
-\subsection{Pearson's Chi-squared test for count data}
+\subsection{Pearson's Chi-squared test for count data} \label{sec:statistical-pearson-chisquare}
 
 This test was used in our first JCP paper to test the difference between the informed and uninformed groups. \cite{pearson-chisquare,R-pearson-chisquare}.
 
-\section{Notable Authors}
+\section{Notable Authors} \label{sec:authors}
 
 Here I collect together sources from notable authors in the field. I also try to summarize their contributions. Their ideas should be commonly cited in the field, or they should have multiple publications which have done some good work making clear the state of the field.
 
 \complete
 
-\subsection{Ioannidis}
+\subsection{Ioannidis} \label{sec:authors-ioannidis}
 
 \complete
 
-\subsection{Victoria Stodden}
+\subsection{Victoria Stodden} \label{sec:authors-stodden}
 
 Victoria has been active in the reproducibility community for at least a decade and has contributed a number of interesting pieces of research as well as general recommendations to the community to increase the reproducibility of published articles.
 
@@ -898,15 +898,15 @@ She has also been instrumental in sounding the alarm about current scientific pr
 
 \complete
 
-\subsection{Claerbout}
+\subsection{Claerbout} \label{sec:authors-claerbout}
 
 \complete
 
-\subsection{Donoho}
+\subsection{Donoho} \label{sec:authors-donoho}
 
 \complete
 
-\subsection{David H. Bailey}
+\subsection{David H. Bailey} \label{sec:authors-bailey}
 
 David Bailey concerns himself with numerical precision issues. He has produced a nice summary of scientific problems which require greater than normal precision \cite{high-precision-arith-in-science,dhb-zurich-hp}. He has also been involved in the creation of tools to help find parts of a program which can be run at lower precision ostensibly to limit program execution time\cite{blame-analysis}. He has also created the mpfun library for thread-safe arbitrary precision arithmetic\cite{mpfun}.
 
@@ -914,19 +914,19 @@ He hosts his website\cite{david-bailey-site} which contains all of his papers, t
 
 \complete
 
-\subsection{Les Hatton}
+\subsection{Les Hatton} \label{sec:authors-hatton}
 
 Les deals primarily with software quality and has had a number of studies over the years.
 
 \complete
 
-\section{Reference Descriptions}
+\section{Reference Descriptions} \label{sec:reference-descriptions}
 
 Here I collect together the references I've encountered and read at least some of. I also include a small explanation for each reference. If available, I also break it down by subject.
 
 \complete
 
-\subsection{Replicability and Reproducibility Studies}
+\subsection{Replicability and Reproducibility Studies} \label{sec:reference-descriptions-replicability}
 
 \begin{refdef}{doi:10.1093/aje/kwj093}{kwj093.pdf}
 This paper describes the types of papers published in 2005 in the `American Journal of Epidemiology' and the `Journal of the American Medical Association'. I.e. what kind of study they were, did they use code, and whether that code was available. They find that 93\% of articles which required data processing did not discuss this processing. 84\% of articles which produced original studies did not report that the data produced was available. \Read
@@ -936,7 +936,7 @@ This paper describes the types of papers published in 2005 in the `American Jour
 This paper describes the state of replicability in Economics literature as of 2015. 22/67 (33\%) of papers are replicated without contacting the authors, 29/59 (49\%) are replicated by contacting the authors. \Read
 \end{refdef}
 
-\subsection{Numerical Issues}
+\subsection{Numerical Issues} \label{sec:reference-descriptions-numerical}
 
 \begin{refdef}{high-precision-arith-in-science}{high-prec-arith.pdf}
 This paper describes different scientific tasks that require greater than 64-bits of precision. Some fields require hundreds or thousands of digits of precision for their results to be meaningful.
@@ -954,7 +954,7 @@ A website describing GNU libc's floating point rounding capabilities.
 This book is a theoretical book discussing the accuracy and stability of numerical algorithms as it's title states. For starters it discusses the idea of machine epsilon. \Read
 \end{refdef}
 
-\subsection{Reproducibility}
+\subsection{Reproducibility} \label{sec:reference-descriptions-reproducibility}
 
 \begin{refdef}{repro-fast-sum}{ARITH21\_Fast\_Sum.pdf}
 An algorithm for reproducible parallel summation of floating point numbers with varying accuracy and efficiency.
@@ -1013,7 +1013,7 @@ A paper discussing Containers and how they are taking over the world
 A great paper talking about scientific output differences between operating systems
 \end{refdef}
 
-\subsection{Benchmarking}
+\subsection{Benchmarking} \label{sec:reference-descriptions-benchmarking}
 
 \begin{refdef}{scientific-benchmarking-parallel-computing-1}{a73-hoefler.pdf}
 This paper discusses a number of problems with current benchmarking practices in the HPC community. They present their own library for HPC benchmarking as a solution to this problem.
@@ -1035,7 +1035,7 @@ This is a more detailed article about MPI benchmarking. Specifically, this paper
 Describes a number of problems associated with testing parallel message passing implementations. Describes their test suite and how they get around these problems.
 \end{refdef}
 
-\subsection{Legal and Licensing}
+\subsection{Legal and Licensing} \label{sec:reference-descriptions-legal}
 
 \begin{refdef}{stodden-legal-framework-reproducible-2009}{stodden-legal-framework-reproducible-2009.pdf}
 A nice article by Victoria discussing copyright and the various licenses which deal with releasing copyright and how it applies to reproducible science. The article makes the case that copy-left licenses prevent the sharing of code since people often have worries or concerns about licensing, or want to produce products from what they learn from published works. If code includes copy-left provisions it will have to be passed up.
@@ -1043,7 +1043,7 @@ A nice article by Victoria discussing copyright and the various licenses which d
 She concludes with the recommendation that non-share-alike licenses are necessary for all types of work from code to data releases.
 \end{refdef}
 
-\subsection{Policy Efforts}
+\subsection{Policy Efforts} \label{sec:reference-descriptions-policy}
 
 \begin{refdef}{acm-badging-announcement}{p5-boisvert.pdf}
 Defines the 'Results Replicated' and the 'Results Reproduced' badges for the ACM. \readmore
@@ -1057,7 +1057,7 @@ Newsletter describing the student cluster competition at SC16. \readmore
 Newsletter describing the winner of the reproducibility initiative at SC16 and the paper for the student cluster competition for SC17. \readmore
 \end{refdef}
 
-\subsection{Reproducibility Benchmarking}
+\subsection{Reproducibility Benchmarking} \label{sec:reference-descriptions-repro-benchmarking}
 
 \begin{refdef}{reproducibility-benchmark-dft}{aad3000.full.pdf}
 %Science (2016)
@@ -1065,12 +1065,12 @@ A very detailed study in which a set of DFT codes had their reproducibility benc
 \end{refdef}
 
 
-\subsection{Uncertainty Quantification}
+\subsection{Uncertainty Quantification} \label{sec:reference-descriptions-uncertainty}
 
 \begin{refdef}{Wilke2013}{chp\%3A10.1007\%2F978-3-642-40047-6\_7.pdf}
 \end{refdef}
 
-\subsection{Sources of Variation}
+\subsection{Sources of Variation} \label{sec:reference-descriptions-sources}
 
 \begin{refdef}{doi:10.1093/molbev/mss136}{mss136.pdf}
 A discusion of analysis methods in biology used to create a narrative for specific genes and whatnot. That non-reproducibility can so easily affect the result of analysis is the main point of this paper. Not about the reproducibility crisis in biology...
@@ -1092,7 +1092,7 @@ This paper describes the DEPEND team's tool LogDiver and their work studying err
 A nice article describing different numberical precision issues which programs may encounter.
 \end{refdef}
 
-\subsection{Software Quality}
+\subsection{Software Quality} \label{sec:reference-descriptions-quality}
 
 \begin{refdef}{Flouri031500}{031500.full.pdf}
 This paper discusses the existence of bugs in implementations of global alignment algorithms
@@ -1118,7 +1118,7 @@ A large book talking about good coding practices. Recommended by Victoria's Frie
 An ISO standard describing aspects of software quality so that the quality of disparate types of software can be compared on equal footing.
 \end{refdef}
 
-\subsection{White Paper References}
+\subsection{White Paper References} \label{sec:reference-descriptions-white-papers}
 
 \begin{refdef}{MPI-Standard}{}
 The article defining 1.0 of the MPI standard.
@@ -1210,7 +1210,7 @@ This is a kind of white paper which describes the Popper reproducibility methodo
 Popper is designed to be a standard of some sort which can be implemented with currently available tools. Any set of tools which satisfies the outlined functionality can be used. In fact in their paper, they detail at least 2-3 existing technologies which can satisfy the requirements of specific steps in the reproducibility process.
 \end{refdef}
 
-\subsection{Unassigned}
+\subsection{Unassigned} \label{sec:reference-descriptions-unassigned}
 
 
 \begin{refdef}{Czech035360}{035360.full.pdf}
