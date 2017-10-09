@@ -597,7 +597,7 @@ From \cite{stodden-sharing-reproducibility-talk-2017}.
 These softwares purport to handle all of our scientific workflow needs. They handle your source code, build your application, run it and compile the paper from the results produced. Some workflows may not fit, but they are working hard to make sure that it doesn't stay that way.
 
 \begin{itemize}
-\item Popper \Read \categorize \needcite
+\item Popper \cite{popper}
 \item WholeTale \Read \categorize \needcite
 \item CodeOcean \Read \categorize \needcite
 \item Taverna \needcite
@@ -611,6 +611,16 @@ These softwares purport to handle all of our scientific workflow needs. They han
 \item NextFlow \needcite
 \item Common Workflow Language \needcite
 \end{itemize}
+
+\subsubsection{Popper}
+
+Popper \cite{popper} is an interesting technology standard which was produced by Ivo Jimenez and his team. It proposes a set of `requirements' which a piece of research must satisfy in order to be truely reproducible.
+
+The Popper authors correctly point out that source code alone is not enough for complete article replication. Really lots of information is necessary for code to run properly and have a chance of producing the published results.
+
+Popper outlines a set of functionality necessary to allow reproducibility to happen. They provide a simple kind of reference implementation as well which operates off of the git backend. They follow a DevOps philosophy and don't want to re-invent the wheel. Thus using git as a backend they are able to create a fairly robust tool quickly.
+
+Their reference implementation of Popper also includes a number of experiment templates since the learning curve for git and other DevOps tools is quite high. This reduces the barrier to entry a bit.
 
 \complete
 
@@ -1170,6 +1180,12 @@ A Thain article about PRUNE a tool for preserving run environments for reproduci
 The official citation for the R language. \Read
 \end{refdef}
 
+\begin{refdef}{popper}{jimenez-login16.pdf}
+This is a kind of white paper which describes the Popper reproducibility methodology. A couple items of interest: The authors note correctly that source code itself is often not enough for a successful replication of their work. There are issues like necessary library or language versions which will prevent exact duplication of their results.
+
+Popper is designed to be a standard of some sort which can be implemented with currently available tools. Any set of tools which satisfies the outlined functionality can be used. In fact in their paper, they detail at least 2-3 existing technologies which can satisfy the requirements of specific steps in the reproducibility process.
+\end{refdef}
+
 \subsection{Unassigned}
 
 
@@ -1664,6 +1680,7 @@ Another good article about how reproducibility helps against scientists fooling 
 \begin{refdef}{gentleman-stat-analy-repro-2007}{}
 \Read \categorize
 \end{refdef}
+
 
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
