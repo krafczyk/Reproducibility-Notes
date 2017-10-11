@@ -624,6 +624,7 @@ These softwares purport to handle all of our scientific workflow needs. They han
 \item binder.org \needcite
 \item NextFlow \needcite
 \item Common Workflow Language \needcite
+\item revisit \cite{matloff-revisit-2017}
 \end{itemize}
 
 \subsubsection{Popper} \label{sec:software-managers-popper}
@@ -1210,6 +1211,10 @@ This is a kind of white paper which describes the Popper reproducibility methodo
 Popper is designed to be a standard of some sort which can be implemented with currently available tools. Any set of tools which satisfies the outlined functionality can be used. In fact in their paper, they detail at least 2-3 existing technologies which can satisfy the requirements of specific steps in the reproducibility process.
 \end{refdef}
 
+\begin{refdef}{matloff-revisit-2017}{matloff-revisit-2017.pdf}
+White paper describing the revisit workflow system \Read \categorize
+\end{refdef}
+
 \subsection{Unassigned} \label{sec:reference-descriptions-unassigned}
 
 
@@ -1702,7 +1707,7 @@ Another good article about how reproducibility helps against scientists fooling 
 \end{refdef}
 
 \begin{refdef}{gentleman-stat-analy-repro-2007}{}
-\Read \categorize
+This paper introduces the term `compendium'. It defines the term to mean the collection of input data, source code, and any configuration parameters needed to replicate the published material. They also adopt a model-view-controller kind of scheme where the authors can create a so-called `transformer' which takes the compendium output and creates necessary plots, tables, or images from said data which the author wants to convey. \readmore \categorize
 \end{refdef}
 
 \begin{refdef}{banned-by-gaussian}{}
@@ -1716,6 +1721,11 @@ t
 \begin{refdef}{pac-guidelines-publication-1998}{pac-guidelines-publication-1998.pdf}
 	A set of guidelines from the Pure and Applied Chemistry Journal about the publication of source code in their journals. Circa 1998. Referenced directly by \cite{banned-by-gaussian}, the relevant conclusions are: ``2. Reproducibility of computations should be a defining goal in reporting computational results. Sufficient technical details should be provided to allow a reader to reproduce the results of any calculations. Note that strict reproducibility of computations may be precluded by differences among computers (e.g., differences in operating systems, host-based algorithms, machine precision, etc.), software (e.g., installation procedures and programming modifications), and applications (e.g., for probabilistic methods such as Monte Carlo calculations)." and ``5. An adequate specification of the computer program used to carry out the calculations is essential. If the calculations were carried out with commercially available software, the investigator must list the source, version number, and force field employed. Any program modifications and any differences from the published version (including changes in parameters) must be fully described or available to other investigators upon request. Changes in parameters, program options (e.g., dielectric constant, nonbonded cutoffs, etc.) affecting reproducibility of the calculation, and program constraints must be fully described in the article. If the program is not available, commercially or otherwise, the authors must specify sufficient detail that the calculation could be reproduced." \Read \categorize
 \end{refdef}
+
+\begin{refdef}{pac-guidelines-calibration-1998}{pac-guidelines-calibration-1998.pdf}
+A set of guidelines from the Pure and Applied Chemistry Journal about calibration. \Read \categorize
+\end{refdef}
+
 
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
