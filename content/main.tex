@@ -57,6 +57,11 @@
 	description={Indicates a citation which I read parts of but which I may need to read more.}
 }
 
+\newglossaryentry{morecites}{
+	name={More Cites},
+	description={Indicates a citation which I have read at least some of which contains more references which are good for reproducibility but which some have not yet made it into the main bibliography. Score this article for the citations.}
+}
+
 \newcommand{\Read}{
 	\gls{read}
 }
@@ -79,6 +84,10 @@
 
 \newcommand{\readmore}{
 	\gls{readmore}
+}
+
+\newcommand{\morecites}{
+	\gls{morecites}
 }
 
 \newcommand{\ifempty}[3]{%
@@ -542,9 +551,23 @@ Citation & Title & Timeframe & Field & Results \\
 \endfoot
 \bottomrule
 \endlastfoot
-\cite{doi:10.1093/aje/kwj093} & \citetitle{doi:10.1093/aje/kwj093} & 2005 & Epidemiology & \multicolumn{1}{l}{\multirowcell{2}{93\% of articles do not detail data processing. \\ 84\% of articles did not release data.}} \\
-\cite{economics-replicability-fed} & \citetitle{economics-replicability-fed} & 2015 & Economics & \multicolumn{1}{l}{\multirowcell{2}{22/67 (33\%) replicated without author contact \\ \noindent 29/59 (49\%) replicated with author contact}} \\
-\cite{collberg-repeatability-2016} & \citetitle{collberg-repeatability-2016} & 2016 & Computer Science & \multicolumn{1}{l}{\multirowcell{2}{44\% of computer science article authors released their source code. \\ \Read there are others}} \\
+%\cite{peng-epidemiologic-2006} & \citetitle{peng-epidemiologic-2006} & 2005 & Epidemiology & \multicolumn{1}{l}{\multirowcell{2}{93\% of articles do not detail data processing. \\ 84\% of articles did not release data.}} \\
+%\cite{economics-replicability-fed} & \citetitle{economics-replicability-fed} & 2015 & Economics & \multicolumn{1}{l}{\multirowcell{2}{22/67 (33\%) replicated without author contact \\ \noindent 29/59 (49\%) replicated with author contact}} \\
+%\cite{aac4716} & \citetitle{aac4716} & 2015 & Psychology & \multicolumn{1}{l}{\multirowcell{5}{97\% of original studies had statistically significant results\\ 36\% of replications had statistically significant results.\\ 47\% of original effect sizes were in the 95\% confidence interval of the replication effect size\\ 39\% of effects were subjectively rated to have replicated the original results}}\\
+%\cite{collberg-repeatability-2016} & \citetitle{collberg-repeatability-2016} & 2016 & Computer Science & \multicolumn{1}{l}{\multirowcell{2}{44\% of computer science article authors released their source code. \\ \Read there are others}} \\
+\cite{peng-epidemiologic-2006} & \citetitle{peng-epidemiologic-2006} & 2005 & Epidemiology & 93\% of articles do not detail data processing. 84\% of articles did not release data. \\
+\hline
+\cite{arrowsmith-phase-ii-failures-2011} & \citetitle{arrowsmith-phase-ii-failures-2011} & 2011 & Biology & Success rates in Phase II trails have fallen from 28\% to 18\%. As mentioned in \cite{printz-rely-published-2011} \\
+\hline
+\cite{printz-rely-published-2011} & \citetitle{printz-rely-published-2011} & 2011 & Biology & In only 20-25\% of projects were the relevant published data completely in line with their in-house findings \\
+\hline
+\cite{Begley2012} & \citetitle{Begley2012} & 2012 & Cell Biology & Only 6 of 53 landmark biotechnology papers held up. \\
+\hline
+\cite{economics-replicability-fed} & \citetitle{economics-replicability-fed} & 2015 & Economics & 22/67 (33\%) replicated without author contact 29/59 (49\%) replicated with author contact. \\
+\hline
+\cite{aac4716} & \citetitle{aac4716} & 2015 & Psychology & 97\% of original studies had statistically significant results 36\% of replications had statistically significant results. 47\% of original effect sizes were in the 95\% confidence interval of the replication effect size. 83\% of studies had a larger effect size in the original study. 39\% of effects were subjectively rated to have replicated the original results. Replication success was more consistently related to the original strength of evidence (such as original $P$ value, effect size, and effect tested) than to characteristics of the teams and implementation of the replication (such as expertise, quality, or challenge of conducting the study)\\
+\hline
+\cite{collberg-repeatability-2016} & \citetitle{collberg-repeatability-2016} & 2016 & Computer Science & 44\% of computer science article authors released their source code. \Read there are others. \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -929,12 +952,20 @@ Here I collect together the references I've encountered and read at least some o
 
 \subsection{Replicability and Reproducibility Studies} \label{sec:reference-descriptions-replicability}
 
-\begin{refdef}{doi:10.1093/aje/kwj093}{kwj093.pdf}
+\begin{refdef}{peng-epidemiologic-2006}{kwj093.pdf}
 This paper describes the types of papers published in 2005 in the `American Journal of Epidemiology' and the `Journal of the American Medical Association'. I.e. what kind of study they were, did they use code, and whether that code was available. They find that 93\% of articles which required data processing did not discuss this processing. 84\% of articles which produced original studies did not report that the data produced was available. \Read
 \end{refdef}
 
 \begin{refdef}{economics-replicability-fed}{2015083pap.pdf}
 This paper describes the state of replicability in Economics literature as of 2015. 22/67 (33\%) of papers are replicated without contacting the authors, 29/59 (49\%) are replicated by contacting the authors. \Read
+\end{refdef}
+
+\begin{refdef}{Begley2012}{483531a.pdf}
+An article talking about the need to increase the quality of pre-clinical research to increase the effectiveness of cancer studies and getting working treatments from them. There is focus in the article about how articles which were reproduced were generally of higher quality than those which were not reproduced. They documented more abou their setup and paid closer attention to things like reagents. The authors also outline how pressures from the community in order to publish simple, clear, high-impact results encourages poor practices such as omiting data which doesn't fit their narrative. They also report empirical work by the author and the Amgen company to replicate work from 53 landmark studies. Only 6 of these studies held up. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{printz-rely-published-2011}{printz-rely-published-2011.pdf}
+An Empirical study about drug development reproducibility. Apparently companies often perform in-house validation of published findings to help them decide which research to invest in and which not to. The author's company has found that only successful in reproducing about 20-25\% of research they attempt. They also state that the prestige of the journal did not ensure reproducibility. ``Indeed, our analysis revealed that the reproducibility of published data did not significantly correlate with journal impact factors, the number of publications on the respective target or the number of independent groups that authored the publications." \Read \categorize
 \end{refdef}
 
 \subsection{Numerical Issues} \label{sec:reference-descriptions-numerical}
@@ -990,7 +1021,7 @@ A nice short paper describing a system where people create 'reproducibility pape
 This paper details several techniques that can be helpful to automate the reproduction of results including things like scripts and using docker containers to create virtualized environments.
 \end{refdef}
 
-\begin{refdef}{repeatability-microarray-gene-expression}{ng.295.pdf}
+\begin{refdef}{Ioannidis2009}{ng.295.pdf}
 The researchers attempt to reproduce a bunch of microarray gene expression papers. These reproductions were limited by the availability of data and in some cases code.
 \end{refdef}
 
@@ -1012,6 +1043,10 @@ A paper discussing Containers and how they are taking over the world
 
 \begin{refdef}{10.1371/journal.pone.0038234}{journal.pone.0038234.pdf}
 A great paper talking about scientific output differences between operating systems
+\end{refdef}
+
+\begin{refdef}{aac4716}{aac4716.full.pdf}
+An excellent and important article presenting an empirical study about the reproducibility of psychological science. This is a great article for a review of current thinking in the reproducibility world.  See section \ref{sec:empirical} for details about the study in a greater context. \morecites
 \end{refdef}
 
 \subsection{Benchmarking} \label{sec:reference-descriptions-benchmarking}
@@ -1251,15 +1286,7 @@ A nice paper about Repeatability in Computer systems research \Read \categorize
 \end{refdef}
 
 \begin{refdef}{Ioannidis2005Pmed}{journal.pmed.0020124.PDF}
-A great article explaining why most published research findings are false. This article discusses some of the career pressures affecting scientist's decisions. \categorize
-\end{refdef}
-
-\begin{refdef}{aac4716}{aac4716.full.pdf}
-An article talking about estimating the reproducibility of psychological science \Read \categorize
-\end{refdef}
-
-\begin{refdef}{Begley2012}{483531a.pdf}
-An article talking about the need to increase the quality of pre-clinical research to increase the effectiveness of cancer studies and getting working treatments from them. (From \cite{reprozip}: Last but not least, recent studies indicate that reproducibility increases impact, visibility, and research quality.) \Read \categorize
+A great article explaining why most published research findings are false. This article discusses some of the career pressures affecting scientist's decisions. It is also a theoretical argument about how more than half of existing psychological research is false. \cite{aac4716}. \categorize
 \end{refdef}
 
 \begin{refdef}{Baker2016}{533452a.pdf}
@@ -1706,7 +1733,7 @@ Another possibly foundational reproducibility citation? (From \cite{reprozip}: L
 Another good article about how reproducibility helps against scientists fooling themselves. (From \cite{reprozip}: and helps defeat self-deception) \Read \categorize
 \end{refdef}
 
-\begin{refdef}{gentleman-stat-analy-repro-2007}{}
+\begin{refdef}{gentleman-stat-analy-repro-2007}{gentleman-stat-analy-repro-2007.pdf}
 This paper introduces the term `compendium'. It defines the term to mean the collection of input data, source code, and any configuration parameters needed to replicate the published material. They also adopt a model-view-controller kind of scheme where the authors can create a so-called `transformer' which takes the compendium output and creates necessary plots, tables, or images from said data which the author wants to convey. \readmore \categorize
 \end{refdef}
 
@@ -1717,15 +1744,46 @@ A website dedicated to the ongoing scandal which Gaussian is perpetrating on the
 \begin{refdef}{pac-guidelines-presentation-1998}{pac-guidelines-presentation-1998.pdf}
 A set of guidelines from the Pure and Applied Chemistry Journal about the presentation of results in their journals. Circa 1998. \Read \categorize
 \end{refdef}
-t
+
 \begin{refdef}{pac-guidelines-publication-1998}{pac-guidelines-publication-1998.pdf}
-	A set of guidelines from the Pure and Applied Chemistry Journal about the publication of source code in their journals. Circa 1998. Referenced directly by \cite{banned-by-gaussian}, the relevant conclusions are: ``2. Reproducibility of computations should be a defining goal in reporting computational results. Sufficient technical details should be provided to allow a reader to reproduce the results of any calculations. Note that strict reproducibility of computations may be precluded by differences among computers (e.g., differences in operating systems, host-based algorithms, machine precision, etc.), software (e.g., installation procedures and programming modifications), and applications (e.g., for probabilistic methods such as Monte Carlo calculations)." and ``5. An adequate specification of the computer program used to carry out the calculations is essential. If the calculations were carried out with commercially available software, the investigator must list the source, version number, and force field employed. Any program modifications and any differences from the published version (including changes in parameters) must be fully described or available to other investigators upon request. Changes in parameters, program options (e.g., dielectric constant, nonbonded cutoffs, etc.) affecting reproducibility of the calculation, and program constraints must be fully described in the article. If the program is not available, commercially or otherwise, the authors must specify sufficient detail that the calculation could be reproduced." \Read \categorize
+A set of guidelines from the Pure and Applied Chemistry Journal about the publication of source code in their journals. Circa 1998. Referenced directly by \cite{banned-by-gaussian}, the relevant conclusions are: ``2. Reproducibility of computations should be a defining goal in reporting computational results. Sufficient technical details should be provided to allow a reader to reproduce the results of any calculations. Note that strict reproducibility of computations may be precluded by differences among computers (e.g., differences in operating systems, host-based algorithms, machine precision, etc.), software (e.g., installation procedures and programming modifications), and applications (e.g., for probabilistic methods such as Monte Carlo calculations)." and ``5. An adequate specification of the computer program used to carry out the calculations is essential. If the calculations were carried out with commercially available software, the investigator must list the source, version number, and force field employed. Any program modifications and any differences from the published version (including changes in parameters) must be fully described or available to other investigators upon request. Changes in parameters, program options (e.g., dielectric constant, nonbonded cutoffs, etc.) affecting reproducibility of the calculation, and program constraints must be fully described in the article. If the program is not available, commercially or otherwise, the authors must specify sufficient detail that the calculation could be reproduced." \Read \categorize
 \end{refdef}
 
 \begin{refdef}{pac-guidelines-calibration-1998}{pac-guidelines-calibration-1998.pdf}
 A set of guidelines from the Pure and Applied Chemistry Journal about calibration. \Read \categorize
 \end{refdef}
 
+\begin{refdef}{hutchinson-drug-attrition-2011}{hutchinson-drug-attrition-2011.pdf}
+An Editorial reporting empirical measurements about clinical drug development in oncology. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{fanelli-pressure-publish-2010}{fanelli-pressure-publish-2010.pdf}
+An empirical study showing that pressure to publish can increase scientific bias. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{osherovich-hedging-academic-2011}{osherovich-hedging-academic-2011.pdf}
+A discussion of the unwritten rule that ~50\% of all published academic works cannot be reproduced in an industrial lab. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{schroter-reviewer-errors-2008}{schroter-reviewer-errors-2008.pdf}
+An article about reviewers and what errors they can and can't catch. And whether they can be trained to be better. ``Reviewers found an average of 2.58 of 9 major errors with no notable difference between the groups. Interventions had small effects. Biased randomization was the error detected most frequently in these papers, with over 60\% of reviewers rejeting the papers identifying this error. Reviewers who did not reject the papers found fewer errors and the proportion finding biased randomization was less than 40\% for each paper." \Read \categorize
+\end{refdef}
+
+\begin{refdef}{nemery-not-accepted-2001}{nemery-not-accepted-2001.pdf}
+An article discussing the fate of reserach which was rejected from Occupational and Environmental Medicine. 405 manuscripts were rejected (44\%), and of those 218 (54\%) were traced to 72 different journals. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{mcdonald-fate-rejected-2007}{mcdonald-fate-rejected-2007.pdf}
+An article discussing the fate of research rejected from the American Journal of Neruoradiology. ``Of 554 rejected submissions, 315 (56\%) were subsequently published in 115 different journals." There were more more detailed statistics. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{arrowsmith-phase-ii-failures-2011}{}
+An empirical article talking about phase II failures from 2008 to 2010. Used in \cite{Begley2012} Don't currently have access to the article. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{harrison-phase-ii-iii-failures-2016}{}
+Another empirical article talking about phase II and II failures from 2013-2015. It seems to be a follow on to \cite{arrowsmith-phase-ii-failures-2011}. Don't currently have access to the article. \Read \categorize
+\end{refdef}
 
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
