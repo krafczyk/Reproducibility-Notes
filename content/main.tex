@@ -527,16 +527,16 @@ I want to make the following methods more easily executable. Replicability and C
 
 \section{Empirical Reproducibility Studies} \label{sec:empirical}
 
-Here I'm collecting a list of all empirical studies about reproducibility in the scientific community. These are good places to grab statistics to show people how bad the whole situation really is. I'm collecting their timeframe, and what field they cover.
+Here I'm collecting a list of all empirical studies about reproducibility in the scientific community. These are good places to grab statistics to show people how bad the whole situation really is. I'm collecting their timeframe, and what field they cover. See Table \ref{tab:empirical-studies} for the table.
 
 \complete
 
 \FloatBarrier
 
-\begin{table}[t]
-\centering
+%\begin{longtable}{c}
+%\centering
 \begin{tabularx}{\textwidth}{lXllX}
-\caption{A list of replicability and reproducibility studies and what they say} \label{tab:replicability-studies} \\
+\caption{A list of replicability and reproducibility studies and what they say} \label{tab:empirical-studies} \\
 \toprule
 Citation & Title & Timeframe & Field & Results \\
 \midrule
@@ -547,7 +547,7 @@ Citation & Title & Timeframe & Field & Results \\
 \midrule
 \endhead
 \bottomrule
-\multicolumn{5}{l}{Table \thetable To be continued}
+\multicolumn{5}{l}{Table \thetable\enspace To be continued...}
 \endfoot
 \bottomrule
 \endlastfoot
@@ -555,6 +555,10 @@ Citation & Title & Timeframe & Field & Results \\
 %\cite{economics-replicability-fed} & \citetitle{economics-replicability-fed} & 2015 & Economics & \multicolumn{1}{l}{\multirowcell{2}{22/67 (33\%) replicated without author contact \\ \noindent 29/59 (49\%) replicated with author contact}} \\
 %\cite{aac4716} & \citetitle{aac4716} & 2015 & Psychology & \multicolumn{1}{l}{\multirowcell{5}{97\% of original studies had statistically significant results\\ 36\% of replications had statistically significant results.\\ 47\% of original effect sizes were in the 95\% confidence interval of the replication effect size\\ 39\% of effects were subjectively rated to have replicated the original results}}\\
 %\cite{collberg-repeatability-2016} & \citetitle{collberg-repeatability-2016} & 2016 & Computer Science & \multicolumn{1}{l}{\multirowcell{2}{44\% of computer science article authors released their source code. \\ \Read there are others}} \\
+\cite{dewald-replication-econ-1986} & \citetitle{dewald-replication-econ-1986} & 1986 & Economics & Response rates to requests for data were higher for articles which were accepted and under review than for articles which were already published (pub: 66\%, acc: 96\%, rev: 75\%), Only 15\% of received data sets were properly documented and cited, 26\% were incomplete \readmore \\
+\hline
+\cite{hatton-scientific-software-accurate-1994} & \citetitle{hatton-scientific-software-accurate-1994} & 1994 & Geophysics & N-version replication study. Approximate cumulative precision-loss of 1\% every 4000 source lines (about 3000 executable lines) in terms of average absolute difference. \\
+\hline
 \cite{peng-epidemiologic-2006} & \citetitle{peng-epidemiologic-2006} & 2005 & Epidemiology & 93\% of articles do not detail data processing. 84\% of articles did not release data. \\
 \hline
 \cite{arrowsmith-phase-ii-failures-2011} & \citetitle{arrowsmith-phase-ii-failures-2011} & 2011 & Biology & Success rates in Phase II trails have fallen from 28\% to 18\%. As mentioned in \cite{printz-rely-published-2011} \\
@@ -570,7 +574,7 @@ Citation & Title & Timeframe & Field & Results \\
 \cite{collberg-repeatability-2016} & \citetitle{collberg-repeatability-2016} & 2016 & Computer Science & 44\% of computer science article authors released their source code. \Read there are others. \\
 \bottomrule
 \end{tabularx}
-\end{table}
+%\end{table}
 
 \FloatBarrier
 
@@ -968,6 +972,10 @@ An article talking about the need to increase the quality of pre-clinical resear
 An Empirical study about drug development reproducibility. Apparently companies often perform in-house validation of published findings to help them decide which research to invest in and which not to. The author's company has found that only successful in reproducing about 20-25\% of research they attempt. They also state that the prestige of the journal did not ensure reproducibility. ``Indeed, our analysis revealed that the reproducibility of published data did not significantly correlate with journal impact factors, the number of publications on the respective target or the number of independent groups that authored the publications." \Read \categorize
 \end{refdef}
 
+\begin{refdef}{dewald-replication-econ-1986}{dewald-replication-econ-1986.pdf}
+An empirical study of replication in empirical economics. This study is actually similar to the first JCP study that we are conducting. They asked authors for data and produce a table of results. \Read \categorize
+\end{refdef}
+
 \subsection{Numerical Issues} \label{sec:reference-descriptions-numerical}
 
 \begin{refdef}{high-precision-arith-in-science}{high-prec-arith.pdf}
@@ -984,6 +992,10 @@ A website describing GNU libc's floating point rounding capabilities.
 
 \begin{refdef}{higham-numerical-accuracy-and-stability}{Higham\_2002\_Accuracy and Stability of Numerical Algorithms.pdf}
 This book is a theoretical book discussing the accuracy and stability of numerical algorithms as it's title states. For starters it discusses the idea of machine epsilon. \Read
+\end{refdef}
+
+\begin{refdef}{hatton-scientific-software-accurate-1994}{hatton-scientific-software-accurate-1994.pdf}
+Interesting ongoing N-version scientific software accuracy study in the field of seismic data processing. They claim that `numerical disagreement grows at around the rate of 1\% in average absolute difference per 4000 lines of implemented code, and even worse, the nature of the disagreement is nonrandom.' (Find reference to completed study?) Only read the intro and conclusion. \readmore
 \end{refdef}
 
 \subsection{Reproducibility} \label{sec:reference-descriptions-reproducibility}
@@ -1093,6 +1105,10 @@ Newsletter describing the student cluster competition at SC16. \readmore
 Newsletter describing the winner of the reproducibility initiative at SC16 and the paper for the student cluster competition for SC17. \readmore
 \end{refdef}
 
+\begin{refdef}{King95}{replication.pdf}
+A nice article V.S. Recommended which details various issues faced by researchers in empirical political sciences to replicate works by other authors. They include the rather surprising statistc from another paper that 90.1\% of political science articles are never cited! The article ends in a discussion of policy changes to make to improve reproducibility in political science. I did not finish reading the article. \morecites \readmore
+\end{refdef}
+
 \subsection{Reproducibility Benchmarking} \label{sec:reference-descriptions-repro-benchmarking}
 
 \begin{refdef}{reproducibility-benchmark-dft}{aad3000.full.pdf}
@@ -1152,6 +1168,10 @@ A large book talking about good coding practices. Recommended by Victoria's Frie
 
 \begin{refdef}{ISO-9126}
 An ISO standard describing aspects of software quality so that the quality of disparate types of software can be compared on equal footing.
+\end{refdef}
+
+\begin{refdef}{hatton-software-quality-2007}{hatton-software-quality-2007.pdf}
+A general report about software quality from Hatton. He dicusses fields he has worked on and the prevalence of computing errors and people's refusal to accept that they produce buggy code.
 \end{refdef}
 
 \subsection{White Paper References} \label{sec:reference-descriptions-white-papers}
@@ -1315,10 +1335,6 @@ A website by Claerbout himself discussion his history with reproducible research
 
 \begin{refdef}{neuromorphic-chips-webarticle}{}
 A website describing neuromorphic chips and how they have applications for deep learning. \Read \categorize
-\end{refdef}
-
-\begin{refdef}{King95}{replication.pdf}
-A nice article V.S. Recommended which details various issues faced by researchers in empirical political sciences to replicate works by other authors. \Read \categorize
 \end{refdef}
 
 \begin{refdef}{elec-doc-res-new-meaning}{}
@@ -1561,13 +1577,6 @@ Article talking about designing computational experiments, relevant for vertical
 A wiki article describing cyclomatic complexity. \Read \categorize
 \end{refdef}
 
-\begin{refdef}{hatton-scientific-software-accurate-1994}{hatton-scientific-software-accurate-1994.pdf}
-Interesting ongoing N-version scientific software accuracy study. (Find reference to completed study?) \Read \categorize
-\end{refdef}
-
-\begin{refdef}{hatton-software-quality-2007}{hatton-software-quality-2007.pdf}
-A general report about software quality from Hatton. \Read \categorize
-\end{refdef}
 
 \begin{refdef}{hatton-software-size-power-law-2009}{hatton-software-size-power-law-2009.pdf}
 An interesting report about software component size and its power law distribution. \Read \categorize
@@ -1784,6 +1793,7 @@ An empirical article talking about phase II failures from 2008 to 2010. Used in 
 \begin{refdef}{harrison-phase-ii-iii-failures-2016}{}
 Another empirical article talking about phase II and II failures from 2013-2015. It seems to be a follow on to \cite{arrowsmith-phase-ii-failures-2011}. Don't currently have access to the article. \Read \categorize
 \end{refdef}
+
 
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
