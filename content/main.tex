@@ -1,5 +1,7 @@
 \documentclass[american]{article}
-
+\usepackage{titlesec}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
 \usepackage[utf8]{inputenc}
 \usepackage{placeins}
 %\usepackage[T1]{fontenc}
@@ -26,6 +28,39 @@
 \usepackage{aas_macros}
 \usepackage[toc]{glossaries}
 \makeglossaries
+
+
+\titleclass{\subsubsubsection}{straight}[\subsection]
+
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection.\arabic{subsubsubsection}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+
+\titleformat{\subsubsubsection}
+  {\normalfont\normalsize\bfseries}{\thesubsubsubsection}{1em}{}
+\titlespacing*{\subsubsubsection}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{5}{\z@}%
+  {3.25ex \@plus1ex \@minus.2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{6}{\parindent}%
+  {3.25ex \@plus1ex \@minus .2ex}%
+  {-1em}%
+  {\normalfont\normalsize\bfseries}}
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+\def\toclevel@paragraph{6}
+\def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+\def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+\def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
+\makeatother
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
 
 \newglossaryentry{read}{
 	name=Read,
@@ -592,7 +627,68 @@ Here I'm collecting a list of all reproducibility software I have encountered. I
 
 \subsection{Containers} \label{sec:software-containers}
 
-These techniques utilize a namespacing system to allow native execution of code and virtualization of OS without the need for a hypervisor.
+\subsubsection{Introduction}
+
+Containers are a method of operating system virtualization that isolate applications including their runtime environment and all the files required to run. LXCs (Linux Containers) are able to run multiple Linux containers on a host with a single kernel. This is done by providing the linux kernel's cgroups feature and isolated namespaces for and isolated environment for containers\cite{containers-hierarchy}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{containers-intro}
+    \caption{Figure showing a Linux container stack}
+    \label{fig:containers-intro}
+\end{figure}
+
+Containers are restricted to Linux since containers need to be able to isolate processes without a new kernel. They run on the host OS's kernel and rely on system calls for processes. This is stable over different kernel versions and hence the host does not need to install a new kernel depending on the container required version\cite{kernel-space-redhat}.
+
+Once an application is compiled, the set of system calls that an application uses is embedded in the binary. Containers don't abstract the need for the user space and kernel space to share a common set of system calls as seen in figure \ref{fig:sys-calls}. In a containerized world, this user space is bundled up and shipped around to different hosts, ranging from laptops to production servers.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{system-calls}
+    \caption{Figure shared system calls}
+    \label{fig:sys-calls}
+\end{figure}
+
+
+\subsubsection{chroot system calls}
+The chroot system call is a critical foundation for containers.  The chroot mechanism can redefine the root directory for any running program, effectively preventing that program from being able to name or access resources outside that root directory tree. These partitions are referred to as chroot jails\cite{intel-whitepaper}. It redefines the root directory for running a program and prevents the program from viewing resources outside the directory. It shares a single kernel with the host while being tamper-resistant and preventing malicious code to "break out" of the jail.
+
+
+\subsubsection{cgroups}
+
+cgroups is a Linux kernel feature that allows the user to allocate and monitor resources such as memory, network bandwidth, CPU, disk I/O, etc into hierarchical groups\cite{cgroups-wiki}. Some important features provided by cgroups are\cite{cgroups}:
+\begin{itemize}
+	\item Resource limiting
+	\item Prioritization
+	\item Accounting
+	\item Control
+\end{itemize}
+
+\subsubsection{namespaces}
+
+Namespaces wrap a global system resource into an abstraction that makes it appear to the processes within the namespace to appear to have their own isolated instance of the global resource\cite{namespaces}.
+
+There are currently 6 types of namespaces\cite{namespaces}
+\begin{itemize}
+	\item Mount namespaces - Mount points
+	\item UTS namespaces - Hostname and NIS Domain name
+	\item IPC namespaces - System V IPS, POSIX message queues
+	\item PID namespaces - Process IDs
+	\item Network namespaces - Network devices, ports, etc.
+	\item User namespace - User and group IDs
+\end{itemize}
+
+\subsubsection{Security}
+
+Initially, in LXCs, the root user of the container could run any code on the host system with complete root access to the host's system. However, since v1.0, multiple security features have been implement to limit access to the host's hardware\cite{lxc-wiki}.
+
+\subsubsubsection{Discretionary Access Control}
+It is a method of restricting access to objects based on the identity of subjects and/or groups to which they belong. The controls are discretionary in the sense that a subject with a certain access permission is capable of passing that permission. Based on the filesystem ownership and permissions, the kernel uses discretion to allow access to files\cite{dac}.
+
+\subsubsubsection{Mandatory Access Control}
+It is a system wide policy that dictates which who is allowed access to certain files and the permissions cannot be altered by the user unless the MAC policy modified or removed.
+
+\subsubsection{Popular Containerization Software}
 
 \begin{itemize}
 \item Docker \cite{Docker}
