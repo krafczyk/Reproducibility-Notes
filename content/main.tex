@@ -755,6 +755,7 @@ These softwares purport to handle all of our scientific workflow needs. They han
 \item NextFlow \needcite
 \item Common Workflow Language \needcite
 \item revisit \cite{matloff-revisit-2017}
+\item workflowr \needcite
 \end{itemize}
 
 \subsubsection{Popper} \label{sec:software-managers-popper}
@@ -860,6 +861,14 @@ These programs take control of the execution environment while also staying out 
 Spack \cite{Spack} is the only one I've tried so far. It's the best by far.
 
 \complete
+
+\subsection{Machine Verification} \label{sec:software-verification}
+
+This software is part of the Software verification ecosystem. This software aims to prove claims about software such as 'This software will never crash'.
+
+\begin{itemize}
+\item Verified Software Toolchain (VST) (A collection of software) \cite{appel-program-logics-2014}
+\end{itemize}
 
 \subsection{Generalized systems} \label{sec:software-generalized}
 
@@ -1920,6 +1929,29 @@ This article describes the difficulty in obtaining data from published psycholog
 We're required to purchase this article, so I can only read the abstract. \Read \categorize
 \end{refdef}
 
+\begin{refdef}{appel-program-logics-2014}{}
+A book describing the field of program logic verification and some tools that form the Verified Software Toolchain.
+\Read \categorize
+\end{refdef}
+
+\begin{refdef}{hales-turing-machine-2013}{hales-turing-machine-2013.pdf}
+An article reviewing mathematical proofs which rely on computers.
+\Read \categorize
+\end{refdef}
+
+\begin{refdef}{barnes-code-good-enough-2010}{barnes-code-good-enough-2010.pdf}
+Editorial describing some of the misconceptions and benefits of releasing source code.
+
+Nice point: Code which isn't released, is sometimes deleted, thereby destroying a full record of what was done.
+
+Interesting case study about NASA releasing climate code. People couldn't run it, an outsider cleaned it up, and now NASA considers replacing their code with the outsider's code.
+
+Code not backed by experts: abandonware.
+
+People will accept code which does what you say it does. If it has bugs you should release it, and if not, well you should probably fix it anyway.
+\categorize
+\end{refdef}
+
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
 \printbibliography[heading=bibintoc]
@@ -1929,3 +1961,4 @@ We're required to purchase this article, so I can only read the abstract. \Read 
 \printglossaries
 
 \end{document}
+
