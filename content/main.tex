@@ -97,6 +97,11 @@
 	description={Indicates a citation which I have read at least some of which contains more references which are good for reproducibility but which some have not yet made it into the main bibliography. Score this article for the citations.}
 }
 
+\newglossaryentry{download}{
+	name={Download},
+	description={Indicates a citation for which the article was behind a paywall and needs to be downloaded at a later time when access is available.}
+}
+
 \newcommand{\Read}{
 	\gls{read}
 }
@@ -123,6 +128,10 @@
 
 \newcommand{\morecites}{
 	\gls{morecites}
+}
+
+\newcommand{\download}{
+	\gls{download}
 }
 
 \newcommand{\ifempty}[3]{%
@@ -1956,6 +1965,29 @@ People will accept code which does what you say it does. If it has bugs you shou
 \Read \categorize
 \end{refdef}
 
+\begin{refdef}{ditommaso-nextflow-2017}{}
+\download \Read \categorize
+\end{refdef}
+
+\begin{refdef}{firedrake-2016}{}
+Firedrake whitepaper \download \Read \categorize
+\end{refdef}
+
+\begin{refdef}{mitchell-firedrake-jcp-2016}{}
+This is the JCP paper using the Firedrake framework. \download \Read \categorize
+\end{refdef}
+
+\begin{refdef}{nickolls-cuda-2008}{}
+\download \Read \categorize
+\end{refdef}
+
+\begin{refdef}{pandey-ligo-scalable-2014}{}
+Nice article about LIGO scalable cloud computing. \download \Read \categorize
+\end{refdef}
+
+\begin{refdef}{accardo-positron-fraction-500-2014}{}
+AMS Positron fraction 0.5-500 GeV. \download \categorize
+\end{refdef}
 
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
