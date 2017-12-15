@@ -765,6 +765,9 @@ These softwares purport to handle all of our scientific workflow needs. They han
 \item Common Workflow Language \needcite
 \item revisit \cite{matloff-revisit-2017}
 \item workflowr \needcite
+\item adage
+\item yadage \cite{cranmer-yadage-packtivity-2017}
+\item pywren \needcite
 \end{itemize}
 
 \subsubsection{Popper} \label{sec:software-managers-popper}
@@ -778,6 +781,16 @@ Popper outlines a set of functionality necessary to allow reproducibility to hap
 Their reference implementation of Popper also includes a number of experiment templates since the learning curve for git and other DevOps tools is quite high. This reduces the barrier to entry a bit.
 
 \complete
+
+\subsubsection{PyWren} \label{sec:software-managers-pywren}
+
+PyWren is an excellent example of a custom built workflow and reproducibility solution. PyWren leverages industry services (in this case Amazon S3 and Lambda) to implement a `map' function capable of running large scale computational jobs on these industry services quickly, transparantly, and easily for the user. PyWren provides an interesting solution to specific types of workflows which work well for certain types of problems, namely embarrassingly parallel tasks. PyWren is also focused on supporting a specific language, in this case python. While PyWren supports a runtime which also includes Cython which should allow some limited c code to run, it must all flow through a python framework.
+
+To accomplish its tasks, PyWren is imbued with a number of pretty impressive optimizations for working with the Amazon environment and for getting more out of lambda than they ostensibly allow. These optimizations include the creation of a specialized minimal runtime for lambda, and special techniques for large matrix evaluations to get around lambda instance time limits.
+
+PyWren is by all accounts a rather marvelous implementation of map which is very useful for solving many types of problems. I don't however see many people adopting it for use in their work. There is firstly a communication problem, namely that people may not necessarily know about it or tools like it when they start their project. Once projects are moving along, and authors hear about PyWren, I doubt that they will totally retool their project to fit into its runtime. Secondly, there is the issue of language. Many scientific disciplines do not use python or C. Many use tools like Matlab or Fortran which either cannot be run in the framework or are extremely difficult to.
+
+PyWren is a great tool for its purpose, however in creating it they solved many specific architectural problems which many scientists face everyday. Future generalized systems stand to benefit greatly from leveraging knowledge generated in PyWren's creation. I would love for future generalized systems to be as easy to use.
 
 \subsection{Workflow Analyzers} \label{sec:software-analyzers}
 
@@ -2002,11 +2015,28 @@ CMS Higgs result \download \categorize
 \end{refdef}
 
 \begin{refdef}{barba-reproducible-cfd-2017}{barba-reproducible-cfd-2017.pdf}
-A really nice paper about self reproduction in CFD. \categorize \Read
+A really nice paper about self reproduction in CFD. They attempt to reproduce their results using 3 different CFD Softwares. This involved using different meshes and boundary condition schemes to make their simulations as similar as possible. They even failed to reproduce their results in one case. \categorize
 \end{refdef}
 
 \begin{refdef}{barba-snakes-2014}{barba-snakes-2014.pdf}
 The paper which \cite{barba-reproducible-cfd-2017} tries to replicate. They developed an in-house code cuIBM for this study. It uses NVIDIA CUDA and NVIDIA Cusp for sparse linear system solving on GPUs. \download official article. \categorize \Read
+\end{refdef}
+
+\begin{refdef}{cranmer-yadage-packtivity-2017}{cranmer-yadage-packtivity-2017.pdf}
+A kind of white paper about the yadage workflow management system for LHC workflows. \Read \categorize
+\end{refdef}
+
+\begin{refdef}{cranmer-recast-2011}{cranmer-recast-2011.pdf}
+RECAST is an ambitious idea to allow the re-analysis of HEP results to look for alternative signals to which the previous analysis may also be sensitive to. They outline a system whereby analysis are added to a database, and RECAST requests can be made defining the new signal, and a backend system processes this request with the existing resources, applies new efficiencies to change the result. This translates into a suggestion about new signal thus informing decisions for new analyses. \categorize
+\end{refdef}
+
+\begin{refdef}{liu-lbm-hvr-2016}{}
+A JCP article demonstrating physics codes which use benchmarking to test their physicality. They use the static droplet test.
+\download \categorize \Read
+\end{refdef}
+
+\begin{refdef}{mcsherry-scalability-cost-2015}{}
+An interesting read describing the COST evaluation of 'scalability' claims. i.e. That people who claim to have an especially scalable algorithm or system should test that system against a good single threaded algorithm on a single core computer. This should show whether that scalable system is even worth pursuing, and reveals implementations which are inefficient or require exorbitant amounts of hardware to be worthwhile.
 \end{refdef}
 
 %\bibliography{main}
