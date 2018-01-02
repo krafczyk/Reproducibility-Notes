@@ -898,6 +898,8 @@ These programs take control of the execution environment while also staying out 
 \item Nix \needcite \expand
 \item Hashdist \needcite \expand
 \item EasyBuild \cite{EasyBuild}
+\item Conda \cite{conda}
+\item Binder \cite{binder}
 \end{itemize}
 
 \subsubsection{Spack} \label{sec:spack}
@@ -905,6 +907,7 @@ These programs take control of the execution environment while also staying out 
 Spack \cite{Spack} is the only one I've tried so far. It's the best by far.
 
 \complete
+
 
 \subsection{Machine Verification} \label{sec:software-verification}
 
@@ -919,6 +922,7 @@ This software is part of the Software verification ecosystem. This software aims
 \begin{itemize}
 \item Reproducible-builds.org \cite{reproducible-builds} \Read \expand
 \item Sciunits \cite{sciunits} \Read \expand
+\item Git with Org-mode \cite{Stanisic-git-orgmode-2015} \Read
 \end{itemize}
 
 \complete
@@ -2071,6 +2075,18 @@ This article describes attempts in the biology community to transition to electr
 
 \begin{refdef}{claerbout-make-reproducible-2000}{claerbout-make-reproducible-2000.pdf}
 A nice article describing ReDoc, a system for recording and replicating computations 
+\end{refdef}
+
+\begin{refdef}{Stanisic-git-orgmode-2015}{Stanisic-git-orgmode-2015.pdf}
+This article describes a loose system for recording work using Emacs Org Mode and tracking the changes with git. This method looks pretty decent just for general workflow management, however it suffers from being tool specific (Need to use Emacs for org mode), and not capable of dealing with other intricacies of scientific development. \Read
+\end{refdef}
+
+\begin{refdef}{conda}{}
+Conda website. Conda is a pretty good environment management system. Originally for python, it has now moved on to be used in other languages, though I have yet to try it out.
+\end{refdef}
+
+\begin{refdef}{binder}{}
+Binder website. This is the Binder website. They take github repositories with dependency specifiers like 'requirements.txt' and create a docker container from it. The software in the container is then run with the docker container and made available as a jupyter notebook for people ot interact with.
 \end{refdef}
 
 %\bibliography{main}
