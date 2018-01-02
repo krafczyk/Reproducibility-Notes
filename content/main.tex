@@ -743,7 +743,18 @@ From \cite{stodden-sharing-reproducibility-talk-2017}.
 \item Jupyter \needcite
 \item NanoHUB \needcite
 \item Vistrails \needcite
+\item CodaLab \cite{codalab}
 \end{itemize}
+
+\subsubsection{CodaLab}
+
+CodaLab is an interesting open implementation of a reproducible research environment. You can ask the command line tool to execute a given command or set of commands. It'll execute those inside a container (docker), which is then stored for later use. These containers can then be called on at any time to replicate the reported results. A couple things should be investigated:
+\begin{enumerate}
+\item Do they require an account to use their service? If so why? It shouldn't be necessary, What happens when funding runs out for their backbone servers?
+\item Dependence on Docker may not be sustainable.
+\end{enumerate}
+
+Other than those concerns CodeLab seems like a pretty good tool.
 
 \subsection{Workflow Managers} \label{sec:software-managers}
 
@@ -2037,6 +2048,10 @@ A JCP article demonstrating physics codes which use benchmarking to test their p
 
 \begin{refdef}{mcsherry-scalability-cost-2015}{}
 An interesting read describing the COST evaluation of 'scalability' claims. i.e. That people who claim to have an especially scalable algorithm or system should test that system against a good single threaded algorithm on a single core computer. This should show whether that scalable system is even worth pursuing, and reveals implementations which are inefficient or require exorbitant amounts of hardware to be worthwhile.
+\end{refdef}
+
+\begin{refdef}{codalab}{}
+This is the CodaLab website. From here you can get to their github which contains lots of pretty good documentation.
 \end{refdef}
 
 %\bibliography{main}
