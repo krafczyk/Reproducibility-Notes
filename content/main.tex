@@ -744,6 +744,7 @@ From \cite{stodden-sharing-reproducibility-talk-2017}.
 \item NanoHUB \needcite
 \item Vistrails \needcite
 \item CodaLab \cite{codalab}
+\item ReDoc \cite{claerbout-make-reproducible-2000}
 \end{itemize}
 
 \subsubsection{CodaLab}
@@ -755,6 +756,16 @@ CodaLab is an interesting open implementation of a reproducible research environ
 \end{enumerate}
 
 Other than those concerns CodeLab seems like a pretty good tool.
+
+\subsubsection{ReDoc}
+
+ReDoc is an interesting bit of software which purported to record and replicate a scientists results. They had a number of very good features such as levels of reproducibility (ER: easily reproducible, PR: partially reproducible NR: Non-reproducible) where computation resources are recorded, and the user is warned if the required resources are too much. \cite{claerbout-make-reproducible-2000}
+
+Whats interesting to us now is that this piece of software is simply no longer available. The source code is gone, and a shell of a website remains. What happened? Did the group developing it just stop? Was there no adoption?
+
+By all rights, ReDoc had many very good ideas so we have to wonder not only why it no longer exists, but also why scientists didn't adopt its use.
+
+The questions of longevity and adoption are extremely important. Anybody that hopes to succeed needs to study past failures such as this to avoid the same pitfalls. 
 
 \subsection{Workflow Managers} \label{sec:software-managers}
 
@@ -2052,6 +2063,14 @@ An interesting read describing the COST evaluation of 'scalability' claims. i.e.
 
 \begin{refdef}{codalab}{}
 This is the CodaLab website. From here you can get to their github which contains lots of pretty good documentation.
+\end{refdef}
+
+\begin{refdef}{dickman-software-bypassed-2017}{}
+This article describes attempts in the biology community to transition to electronic lab notebooks. This has spawned numerous companies each with their own way of recording laboratory events and information. However, when biotech companies attempt to force their employees to switch to a new system, they often find their users purposefully trying to either use their own tools, or to avoid using the chosen tool entirely. This goes to the inhernet difficulty in creating an appropriate solution and getting people to adopt it for managing research workflows.
+\end{refdef}
+
+\begin{refdef}{claerbout-make-reproducible-2000}{claerbout-make-reproducible-2000.pdf}
+A nice article describing ReDoc, a system for recording and replicating computations 
 \end{refdef}
 
 %\bibliography{main}
