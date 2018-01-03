@@ -617,6 +617,8 @@ Citation & Title & Timeframe & Field & Results \\
 \hline
 \cite{Begley2012} & \citetitle{Begley2012} & 2012 & Cell Biology & Only 6 of 53 landmark biotechnology papers held up. \\
 \hline
+\cite{hettrick-research-survey-2014} & \citetitle{hettrick-research-survey-2014} & 2014 & General & 92\% of academics use software in their research. 69\% say that their research would not be possible otherwise. 56\% develop their software in-house. \\
+\hline
 \cite{economics-replicability-fed} & \citetitle{economics-replicability-fed} & 2015 & Economics & 22/67 (33\%) replicated without author contact 29/59 (49\%) replicated with author contact. \\
 \hline
 \cite{aac4716} & \citetitle{aac4716} & 2015 & Psychology & 97\% of original studies had statistically significant results 36\% of replications had statistically significant results. 47\% of original effect sizes were in the 95\% confidence interval of the replication effect size. 83\% of studies had a larger effect size in the original study. 39\% of effects were subjectively rated to have replicated the original results. Replication success was more consistently related to the original strength of evidence (such as original $P$ value, effect size, and effect tested) than to characteristics of the teams and implementation of the replication (such as expertise, quality, or challenge of conducting the study)\\
@@ -931,6 +933,11 @@ This software is part of the Software verification ecosystem. This software aims
 \subsubsection{ClusterJob}
 
 ClusterJob is a set of perl scripts which breakup large computing jobs into smaller pieces which are then submitted to a job system where the jobs are completed. These scripts watch this process automatically. They also produce `reproducible' packages which claim to be able to reproduce a given computational result. Currently ClusterJob only supports MATLAB and python jobs.
+
+\subsection{Language and/or workflow specific helpers}
+
+%\begin{itemize}
+%\end{itemize}
 
 \section{Software/Data Repositories} \label{sec:repositories}
 
@@ -2096,6 +2103,10 @@ Conda website. Conda is a pretty good environment management system. Originally 
 
 \begin{refdef}{binder}{}
 Binder website. This is the Binder website. They take github repositories with dependency specifiers like 'requirements.txt' and create a docker container from it. The software in the container is then run with the docker container and made available as a jupyter notebook for people ot interact with.
+\end{refdef}
+
+\begin{refdef}{hettrick-research-survey-2014}{}
+A survey of researchers in the UK. This survey contains an excel spreadsheet with their data. \Read
 \end{refdef}
 
 %\bibliography{main}
