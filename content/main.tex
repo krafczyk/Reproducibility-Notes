@@ -923,9 +923,14 @@ This software is part of the Software verification ecosystem. This software aims
 \item Reproducible-builds.org \cite{reproducible-builds} \Read \expand
 \item Sciunits \cite{sciunits} \Read \expand
 \item Git with Org-mode \cite{Stanisic-git-orgmode-2015} \Read
+\item ClusterJob \cite{clusterjob,clusterjob-github}
 \end{itemize}
 
 \complete
+
+\subsubsection{ClusterJob}
+
+ClusterJob is a set of perl scripts which breakup large computing jobs into smaller pieces which are then submitted to a job system where the jobs are completed. These scripts watch this process automatically. They also produce `reproducible' packages which claim to be able to reproduce a given computational result. Currently ClusterJob only supports MATLAB and python jobs.
 
 \section{Software/Data Repositories} \label{sec:repositories}
 
@@ -1467,6 +1472,10 @@ What computational scientists need to know about intellectual property law: A pr
 
 \begin{refdef}{clusterjob}{osbg-MDS2016.pdf}
 Clusterjob provides an interface to break work down into jobs which can be farmed out to a multitude of interfaces. \Read \categorize \complete
+\end{refdef}
+
+\begin{refdef}{clusterjob-github}{}
+The clusterjob code github repository. It is BSD-3 licensed perl code.
 \end{refdef}
 
 \begin{refdef}{Ioannidis2005JAMA}{JOC50060.pdf}
