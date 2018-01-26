@@ -733,7 +733,7 @@ From \cite{stodden-sharing-reproducibility-talk-2017}.
 \item knitR \needcite
 \item Collage Authoring Environment \needcite
 \item Sumatra \needcite
-\item Galaxy \needcite
+\item Galaxy \cite{afgan-galaxy-2016}
 \item SHARE \needcite
 \item Sweave \needcite
 \item SOLE \needcite
@@ -768,6 +768,10 @@ Whats interesting to us now is that this piece of software is simply no longer a
 By all rights, ReDoc had many very good ideas so we have to wonder not only why it no longer exists, but also why scientists didn't adopt its use.
 
 The questions of longevity and adoption are extremely important. Anybody that hopes to succeed needs to study past failures such as this to avoid the same pitfalls.
+
+\subsubsection{Galaxy}
+
+This is a web based research environment which presents an accessible interface for bio research. It seems to utilize command line tools to do certain types of data manipulation such as sequence finding. The entirety of the analysis pipeline is defined through the web interface and executed on TACC computers. The developers of Galaxy made their tool open source so anybody can define their own tools and run their own instances of Galaxy. This is an intriguing method and I am looking into including it in our study.
 
 \subsection{Workflow Managers} \label{sec:software-managers}
 
@@ -1087,6 +1091,8 @@ DASPOS focuses on two main issues for HEP and other big data communities
 \end{enumerate}
 
 The later is more closely related to REPUTabLe.
+
+According to their website, as of this writing (Jan 10 2018) they have only had 2 of 5 planned workshops. Workshop 4 will be on software sustainability which may include SSE/SSI funded projects. If REPUTabLe is funded, we might be good additions for that workshop.
 
 \subsection{Journal Policies} \label{sec:policy-journals}
 
@@ -2169,6 +2175,10 @@ A white paper describing the DASPOS collaboration and its goals.
 
 \begin{refdef}{benureau-r5-2018}{benureau-r5-2018.pdf}
 A really nice article describing 5 levels of reproducibility which are desirable for modern science. It goes into many of the specific issues in replicating results, and settles on a specific minimal standard that journals should accept.
+\end{refdef}
+
+\begin{refdef}{afgan-galaxy-2016}{gkw343.pdf}
+The Galaxy platform is a platform for reproducibility of biomedical analysis. It provides a web-based interface to easily interact with analysis techniques.
 \end{refdef}
 
 %\bibliography{main}
