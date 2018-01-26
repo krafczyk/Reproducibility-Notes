@@ -767,7 +767,7 @@ Whats interesting to us now is that this piece of software is simply no longer a
 
 By all rights, ReDoc had many very good ideas so we have to wonder not only why it no longer exists, but also why scientists didn't adopt its use.
 
-The questions of longevity and adoption are extremely important. Anybody that hopes to succeed needs to study past failures such as this to avoid the same pitfalls. 
+The questions of longevity and adoption are extremely important. Anybody that hopes to succeed needs to study past failures such as this to avoid the same pitfalls.
 
 \subsubsection{Galaxy}
 
@@ -868,9 +868,6 @@ They show an example which creates a docker package of 500MB and a vagrant packa
 
 The paper also mentions that they are working on distributed code support such as code which uses Hadoop or MPI. \cite{reprozip}.
 
-\subsubsection{Umbrella} \label{sec:umbrella}
-
-
 \subsubsection{PRUNE} \label{sec:prune}
 
 From Doug Thain, this is a different approach which does not monitor system calls to produce reproducible results.
@@ -888,6 +885,48 @@ I like the idea of this method, however it seems to require lots of user interve
 Non-determinism is supported in this scheme by the so-called DBID and CBID ids. Each CBID is created as a hash of the file content while each DBID is available for output files of the process. Thus several files with different CBIDs can be represented by a single DBID.
 
 Apparently PRUNE is managed from a python file which imports the PRUNE library. I'm not sure how I feel about this.
+
+\subsubsection{Umbrella} \label{sec:umbrella}
+
+Umbrella aims to remove the overhead and the lack of portability of virtual machines and containers.\cite{umbrella-main-article} When invoked by the user, it takes in the execution environment specfication from the user, observes the environment already present on the machine and determines the appropriate mechanism necessary for running the task. For example, it could choose between a virtual machine, a container, a direct execution or a cloud based computation.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{umbrella-architecture}
+    \caption{Figure showing Umbrella's architecture}
+    \label{fig:umbrella-architecture}
+\end{figure}
+
+It contains 5 main components: User input, Umbrella, underlying execution enignes, remote archive and the metadata datatbase.
+\begin{itemize}
+	\item \textbf{User input}:  The user input includes the specification, task command, input files and the output directory.
+	\item \textbf{Local execution engine}: Umbrella observes the given machine, and downloads the missing dependencies, groups them using a sandbox method and stores it in the local cache. A post processing stage reclaims the sandbox and ensures that the output in the the directory as specified by the user.
+	\item \textbf{Remote Archive}: It is a resource pool containing OS images for different platforms, kernels and distributions for different harware platforms and dependencies. The current network resources are a part of the remote archive and accessible by Umbrella.
+	\item \textbf{Metadata Database}: It maps the software name known by the user to the storage location queried by Umbrella. It also maitains a checksum and size for each archived data for maintaining data integrity.
+\end{itemize}
+
+Umbrella can also utilize cloud or grid systems for execution. It sumbits a job that contains an instance of Umbrella with the environment configuration to the cloud. Umbrella currently supports Amazon EC2 and Condor. Umbrella does not interfere with the cloud or grid's execution engine in case the latter has support for job scheduling and monitoring.
+
+\subsubsection{Makeflow} \label{sec:makeflow}
+
+Makeflow \cite{makeflow-2017}is a scientific workflow system created by the authors of \hyperref[sec:umbrella]{Umbrella}. It utilizes Umbrella as an execution environment creator to improve workflow resuability and reduce workflow decay. The framework is evaluated by 2 bioinformatics scientific workflows: BLAST and BWA. Umbrella first is used to create the execution environments for the tasks. Makeflow allows executables to be specified in workflow specifications and delivered to execution nodes. It also allows the user to archive an dependencies in small units of OS image, software and data instead of a single large image.
+
+Makeflow can be utilzed by creating a Makefile of the required workflow.
+
+Makeflow (integrated with Umbrella) was tested with BLAST and BWA with time overheads less than 1 minute and space overheads less than 450MB.
+
+\subsubsection{CDE} \label{sec:cde}
+
+CDE uses system call interposition to monitor the execution of x86 Linux programs and package required materials to run the program on other x86 Linux machines. \cite{cde-main} Uses ptrace to monitor files accessed by the program or the commands entered by the user. After monitoring, it creates a subdirectory containing the required files for replication. CDE is implemented by adding upon Linux's strace tool.
+
+\textbf{Limitations}:
+\begin{itemize}
+	\item CDE will fail if arguments to load a new library or config were not used for while initially creating a package with CDE.
+	\item CDE will also fail if the Linux kernel or the hardware architecture of the target machine is incompatible with the binaries in the package.
+\end{itemize}
+
+Their tests resulted in a time overhead of 2\%-28\% slower than running without CDE. This time overhead is mainly caused due to extra kernel context switches. For every system call, the kernel makes 2 extra context switches for monitoring the process.
+
 
 \subsubsection{In-Practice} \label{sec:software-watchers-practice}
 
@@ -2107,7 +2146,7 @@ This article describes attempts in the biology community to transition to electr
 \end{refdef}
 
 \begin{refdef}{claerbout-make-reproducible-2000}{claerbout-make-reproducible-2000.pdf}
-A nice article describing ReDoc, a system for recording and replicating computations 
+A nice article describing ReDoc, a system for recording and replicating computations
 \end{refdef}
 
 \begin{refdef}{Stanisic-git-orgmode-2015}{Stanisic-git-orgmode-2015.pdf}
@@ -2151,4 +2190,3 @@ The Galaxy platform is a platform for reproducibility of biomedical analysis. It
 \printglossaries
 
 \end{document}
-
