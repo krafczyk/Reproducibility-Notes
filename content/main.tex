@@ -607,15 +607,23 @@ Citation & Title & Timeframe & Field & Results \\
 \hline
 \cite{hatton-scientific-software-accurate-1994} & \citetitle{hatton-scientific-software-accurate-1994} & 1994 & Geophysics & N-version replication study. Approximate cumulative precision-loss of 1\% every 4000 source lines (about 3000 executable lines) in terms of average absolute difference. \\
 \hline
+\cite{Ioannidis2005JAMA} & \citetitle{Ioannidis2005JAMA} & 2005 & Clinical Research & Of 49 highly cited original clinical research studies, 45 claimed the intervention was effective. Of these, 7 (16\%) were contradicted by subsequent studies, 7 (16\%) had found effects that were stronger than those of subsequent studies, 20 (44\%) were replicated, and 11 (24\%) remained largely unchallenged.\\
+\hline
 \cite{peng-epidemiologic-2006} & \citetitle{peng-epidemiologic-2006} & 2005 & Epidemiology & 93\% of articles do not detail data processing. 84\% of articles did not release data. \\
 \hline
 \cite{wicherts-poor-availability-psychology-2006} & \citetitle{wicherts-poor-availability-psychology-2006} & 2006 & Psychology & After generous attempts to get data from published study authors, only these authors were only able to obtain 25.7\% of the datasets in their article cohort. \\
+\hline
+\cite{Ioannidis2009} & \citetitle{Ioannidis2009} & 2009 & Genetics & Of 18 articles on microarray-based gene expression profiling, 2 replicated, 6 partially, and ten could not be replicated. Main reason for failure was data unavailability and discrepencies were because of data unavailability\\
 \hline
 \cite{arrowsmith-phase-ii-failures-2011} & \citetitle{arrowsmith-phase-ii-failures-2011} & 2011 & Biology & Success rates in Phase II trails have fallen from 28\% to 18\%. As mentioned in \cite{printz-rely-published-2011} \\
 \hline
 \cite{printz-rely-published-2011} & \citetitle{printz-rely-published-2011} & 2011 & Biology & In only 20-25\% of projects were the relevant published data completely in line with their in-house findings \\
 \hline
 \cite{Begley2012} & \citetitle{Begley2012} & 2012 & Cell Biology & Only 6 of 53 landmark biotechnology papers held up. \\
+\hline
+\cite{carp-fmri-secret-2012} & \citetitle{carp-fmri-secret-2012} & 2012 & Medicine & A detailed study on how much information scientists report. The article reports in detail many aspects of the scientific process, namely how many articles reported a specific part of the scientific process. There are too many quantities to report here. They are also very specific to fMRI analysis and may not be broadly applicable to other fields. \\
+\hline
+\cite{stodden-empirical-journal-policy-2013} & \citetitle{stodden-empirical-journal-policy-2013} & 2013 & General & Of 170 journals, 38\% had a data policy, 22\% had a code policy, and 66\% had a supplemental materials policy as of June 2012. This is a 16\% increase in data policies, 30\% increase in code policies, and 7\% increase in the number of supplemental materials policies. \\
 \hline
 \cite{hettrick-research-survey-2014} & \citetitle{hettrick-research-survey-2014} & 2014 & General & 92\% of academics use software in their research. 69\% say that their research would not be possible otherwise. 56\% develop their software in-house. \\
 \hline
@@ -625,7 +633,15 @@ Citation & Title & Timeframe & Field & Results \\
 \hline
 \cite{collberg-repeatability-2016} & \citetitle{collberg-repeatability-2016} & 2016 & Computer Science & 44\% of computer science article authors released their source code. \Read there are others. \\
 \hline
+\cite{iqbal-reproducible-bio-2016} & \citetitle{iqbal-reproducible-bio-2016} & 2016 & Biomedical & One one study provided a full protocol, and none made raw data directly available. \\
+\hline
+\cite{harrison-phase-ii-iii-failures-2016} &\citetitle{harrison-phase-ii-iii-failures-2016} & 2016 & Nature Review of Drug Discovery & Of 174 phase ii and iii failures with stated reasons for failure, 52\% were because of efficacy, 24\% were because of safety, 15\% were strategic, 6\% were commercial, and 3\% were operational. \\
+\hline
+\cite{open-data-bmj-2016} & \citetitle{open-data-bmj-2016} & 2016 & Medicine & 3 article had data in the article, 50/157 (32\%) indicated availability of their data sets. 12 used publicly available data, and 38 were sent requests for their data by email. Only 1 publicly available data set could be accessed and only 6 of 38 shared their data via email, so only 7/157 articles shared their data sets. \\
+\hline
 \cite{berghmans-survey-open-data-dataset-2017} & \citetitle{berghmans-survey-open-data-dataset-2017} & 2017 & Datascience? & This article contains many good statistics. \Read Here are a few: 73\% of respondants said that having access to others research data benefits or would benefit their own data. Only 65\% of respondants said they had shared their research data with others and only 52\% said that they provide their research data to publishers so it can be made access with their article. An interesting divide. \\
+\hline
+\cite{stodden-policy-effectiveness-2018} & \citetitle{stodden-policy-effectiveness-2018} & 2018 & General & An empirical study of journal policy effectiveness in the journal Science. 204 total articles were tested, They got artifacts from 44\% of the sample, and were able to reproduce findings for 26\%. \\
 \bottomrule
 \end{tabularx}
 
@@ -1101,6 +1117,14 @@ Here I'm putting instances of journal policies which exemplify a commitment to r
 In the journal of Pure and Applied Chemistry, guidelines for publication and presentation of results are described circa 1998 in \cite{pac-guidelines-publication-1998,pac-guidelines-presentation-1998}.
 
 \complete
+
+\subsubsection{Journal of Computational Physics}
+
+As of April 8th, 2018, the Journal of Computational Physics says the following about their data sharing policy:
+
+\begin{quote}
+This journal encourages and enables you to share data that supports your research publication where appropriate, and enables you to interlink the data with your published articles. Research data refers to the results of observations or experimentation that validate research findings. To facilitate reproducibility and data reuse, this journal also encourages you to share your software, code, models, algorithms, protocols, methods and other useful materials related to the project.
+\end{quote}
 
 \section{Community Direction} \label{sec:community}
 
@@ -2227,6 +2251,10 @@ This is a report about the current state of the reproducibility of computational
 
 \begin{refdef}{mahfoudi-reproduce-openrf-lessons-2017}{mahfoudi-reproduce-openrf-lessons-2017.pdf}
 This paper presents lessons learned in the process of doing computational experiments with OpenRF, specifically related to reproducibility.
+\end{refdef}
+
+\begin{refdef}{fleiss-statistical-methods-2003}{statistical\_methods\_for\_rates\_and\_proportions.pdf}
+A statistical text book which outlines the methods for determining sample sizes amoung other things.
 \end{refdef}
 
 
