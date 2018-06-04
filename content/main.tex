@@ -205,7 +205,7 @@
 }
 
 \newenvironment{refdef}[2] {
-	\noindent \textbf{\citetitle{#1}} \cite{#1}\\ \citejournalorbooktitle{#1} \textit{(\citeyear{#1})}\\ \texttt{#2} \vspace{0.2in} \par
+	\noindent \textbf{\citetitle{#1}} \cite{#1}\\ \citejournalorbooktitle{#1} \textit{(\citeyear{#1})}\\ \texttt{#1} \\ \texttt{#2} \vspace{0.2in} \par
 } {
 \vspace{0.2in}
 }
@@ -800,8 +800,9 @@ These softwares purport to handle all of our scientific workflow needs. They han
 \item Taverna \needcite
 \item Kurator \needcite
 \item Wings \needcite
-\item Kepler \needcite
-\item Pegasus \needcite
+\item Kepler \cite{ludaescher-kepler-2005}
+\item Pegasus \cite{deelman-pegasus-2015}
+\item Whole Tale \cite{ludaescher-whole-tale-2016}
 \item Everware \cite{everware}
 \item CDE \needcite
 \item binder.org \needcite
@@ -2257,6 +2258,65 @@ This paper presents lessons learned in the process of doing computational experi
 A statistical text book which outlines the methods for determining sample sizes amoung other things.
 \end{refdef}
 
+\begin{refdef}{stodden-policy-effectiveness-2018}{stodden-policy-effectiveness-2018.pdf}
+A study by Victoria Stodden et. al. on the effectiveness of the journal Science's data and code sharing policy. They searched for code/data used for articles in science and emailed authors when they couldn't find it. They then attempted replications of articles for which they got code. In the end, they were able to obtain artifacts from 44\% of their sample, and were able to reproduce results from 26\%.
+\end{refdef}
+
+\begin{refdef}{barba-reproducibility-terminologies-2018}{barba-reproducibility-terminologies-2018.pdf}
+An excellent article detailing conflicting terminology in the reproducibility space and their origins.
+\end{refdef}
+
+\begin{refdef}{deelman-pegasus-2015}{deelman-pegasus-2015.pdf}
+A white paper describing the Pegasus scientific workflow system.
+\end{refdef}
+
+\begin{refdef}{ferguson-long-tail-neuroscience-2014}{ferguson-long-tail-neuroscience-2014.pdf}
+This article discusses issues relating to the long-tail of neuroscience. i.e. small scale datasets created by small neuroscience researchers. These ideally can be joined together into a kind of big data dataset which can be shared amoung researchers and provide more opportunities for discovery.
+\end{refdef}
+
+\begin{refdef}{ludaescher-whole-tale-2016}{ludaescher-whole-tale-2016.pdf}
+A small white paper describing the Whole Tale project
+\end{refdef}
+
+\begin{refdef}{ludaescher-kepler-2005}{ludaescher-kepler-2005.pdf}
+A whitepaper describing the Kepler project
+\end{refdef}
+
+\begin{refdef}{sedov-shock-1946}{}
+Paper describing the sedov shock test and analytical solution.
+\end{refdef}
+
+\begin{refdef}{sod-tests-1978}{sod-tests-1978.pdf}
+A paper describing several tests for computational simulation systems with conservation laws.
+\end{refdef}
+
+\begin{refdef}{stodden-data-journal-policy-2013}{stodden-data-journal-policy-2013.pdf}
+A dataset collected by Victoria Stodden about journal policies.
+\end{refdef}
+
+\begin{refdef}{stodden-best-practices-2013}{}
+An article presenting some best practices for computational reserach circa 2013.
+\end{refdef}
+
+\begin{refdef}{wallis-data-use-long-tail-2013}{wallis-data-use-long-tail-2013.pdf}
+An interesting article wondering aloud whether people will actually use data if they make it available.
+\end{refdef}
+
+\begin{refdef}{bailey-default-open-2013}{bailey-default-open-2013.pdf}
+A discussion about setting the default for science publishing to open.
+\end{refdef}
+
+\begin{refdef}{berman-potential-data-science-2018}{berman-potential-data-science-2018.pdf}
+A blue-sky kind of paper discussing the possibilities for large scale open data science to connect disciplines and produce better science.
+\end{refdef}
+
+\begin{refdef}{buckheit-wavelab-tr-1995}{buckheit-wavelab-tr-1995.pdf}
+Another report about the Wavelab scientific framework.
+\end{refdef}
+
+\begin{refdef}{nosek-promoting-open-2015}{}
+Another article promoting open science.
+\end{refdef}
 
 %\bibliography{main}
 %\bibliographystyle{ieeetranthesis}
