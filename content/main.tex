@@ -999,6 +999,39 @@ ClusterJob is a set of perl scripts which breakup large computing jobs into smal
 %\begin{itemize}
 %\end{itemize}
 
+\section{Cost Analysis} \label{sec:cost-analysis}
+
+One can easily wonder whether the cost of following reproducible research
+standards is worth anybody's time.  After all, it is time consuming and
+prevents the publishing of a given paper `now' as it were. But is such a blas\'e
+attitude about this deserved? It turns out that this type of question has
+already been asked and answered in the business world where arguably, cost
+overruns and project delays are significantly more costly threatening the
+continued existence of a company.
+
+The following papers present clear and concise connections between time spent
+on ensuring software quality and cost spent on maintenance later in the life
+of a given software product.
+
+\cite{slaughter-cost-quality-1998} is a study on business costs which can 
+easily be translated into research costs. They create three quantities to
+help quanitify research quality costs. Cost of Research Quality (COSQ) is the cost
+for having non-perfect humans coding your work. It can be broken down into
+the following categories: conformance - Prevention costs and Appraisal costs
+nonconformance - Internal failure and External failure. Generally speaking
+nonconformance costs are greater per incident than conformance costs. Return on
+Software Quality (ROSQ) is a more complex aggregate which attempts to
+quantify cost savings from research quality initiatives over time. Their
+tests within an IT company suggest that all initiatives they tried had a
+positive cost savings effect over the lifetime of their project. They conclude
+that because each of these interventions take time to recoup their costs,
+the earlier these interventions are implemented the better.
+
+\cite{krishnan-productivity-quality-2000} similarly studies the resulting
+product quality as a function of cost spent at an IT company. They claim
+that improving software quality by their metrics by 1\% leads to a gain
+of 0.56\% in life-cycle productivity for the company.
+
 \section{Software/Data Repositories} \label{sec:repositories}
 
 This is a list of the various code and data repositories which currently exist and are trying to solve some part of the replicability problem.
@@ -2344,6 +2377,14 @@ Web article about the results from the ICERM workshop
 
 \begin{refdef}{ivie-reproducibility-scientific-computing-2018}{}
 An article describing in fairly close different issues which come up when studying computational reproducibility.
+\end{refdef}
+
+\begin{refdef}{slaughter-cost-quality-1998}{}
+A business research article tackling the issue of software quality and its costs.
+\end{refdef}
+
+\begin{refdef}{krishnan-productivity-quality-2000}{}
+This business research article looks at software life cycle costs and resulting product quality.
 \end{refdef}
 
 %\bibliography{main}
